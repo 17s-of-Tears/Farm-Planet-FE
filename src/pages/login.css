@@ -1,0 +1,28 @@
+.loginBox{
+    width:  350px;
+    height: 400px;
+    border-radius: 35px;
+    border: 0px solid;
+    box-shadow: black 0px 0px 1px 0px;
+    padding: 25px;
+}
+.inputStyle{
+    margin:15px;
+}
+.inputStyle input {
+    text-align:center;
+    width:270px;
+    height: 35px;
+    border: 0px;
+    box-shadow: black 0px 0px 1px 0px;
+    border-radius: 35px;
+}
+
+.loginButton{
+    width:279px;
+    height: 40px;
+    border:0px;
+    background-color: #347125;
+    border-radius: 35px;
+    color: white;
+}
