@@ -3,7 +3,9 @@ import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
 import Profile from './pages/profile';
-
+import WatchMmyPlant from './watchMyPlant/watchMyPlant';
+import MainHome from './main_home/main_home';
+import RecommmentPlant from './recommend_plant/recommend_plant';
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
         </Route>
         <Route path='/profile'>
           <Profile />
+        </Route>
+        <Route path='/myplant'>
+          <WatchMmyPlant />
         </Route>
       </Switch>
     </div>
