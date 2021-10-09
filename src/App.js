@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
+import MainHome from './main_home/main_home';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       </ul>
       <Switch>
         <Route exact path='/'>
-          <a>메인</a>
+          <MainHome></MainHome>
         </Route>
         <Route path='/signup'>
           <SignUp />
