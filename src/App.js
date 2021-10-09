@@ -2,7 +2,11 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
+<<<<<<< HEAD
 import Profile from './pages/profile';
+=======
+import MainHome from './main_home/main_home';
+>>>>>>> a590de57513c63d3c931201983c4dd79bd332fe0
 
 
 function App() {
@@ -14,7 +18,7 @@ function App() {
       </ul>
       <Switch>
         <Route exact path='/'>
-          <a>메인</a>
+          <MainHome></MainHome>
         </Route>
         <Route path='/signup'>
           <SignUp />
