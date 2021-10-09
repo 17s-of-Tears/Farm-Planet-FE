@@ -1,0 +1,28 @@
+.body{
+    background-color: #FCFCFC;
+}
+.heightGroup{
+    text-align: center;
+    display:inline-block;
+}
+
+.setProfileImg{
+    float: left;
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    
+}
+.setProfile{
+    margin: 5px;
+    position: relative;
+    float: left;
+}
+.plant{
+    background-color: yellowgreen;
+    height: 200px;
+}
+.farm{
+    background-color: brown;
+    color: white;
+}

@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
+import Profile from './pages/profile';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path='/login'>
           <Login />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
         </Route>
       </Switch>
     </div>
