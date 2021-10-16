@@ -6,6 +6,7 @@ import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
 import RecommmentPlant from './recommend_plant/recommend_plant';
+import Footer from './footer/footer';
 
 function App() {
   return (
@@ -29,8 +30,9 @@ function App() {
         </Route>
         <Route path='/myplant'>
           <WatchMmyPlant />
-        </Route>
+        </Route>        
       </Switch>
+      <Footer></Footer>
     </div>
   );
 }

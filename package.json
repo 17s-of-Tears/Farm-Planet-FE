@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/antd": "^1.0.0",
     "antd": "^4.16.13",
     "bootstrap": "^5.1.1",
     "cra-template": "1.1.2",
