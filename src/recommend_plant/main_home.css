@@ -1,0 +1,63 @@
+.MainHome{
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.main_bannerBox{
+  position: relative;
+}
+.banner_contentBox{
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner_contentBox h4{
+  color: white;
+  font-size: 52px;  
+}
+.banner_contentBox p{
+  color: white;
+  font-size: 25px;  
+}
+.searchBox{
+  margin: 0 auto;
+  width: 60%;
+}
+.mainBox{
+  display: flex;
+}
+.mainBox .content_item{
+  position: relative;
+}
+.mainBox .textLine{
+  width: 80%;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;  
+}
+.questionBox{
+  width: 80%;
+  margin: 80px auto 60px;
+}
+.questionBox h4{
+  font-size: 35px;  
+}
+.questionBox ul{
+  margin: 50px 0;
+  list-style: none;
+  padding: 0;
+}
+.questionBox li{
+  font-size: 25px;
+  margin: 10px;
+  padding: 5px;
+  background-color: #bebebe;
+  color: black;
+}
