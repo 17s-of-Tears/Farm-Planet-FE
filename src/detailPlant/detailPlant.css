@@ -12,6 +12,7 @@
     position:absolute;
     top:50%; left:50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 .inputStyle{
     margin:30px;
@@ -24,7 +25,16 @@
     box-shadow: black 0px 0px 1px 0px;
     border-radius: 35px;
 }
-
+.imgStyle{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+}
+.textRoom{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
 .loginButton{
     width:120px;
     height: 40px;
@@ -32,14 +42,4 @@
     background-color: #347125;
     border-radius: 35px;
     color: white;
-}
-
-.loginButtonTwo{
-    width:120px;
-    height: 40px;
-    border:0px;
-    background-color: #ffffff;
-    border-radius: 35px;
-    border: aquamarine solid 1px;
-    margin: 0px 0px 20px 0px;
 }

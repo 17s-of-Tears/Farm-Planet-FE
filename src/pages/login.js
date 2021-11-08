@@ -1,4 +1,5 @@
 import React from 'react';
+import './login.css'
 
 const Login = () => {
     return(
@@ -13,7 +14,7 @@ const Login = () => {
             <div>
                 <button class="loginButton">로그인</button> <button class="loginButtonTwo">회원가입</button>
             </div>
-            <div><button class="loginButton2">다른 소셜계정 로그인</button></div>
+            <div><button class="loginButtonTwo">다른 소셜계정 로그인</button></div>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
 import PlantList from './plantList/plantList';
 import RecommmentPlant from './recommend_plant/recommend_plant';
+import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path='/myplant'>
           <WatchMmyPlant />
+        </Route>
+        <Route path='/detailplant'>
+          <DetailPlant />
         </Route>
         <Route path='/list'>
           <PlantList />
