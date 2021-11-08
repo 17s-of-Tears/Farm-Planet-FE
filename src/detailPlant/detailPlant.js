@@ -1,6 +1,5 @@
 import React from "react";
 import './detailPlant.css';
-// import sweetPotato from 'img/temp_plant_img1.png';
 
 const DetailPlant = () => {
     return(

@@ -1,0 +1,13 @@
+.body{
+    background-color:#000000;
+}
+
+.site-card-wrapper{
+    text-align: left;
+    padding: 100px;
+}
+
+.site-card-wrapper p{
+    font-size: large;
+    font-weight: 400px;
+}
