@@ -5,6 +5,7 @@ import Login from './pages/login';
 import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
+import PlantList from './plantList/plantList';
 import RecommmentPlant from './recommend_plant/recommend_plant';
 import Footer from './footer/footer';
 
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <MainHome></MainHome>
+          <Footer></Footer>
         </Route>
         <Route path='/signup'>
           <SignUp />
@@ -30,9 +32,13 @@ function App() {
         </Route>
         <Route path='/myplant'>
           <WatchMmyPlant />
-        </Route>        
+        </Route>
+        <Route path='/list'>
+          <PlantList />
+          <Footer></Footer>
+        </Route>         
       </Switch>
-      <Footer></Footer>
+      
     </div>
   );
 }
