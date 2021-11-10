@@ -16,6 +16,11 @@ function App() {
       <ul>
         <li><Link exact to="/">메인</Link></li>
         <li><Link exact to="/signup">회원가입</Link></li>
+        <li><Link exact to="/login">로그인</Link></li>
+        <li><Link exact to="/profile">프로필</Link></li>
+        <li><Link exact to="/myplant">내 식물</Link></li>
+        <li><Link exact to="/detailplant">식물사진</Link></li>
+        <li><Link exact to="/list">리스트</Link></li>
       </ul>
       <Switch>
         <Route exact path='/'>
