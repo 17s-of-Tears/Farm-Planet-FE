@@ -8,6 +8,9 @@
 .main_bannerBox{
   position: relative;
 }
+.main_bannerBox .imageBox,.main_bannerBox .imageBox img{
+  width: 100%;
+}
 .banner_contentBox{
   width: 70%;
   position: absolute;
@@ -27,21 +30,83 @@
   margin: 0 auto;
   width: 60%;
 }
+
 .mainBox{
+  width: 90%;
+  margin: 60px auto;
   display: flex;
+  justify-content: space-between;
 }
+.leftContent{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.rightContent .content_item:nth-child(1){margin-bottom: 30px;}
+.mainBox .textLine{
+  text-align: left;
+}
+.mainBox .textLine h2{
+  font-family: "NotoSansKR_m";
+  font-size: 30px;
+  color:#347125;
+  margin-bottom: 50px;
+}
+.mainBox .textLine h3{
+  font-family: "NotoSansKR_m";
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.mainBox .textLine p{
+  font-size: 20px;
+}
+.mainBox .keywordLine{
+  font-family: "NotoSansKR_m";
+  width: 90%;
+  margin: 0 auto;
+  font-size: 45px;
+}
+.mainBox .keywordLine p {margin: 0;}
+.mainBox .keywordLine p:nth-child(1){text-align: left;}
+.mainBox .keywordLine p:nth-child(2){text-align: right;}
 .mainBox .content_item{
+  width: 820px;
   position: relative;
 }
-.mainBox .textLine{
-  width: 80%;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 25px;  
+.mainBox .content_item .imageBox img{
+  border-radius: 10px;
 }
+.mainBox .content_item .textBox{
+  background-color: black;
+  background-color: rgba( 0, 0, 0, 0.6 );  
+  text-align: left;
+  color: white!important;
+  width: 490px;
+  height: 200px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;  
+  padding: 20px;
+}
+.mainBox .content_item .textBox h3{
+  font-family: "JoongnaJoche_m";
+  color: white;
+  font-size: 28px;
+}
+.mainBox .content_item .textBox p{
+  color: white;
+  font-size: 20px;
+}
+.underLine{
+  margin: 10px 0;
+  width: 60px;
+  height: 2px;
+  background-color: white;
+}
+
+
 .questionBox{
   width: 80%;
   margin: 80px auto 60px;
