@@ -1,15 +1,15 @@
 import React, { useState} from 'react';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
+import { Table } from 'antd';
 
 import './main_home.css';
 import '../css/css_noamlfont.css';
 
 
 const MainHome = (props) => {
-  
+    
   const { Search } = Input;
-
   return (
     <div className="MainHome">
       <div className="main_bannerBox">
@@ -66,18 +66,86 @@ const MainHome = (props) => {
               <p>자연친화적인 작물을 가족들과 혹은 혼자서<br></br>즐겨보세요. 언제나 최선을 다해 서비스를<br></br>제공합니다.</p>
             </div>            
           </div>
-
         </div>
            
       </div>
 
-      <div className="questionBox">'
-        <h4>자주하는 질문들</h4>
-        <ul>
-          <li>언제나 원할때는 주말농장으로 사용하실 수 있습니까?</li>
-          <li>자신이 원하는 작물을 받을 수 있습니까?</li>
-          <li>가족들과 할 수 있나요?</li>
-        </ul>
+      <div className="serviceBox">'
+        <h2>Service</h2>
+        <div className="bannerLine">
+          <div className="content_item">
+            <div className="imageBox"><img src='img/temp_service_content_img3.png'></img></div>
+            <div className="textBox"> 
+              <h3>Basic</h3>                         
+              <p>월 22000 ₩<br></br>109m2<br></br>5 종류의 작물 재배가능</p>
+            </div>            
+          </div>
+
+          <div className="content_item">
+            <div className="imageBox"><img src='img/temp_service_content_img2.png'></img></div>
+            <div className="textBox"> 
+              <h3>Standard</h3>                         
+              <p>월 33000 ₩<br></br>145m2<br></br>7 종류의 작물 재배가능</p>
+            </div>            
+          </div>
+
+          <div className="content_item">
+            <div className="imageBox"><img src='img/temp_service_content_img1.png'></img></div>
+            <div className="textBox"> 
+              <h3>Primeir</h3>                         
+              <p>월 44000 ₩<br></br>181m2<br></br>10 종류의 작물 재배가능</p>
+            </div>            
+          </div>
+
+        </div>
+        
+      </div>
+
+      
+      <div className="newsBox">
+        <h2>News</h2>
+        <div className="list_containor">
+
+          <h3>공지사항</h3>
+          <div className="list_content">
+            <div className="list_item">
+              <h4>농림식품부 정책 변경에 따른 서비스 이용약관 변경 </h4>
+              <p>2021-11-06</p>
+            </div>
+
+            <div className="list_item">
+              <h4>업데이트 공지</h4>
+              <p>2021-11-06</p>
+            </div>
+            
+            <div className="list_item">
+              <h4>업데이트 공지</h4>
+              <p>2021-11-06</p>
+            </div>
+
+          </div>
+
+          <h3>자주하는 질문들</h3>
+          <div className="list_content">
+            <div className="list_item">
+              <h4>Q1. 종류가 얼마나 있나요?</h4>
+              <p>2021-11-06</p>
+            </div>
+
+            <div className="list_item">
+              <h4>Q2. 환불 규정이 어떻게 되나요?</h4>
+              <p>2021-11-06</p>
+            </div>
+            
+            <div className="list_item">
+              <h4>Q3. 주말 농장은 어떻게 이용하나요?</h4>
+              <p>2021-11-06</p>
+            </div>
+
+          </div>
+
+        </div>
+        <div className="tri"></div>
       </div>
     </div>
   );

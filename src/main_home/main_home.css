@@ -4,6 +4,7 @@
   height: auto;
   margin: 0 auto;
   padding: 0;
+  background-color: #F5F6FA;
 }
 .main_bannerBox{
   position: relative;
@@ -33,7 +34,7 @@
 
 .mainBox{
   width: 90%;
-  margin: 60px auto;
+  margin: 130px auto;
   display: flex;
   justify-content: space-between;
 }
@@ -125,4 +126,95 @@
   padding: 5px;
   background-color: #bebebe;
   color: black;
+}
+
+.serviceBox{
+  width: 100%;
+  text-align: left;
+}
+.serviceBox h2{
+  text-align: left;
+  width: 90%;
+  margin: 0 auto 50px;
+  font-family: "NotoSansKR_m";
+  font-size: 30px;
+  color:#347125;
+  margin-bottom: 50px;
+}
+.bannerLine .content_item{
+  width: 100%;
+  position: relative;
+}
+.bannerLine .content_item .textBox{
+  background-color: rgba( 0, 0, 0, 0.4 );
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom:0;
+  color: white;
+  font-size: 30px;
+  padding: 100px 150px;
+}
+.bannerLine .content_item:nth-child(2) .textBox{text-align: right;}
+.bannerLine .content_item .textBox h3{
+  color: white;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+.bannerLine .content_item .textBox p{
+  line-height: 2;
+}
+.newsBox{
+  position: relative;
+  width: 100%;
+  padding: 130px auto;
+  padding: 130px;
+}
+.newsBox h2{
+  text-align: left;
+  width: 90%;  
+  margin: 0 auto;
+  font-family: "NotoSansKR_m";
+  font-size: 30px;
+  color:#347125;
+  margin-bottom: 50px;
+}
+.newsBox .list_containor{
+  width: 80%;
+  margin: 0 auto;
+}
+.newsBox .list_containor h3{
+  border-bottom:#707070 2px solid;
+  text-align: left;
+  padding-bottom: 10px;
+}
+.list_containor .list_content{
+  width: 95%;
+  margin: 0 auto 50px;
+  
+}
+.list_content .list_item{
+  display: flex;
+  justify-content: space-between;
+  border-bottom:#B9B9B9 1px solid;
+  padding: 12px 0;
+}
+.list_content .list_item h4{
+  font-size: 22px;
+  
+  margin: 0; 
+}
+.list_content .list_item p{
+  font-size: 18px;
+  margin: 0;
+}
+.tri {
+  width: 0px;
+  height: 0px;
+  border-top: 300px solid transparent;
+  border-right: 300px solid #347125;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
