@@ -9,6 +9,7 @@ import PlantList from './plantList/plantList';
 import RecommmentPlant from './recommend_plant/recommend_plant';
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
+import MyFarmLocation from './myFarmLocation/myFarmLocation';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <li><Link exact to="/myplant">내 식물</Link></li>
         <li><Link exact to="/detailplant">식물사진</Link></li>
         <li><Link exact to="/list">리스트</Link></li>
+        <li><Link exact to="/myfarm"> 내 밭 </Link></li>
       </ul>
       <Switch>
         <Route exact path='/'>
@@ -41,6 +43,9 @@ function App() {
         </Route>
         <Route path='/detailplant'>
           <DetailPlant />
+        </Route>
+        <Route path='/myfarm'>
+          <MyFarmLocation />
         </Route>
         <Route path='/list'>
           <PlantList />
