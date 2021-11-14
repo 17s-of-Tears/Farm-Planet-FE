@@ -12,11 +12,14 @@
     height: 200px;
     background-color: gray;
     
+    
 }
 .setProfile{
     margin: 5px;
     position: relative;
     float: left;
+    text-align: justify;
+    
 }
 .plant{
     background-color: yellowgreen;

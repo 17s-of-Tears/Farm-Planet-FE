@@ -1,35 +1,27 @@
-.body{
-    background-color: #FCFCFC;
-}
-
-.loginBox{
-    width:  350px;
-    height: 380px;
+.signUpBox{
     border-radius: 35px;
     border: 0px solid;
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
-    position:absolute;
-    top:50%; left:50%;
-    transform: translate(-50%, -50%);
+    background-color: #FCFCFC;
 }
-.inputStyle{
-    margin:30px;
-}
-.inputStyle input {
+
+.signUpBox input {
     text-align:center;
-    width:270px;
+    width:75%;
     height: 35px;
     border: 0px;
     box-shadow: black 0px 0px 1px 0px;
     border-radius: 35px;
+    margin: 20px 20px 20px 20px;
 }
 
-.loginButton{
-    width:278px;
-    height: 40px;
+.signUpButton{
+    width:75%;
+    height: 35px;
     border:0px;
     background-color: #347125;
     border-radius: 35px;
     color: white;
+    margin: 20px 20px 20px 20px;
 }

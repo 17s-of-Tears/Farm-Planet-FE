@@ -1,25 +1,35 @@
 import React from 'react';
 import './signUp.css'
+import { Row, Col } from 'antd';
 
 const SignUp = () => {
-    return(
-        <div class="body">
-            <div class="loginBox">
-                <label>회원가입</label>
-                <div class="inputStyle">
-                    <input type="text" placeholder="id" id="id"  />
-                </div>
-                <div class="inputStyle">
-                    <input type="password" placeholder="password" id="password"  />
-                </div>
-                <div class="inputStyle">
-                    <input type="email" placeholder="email" id="email" />
-                </div>
-                <div>
-                    <button class="loginButton">회원가입</button>
-                </div>
-            </div>
-        </div>
+    return (
+        <>
+            <Row style={{ padding: "500px" }}>
+                <Col span={8}></Col>
+                <Col span={8}>
+                    <div className="signUpBox">
+                        <form id="signUp" method="post">
+                            <label>회원가입</label>
+                            <div>
+                                <input type="text" placeholder="id" id="id" />
+                            </div>
+                            <div>
+                                <input type="password" placeholder="password" id="password" />
+                            </div>
+                            <div>
+                                <input type="email" placeholder="email" id="email" />
+                            </div>
+                            <div>
+                                <button className="signUpButton">회원가입 하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </Col>
+                <Col span={8}></Col>
+            </Row>
+        </>
+
     )
 }
 
