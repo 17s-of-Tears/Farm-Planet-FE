@@ -5,7 +5,7 @@ import { Row, Col } from 'antd';
 const SignUp = () => {
     return (
         <>
-            <Row style={{ padding: "500px" }}>
+            <Row>
                 <Col span={8}></Col>
                 <Col span={8}>
                     <div className="signUpBox">
