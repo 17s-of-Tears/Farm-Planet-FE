@@ -6,8 +6,8 @@ const SignUp = () => {
     return (
         <>
             <Row>
-                <Col span={8}></Col>
-                <Col span={8}>
+                <Col span={9}></Col>
+                <Col span={6}>
                     <div className="signUpBox">
                         <form id="signUp" method="post">
                             <label>회원가입</label>
@@ -26,7 +26,7 @@ const SignUp = () => {
                         </form>
                     </div>
                 </Col>
-                <Col span={8}></Col>
+                <Col span={9}></Col>
             </Row>
         </>
 
