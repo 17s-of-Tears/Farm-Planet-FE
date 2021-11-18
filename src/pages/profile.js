@@ -9,13 +9,13 @@ const Profile = () => {
         yard: "350m",
         plantPhoto: "http://localhost:3000/myplant",
         myAddress: "압구정 4번출구 날 기다리는 그녀 이름 경은이",
-        profileImg: "./logo192.png",
+        profileImg: "img/profile.jpg",
         farmName: "진수는 돈이 많수",
         myPlant: ['이진수는', '왜그리', '돈이 많수'],
         myWoud: ['사과나무', '오목나무', '압구정나무', '50억나무'],
     }
     let [myNickname, changeNickname] = useState(me.name);
-
+    let [myProfileImg, changeMyProfileImg] = useState(me.profileImg)
     let ChangeName;
 
     const onChange = (e) => {
@@ -30,14 +30,17 @@ const Profile = () => {
         console.log(ChangeName);
     }
 
+    const changeProfileImg = () => {
+        changeMyProfileImg("img/temp_main_content_img1.png")
+    }
     return (
         <div className="allWrapper">
             <Row>
-                <Col span={7}></Col>
-                <Col span={10}>
+                <Col span={4}></Col>
+                <Col span={16}>
                     <div className="heightGroup">
                         <div className="setProfileImg">
-                            <img className="setProfileImgContent" src={me.profileImg} />
+                            <img className="setProfileImgContent" src={myProfileImg} /><button className="changeProfileImgButton" onClick={changeProfileImg}>벝</button>
                             <div id="name">
                                 <p>{myNickname}</p>
                             </div>
@@ -52,7 +55,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </Col>
-                <Col span={7}></Col>
+                <Col span={4}></Col>
             </Row>
             <Row>
                 <Col span={24}>

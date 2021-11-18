@@ -1,35 +1,44 @@
 .allWrapper{
-    height:100%;
+    height:1200px;
 }
 .heightGroup{
+    width:100%;
     text-align: center;
     display:inline-block;
 }
-.name{
+.name {
     float: left;
 }
+
 .setProfileImg{
     float: left;
-    width: 45%;
-    height:45%;
-    border-radius: 45%;   
+    width: 15%;
+    height:15%;
+    border-radius: 45%;  
+    font-size: 20px;
 }
 .setProfileImgContent{
     width: 100%;
     height:100%;
+    border-radius: 50%;  
 }
 .setProfile{
     width:50%;
-    margin: 5px;
     position: relative;
     float: left;
     text-align: justify;
-}
-.plant{
-    background-color: yellowgreen;
-    height: 200px;
+    font-size: 15px;
+    margin-left: 5%;
 }
 .farm{
-    color: white;
+    font-size: 15px;
+}
+.changeProfileImgButton{
+    border-radius: 50%;  
+    border: none;
+    display:block;
+    position: relative;
+    top: -50px;
+    left:   8%;
 }
 
