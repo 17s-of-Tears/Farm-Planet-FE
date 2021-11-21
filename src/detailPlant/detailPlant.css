@@ -1,17 +1,18 @@
-.body{
-    background-color: #FCFCFC;
+.wrapper{
+    padding: 5%;
+    width: 100%;
+    height: 1200px;
 }
-
-.loginBox{
-    width:  350px;
-    height: 380px;
+.formWrapper{
+    text-align: center;
+}
+.formBox{
+    width:  100%;
+    height: 480px;
     border-radius: 35px;
     border: 0px solid;
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
-    position:absolute;
-    top:50%; left:50%;
-    transform: translate(-50%, -50%);
     text-align: center;
 }
 .inputStyle{
