@@ -9,7 +9,7 @@ import PlantList from './plantList/plantList';
 import RecommmentPlant from './recommend_plant/recommend_plant';     
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
-import Notice from './notice/notice';
+import CustomerCenter from './customer-center/customer-center';
 import Admin from './admin/admin';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <li><Link exact to="/myplant">내 식물</Link></li>
         <li><Link exact to="/detailplant">식물사진</Link></li>
         <li><Link exact to="/list">리스트</Link></li>
-        <li><Link exact to="/notice">공지사항</Link></li>
+        <li><Link exact to="/customer-center">공지사항</Link></li>
         <li><Link exact to="/admin">어드민</Link></li>
       </ul>
       <Switch>
@@ -50,8 +50,8 @@ function App() {
           <PlantList />
           <Footer></Footer>
         </Route>
-        <Route path='/notice'>
-          <Notice />
+        <Route path='/customer-center'>
+          <CustomerCenter />
           <Footer></Footer>
         </Route>
         <Route path='/admin'>
