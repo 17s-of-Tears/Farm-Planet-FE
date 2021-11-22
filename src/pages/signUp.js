@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import './signUp.css'
-import { Row, Col } from 'antd';
+import { Row, Col, Checkbox } from 'antd';
+import useinput from '../hooks/useinput';
 
 const SignUp = () => {
+    const [id, onChangeid] = useinput('');
+    const [nickname, onChangeNickname] = useinput('');
+    const [password, onChangePassword] = useinput('');
+
+    const [passwordCheck, setPasswordCheck] = useState('');
+    const [passwordError, setPasswordError] = useState(false);
+    const onChangePasswordCheck = useCallback((e) => {
+        setPasswordCheck(e.target.value);
+        setPasswordError(e.target.value !== password);
+    }, [password]);
+
+    const [term, setTerm] = useState('');
+    const [termError, setTermError] = useState(false); 
+    const onChangeTerm = useCallback((e)=>{
+         setTerm(e.target.checked);
+         setTermError(false);
+    },[]);
+
     return (
         <>
             <Row>
@@ -12,13 +31,29 @@ const SignUp = () => {
                         <form id="signUp" method="post">
                             <label>회원가입</label>
                             <div>
-                                <input type="text" placeholder="id" id="id" />
+                                <input type="text" placeholder="id" name="user-id" value={id} onChange={onChangeid} />
+                            </div>
+
+                            <label htmlFor='user-nick'>닉네임</label>
+                            <div>
+                                <input name="user-nick" placeholder="nickname" value={nickname} required onChange={onChangeNickname} />
                             </div>
                             <div>
-                                <input type="password" placeholder="password" id="password" />
+                                <input type="password" placeholder="password" id="user-password" value={password} onChange={onChangePassword} />
                             </div>
                             <div>
-                                <input type="email" placeholder="email" id="email" />
+                                <input
+                                    placeholder="password-check"
+                                    name="user-password-check"
+                                    type="password"
+                                    value={passwordCheck}
+                                    required
+                                    onChange={onChangePasswordCheck} />
+                                {passwordError && <div>비밀번호가 일치하지 않습니다.</div>}
+                            </div>
+                            <div>
+                                <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>동의합니다</Checkbox>
+                                {termError && <div>약관에 동의하셔야 합니다</div>}
                             </div>
                             <div>
                                 <button className="signUpButton">회원가입 하기</button>
