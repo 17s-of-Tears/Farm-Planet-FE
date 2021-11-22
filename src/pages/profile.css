@@ -42,3 +42,36 @@
     left:   8%;
 }
 
+.coolSexyGuy{
+    display: flex;
+    flex-direction: row;
+}
+#map{
+    width: 100%;
+    height: 450px;
+}
+.infomation{
+    text-align:justify;
+    margin: auto auto auto 10px;
+    font-size: 15px;
+    padding: 50px;
+}
+.infomation div{
+    padding: 3px;
+}
+.farmName{
+    font-size:20px;
+}
+.body{
+    background-color:#333;
+}
+
+.site-card-wrapper{
+    text-align: left;
+    padding: 100px;
+}
+
+.site-card-wrapper p{
+    font-size: large;
+    font-weight: 400px;
+}

@@ -2,11 +2,12 @@ import React, { useCallback, useState } from 'react';
 import './signUp.css'
 import { Row, Col, Checkbox } from 'antd';
 import useinput from '../hooks/useinput';
+import axios from "axios";
 
 const SignUp = () => {
-    const [id, onChangeid] = useinput('');
-    const [nickname, onChangeNickname] = useinput('');
-    const [password, onChangePassword] = useinput('');
+    const [id, onChangeid] = useState('');
+    const [nickname, onChangeNickname] = useState('');
+    const [password, onChangePassword] = useState('');
 
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordError, setPasswordError] = useState(false);
@@ -21,6 +22,34 @@ const SignUp = () => {
          setTerm(e.target.checked);
          setTermError(false);
     },[]);
+    
+    const idHandler = (e) => {
+        e.preventDefault();
+        onChangeid(e.target.value);
+      };
+
+      const nicknameHandler = (e) => {
+        e.preventDefault();
+        onChangeNickname(e.target.value);
+      };
+      
+      const passwordHandler = (e) => {
+        e.preventDefault();
+        onChangePassword(e.target.value);
+      };
+    
+      const submitHandler = (e) => {
+        e.preventDefault();
+        console.log(id);
+        console.log(password);
+        let body = {
+          id: id,
+          password: password,
+        };
+        axios
+          .post("http://txshi.iptime.org:49000/api/v1/sign/up", body)
+          .then((res) => console.log(res));
+      };
 
     return (
         <>
@@ -28,18 +57,18 @@ const SignUp = () => {
                 <Col span={9}></Col>
                 <Col span={6}>
                     <div className="signUpBox">
-                        <form id="signUp" method="post">
+                        <form id="signUp" method="post" onFinish={submitHandler}>
                             <label>회원가입</label>
                             <div>
-                                <input type="text" placeholder="id" name="user-id" value={id} onChange={onChangeid} />
+                                <input type="text" placeholder="id" name="user-id" value={id} onChange={idHandler} />
                             </div>
 
                             <label htmlFor='user-nick'>닉네임</label>
                             <div>
-                                <input name="user-nick" placeholder="nickname" value={nickname} required onChange={onChangeNickname} />
+                                <input name="user-nick" placeholder="nickname" value={nickname} required onChange={nicknameHandler} />
                             </div>
                             <div>
-                                <input type="password" placeholder="password" id="user-password" value={password} onChange={onChangePassword} />
+                                <input type="password" placeholder="password" id="user-password" value={password} onChange={passwordHandler} />
                             </div>
                             <div>
                                 <input

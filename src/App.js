@@ -6,10 +6,9 @@ import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
 import PlantList from './plantList/plantList';
-import RecommmentPlant from './recommend_plant/recommend_plant';
+import RecommmentPlant from './recommend_plant/recommend_plant';     
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
-import MyFarmLocation from './myFarmLocation/myFarmLocation';
 import Notice from './notice/notice';
 import Admin from './admin/admin';
 
@@ -24,7 +23,6 @@ function App() {
         <li><Link exact to="/myplant">내 식물</Link></li>
         <li><Link exact to="/detailplant">식물사진</Link></li>
         <li><Link exact to="/list">리스트</Link></li>
-        <li><Link exact to="/myfarm"> 내 밭 </Link></li>
         <li><Link exact to="/notice">공지사항</Link></li>
         <li><Link exact to="/admin">어드민</Link></li>
       </ul>
@@ -48,9 +46,6 @@ function App() {
         <Route path='/detailplant'>
           <DetailPlant />
         </Route>
-        <Route path='/myfarm'>
-          <MyFarmLocation />
-        </Route>
         <Route path='/list'>
           <PlantList />
           <Footer></Footer>
@@ -62,7 +57,6 @@ function App() {
         <Route path='/admin'>
           <Admin />    
         </Route>
-                 
       </Switch>
     </div>
   );
