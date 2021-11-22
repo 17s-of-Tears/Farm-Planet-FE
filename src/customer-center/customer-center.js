@@ -4,19 +4,14 @@ import './customer-center.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'antd/dist/antd.css';
-import { Tabs, Input, Pagination } from 'antd';
+import { Tabs, Input, } from 'antd';
+import CustomerCenter_Notice from './customer-center-notice';
+import CustomerCenter_FAQ from './customer-center-FAQ.js';
 
 const CustomerCenter = (props) => {  
-  let [currentPage,setCurrentPage] = useState(1); 
+  
   let [tab_isOn,setTabisOn] = useState(1); 
   
-  //페이지 네이션 관련 함수
-  const onChangePage = page => {
-    
-    console.log(page);
-    setCurrentPage(page);
-  };
-
   const { TabPane } = Tabs;
   const { Search } = Input;
 
@@ -55,26 +50,12 @@ const CustomerCenter = (props) => {
             <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 300 }}/>
           </div>
           
-          <div className="list_content">
-            <div className="list_item">
-              <h4>농림식품부 정책 변경에 따른 서비스 이용약관 변경 </h4>
-              <p>2021-11-06</p>
-            </div>
-
-            <div className="list_item">
-              <h4>업데이트 공지</h4>
-              <p>2021-11-06</p>
-            </div>
-            
-            <div className="list_item">
-              <h4>업데이트 공지</h4>
-              <p>2021-11-06</p>
-            </div>
-          </div>
+          {tab_isOn == 1 ? <CustomerCenter_Notice /> : <CustomerCenter_FAQ />}
+          
         </div>
       </div>
 
-      <Pagination current={currentPage} total={100} onChange={onChangePage}/>
+      
     </div>
   );
 };
