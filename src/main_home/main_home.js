@@ -5,6 +5,7 @@ import { Table } from 'antd';
 
 import './main_home.css';
 import '../css/css_noamlfont.css';
+import News from './news'
 
 
 const MainHome = (props) => {
@@ -101,52 +102,8 @@ const MainHome = (props) => {
         
       </div>
 
+      <News />
       
-      <div className="newsBox">
-        <h2>News</h2>
-        <div className="list_containor">
-
-          <h3>공지사항</h3>
-          <div className="list_content">
-            <div className="list_item">
-              <h4>농림식품부 정책 변경에 따른 서비스 이용약관 변경 </h4>
-              <p>2021-11-06</p>
-            </div>
-
-            <div className="list_item">
-              <h4>업데이트 공지</h4>
-              <p>2021-11-06</p>
-            </div>
-            
-            <div className="list_item">
-              <h4>업데이트 공지</h4>
-              <p>2021-11-06</p>
-            </div>
-
-          </div>
-
-          <h3>자주하는 질문들</h3>
-          <div className="list_content">
-            <div className="list_item">
-              <h4>Q1. 종류가 얼마나 있나요?</h4>
-              <p>2021-11-06</p>
-            </div>
-
-            <div className="list_item">
-              <h4>Q2. 환불 규정이 어떻게 되나요?</h4>
-              <p>2021-11-06</p>
-            </div>
-            
-            <div className="list_item">
-              <h4>Q3. 주말 농장은 어떻게 이용하나요?</h4>
-              <p>2021-11-06</p>
-            </div>
-
-          </div>
-
-        </div>
-        <div className="tri"></div>
-      </div>
     </div>
   );
 };

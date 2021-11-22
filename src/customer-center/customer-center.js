@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-import './notice.css';
+import './customer-center.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'antd/dist/antd.css';
 import { Tabs, Input, Pagination } from 'antd';
 
-const Notice = (props) => {  
+const CustomerCenter = (props) => {  
   let [currentPage,setCurrentPage] = useState(1); 
   let [tab_isOn,setTabisOn] = useState(1); 
   
@@ -33,7 +33,7 @@ const Notice = (props) => {
   }  
 
   return (
-    <div className="Notice">     
+    <div className="CustomerCenter">     
       <div className="bannerBox">
         <div className="imageBox"><img src='img/notice_banner.png' alt="notice_banner"></img></div>         
         
@@ -79,4 +79,4 @@ const Notice = (props) => {
   );
 };
 
-export default Notice;
+export default CustomerCenter;
