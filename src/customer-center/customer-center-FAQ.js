@@ -1,14 +1,17 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Pagination } from 'antd';
+import Button from '@restart/ui/esm/Button';
 
 const CustomerCenter_FAQ = (props) => {
+  const history = useHistory()
   
   const [currentPage,setCurrentPage] = useState(1);
   const [pageSize,setPageSize] = useState(10);
-  const [entireCotent,setEntireCotent] = useState(0); 
+  const [entireCotent,setEntireCotent] = useState(0);
 
   let [FAQ_item,setFAQ_Item] = useState('');
 
@@ -17,6 +20,13 @@ const CustomerCenter_FAQ = (props) => {
     console.log(page);
     setCurrentPage(page);    
   };
+
+  const onEnterView = (id) =>{    
+    history.push({
+      pathname: "/customer-center/view",
+      state:{id:id,type:'faq'}
+    });
+  }
 
   const getNewsData = async () => {
     const _pageSize = 10;
@@ -28,11 +38,11 @@ const CustomerCenter_FAQ = (props) => {
     await axios.get(`${data_URL}`).then(function (response) {           
       setEntireCotent(response.data._meta.page.total);
    
-      var result = response.data.faqs.map(row =>
-        <div className="list_item">
+      var result = response.data.faqs.map(row =>        
+        <div className="list_item" onClick={() => onEnterView(row.id)}>
           <h4>{row.title}</h4>
           <p>{row.createdAt.substring(0,10)}</p>
-        </div>
+        </div>      
       );
       setFAQ_Item(result);
     }).catch(function (error) {
@@ -50,8 +60,12 @@ const CustomerCenter_FAQ = (props) => {
     <div className="CustomerCenter_Notice">
       <div className="list_content">
         {!!FAQ_item.length && FAQ_item}
-      </div> 
+      </div>
 
+      <div className="buttonLine">
+        <button className="insertButton" onClick={()=>{}}>글쓰기</button>
+      </div> 
+      
       <Pagination current={currentPage} total={entireCotent} onChange={onChangePage} pageSize={pageSize}/>
     </div>
   );

@@ -1,10 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Pagination } from 'antd';
 
 const CustomerCenter_Notice = (props) => {
+  const history = useHistory();
 
   const [currentPage,setCurrentPage] = useState(1); 
   const [pageSize,setPageSize] = useState(10);
@@ -18,6 +20,13 @@ const CustomerCenter_Notice = (props) => {
     setCurrentPage(page);
   };
 
+  const onEnterView = (id) =>{    
+    history.push({
+      pathname: "/customer-center/view",
+      state:{id:id,type:'notice'}
+    });
+  }
+
   const getNewsData = async () => {
     const _pageSize = 10;
     setPageSize(_pageSize);
@@ -29,7 +38,7 @@ const CustomerCenter_Notice = (props) => {
       setEntireCotent(response.data._meta.page.total);
                 
       var result = response.data.notices.map(row =>
-        <div className="list_item">
+        <div className="list_item" onClick={() => onEnterView(row.id)}>
           <h4>{row.title}</h4>
           <p>{row.createdAt.substring(0,10)}</p>
         </div>

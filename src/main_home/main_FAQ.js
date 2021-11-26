@@ -1,9 +1,17 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Main_FAQ = (props) => {
 
   let [FAQ_item,setFAQ_Item] = useState('');
+  const history = useHistory();
+  const onEnterView = (id) =>{    
+    history.push({
+      pathname: "/customer-center/view",
+      state:{id:id,type:'notice'}
+    });
+  }
 
   useEffect(() => { 
     const getNewsData = async () => {
@@ -14,7 +22,7 @@ const Main_FAQ = (props) => {
         let endSection = 3;
         console.log(response);
         var result = response.data.faqs.slice(0,endSection).map(row =>
-          <div className="list_item">
+          <div className="list_item" onClick={() => onEnterView(row.id)}>
             <h4>{row.title}</h4>
             <p>{row.createdAt.substring(0,10)}</p>
           </div>
