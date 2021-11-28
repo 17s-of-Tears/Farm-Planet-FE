@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import './signUp.css'
-import { Row, Col, Checkbox } from 'antd';
+import { Row, Col, Checkbox, Form } from 'antd';
 import useinput from '../hooks/useinput';
 import axios from "axios";
 
@@ -39,7 +39,6 @@ const SignUp = () => {
       };
     
       const submitHandler = (e) => {
-        e.preventDefault();
         console.log(id);
         console.log(password);
         let body = {
@@ -57,7 +56,7 @@ const SignUp = () => {
                 <Col span={9}></Col>
                 <Col span={6}>
                     <div className="signUpBox">
-                        <form id="signUp" method="post" onFinish={submitHandler}>
+                        <Form id="signUp" method="post" onFinish={submitHandler}>
                             <label>회원가입</label>
                             <div>
                                 <input type="text" placeholder="id" name="user-id" value={id} onChange={idHandler} />
@@ -87,7 +86,7 @@ const SignUp = () => {
                             <div>
                                 <button className="signUpButton">회원가입 하기</button>
                             </div>
-                        </form>
+                        </Form>
                     </div>
                 </Col>
                 <Col span={9}></Col>
