@@ -1,0 +1,70 @@
+.Subscript{
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.membershipBox{
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+.membershipBox .itemBox{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  border:#707070 2px solid;
+  border-radius: 5px;
+  padding: 20px 22px;
+}
+.membershipBox .titleLine{
+  width: 100%;
+  border-bottom:#B9B9B9 1px solid;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;  
+}
+.membershipBox .titleLine h2{
+  font-family: "NotoSansKR_m";
+  margin: 0;
+}
+.membershipBox .titleLine .coloredDot{
+  margin-right: 8px;
+  width: 12px;
+  height: 20px;  
+}
+.membershipBox .titleLine .coloredDot:nth-child(1){background-color: #FCEF98;}
+.membershipBox .titleLine .coloredDot:nth-child(2){background-color: #9CD47E;}
+.membershipBox .titleLine .coloredDot:nth-child(3){background-color: #6CA6E3;}
+
+.membershipBox .priceLine{
+  font-family: "NotoSansKR_m";
+  width: 100%;
+  padding: 15px 0;
+  font-size: 22px;
+  text-align: left;
+}
+.membershipBox .priceLine span{font-size: 36px;}
+
+.membershipBox .textLine ul{
+  list-style: square;
+  font-size: 18px;
+  text-align: left;
+}
+.membershipBox .textLine ul li{padding: 5px 0;}
+
+.membershipBox .buttonLine{
+  margin-top: 100px;
+}
+
+.membershipBox .subscriptionBtn{
+  outline: none;
+  border:none;
+  background-color: #347125;
+  color: white;
+  font-size: 18px;
+  padding: 10px 80px ;
+}

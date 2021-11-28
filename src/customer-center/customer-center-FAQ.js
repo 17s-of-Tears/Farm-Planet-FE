@@ -61,11 +61,7 @@ const CustomerCenter_FAQ = (props) => {
       <div className="list_content">
         {!!FAQ_item.length && FAQ_item}
       </div>
-
-      <div className="buttonLine">
-        <button className="insertButton" onClick={()=>{}}>글쓰기</button>
-      </div> 
-      
+  
       <Pagination current={currentPage} total={entireCotent} onChange={onChangePage} pageSize={pageSize}/>
     </div>
   );
