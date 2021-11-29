@@ -1,4 +1,5 @@
 import './App.css';
+import {Suspense, lazy} from "react";
 import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
@@ -6,14 +7,14 @@ import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
 import PlantList from './plantCategoryList/plantCategoryList';
-import RecommmentPlant from './recommend_plant/recommend_plant';     
+//import PlantCategoryView from './plantCategoryView/plantCategoryView';     
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
 import CustomerCenter from './customer-center/customer-center';
 import Admin from './admin/admin';
 import Subscript from './subscript/subscript';
-import ProfileMap from './pages/profileMap';
-import ProfileMyPlantImage from './pages/profilePlantImage';
+
+const PlantCategoryView = lazy(()=> import('./plantCategoryView/plantCategoryView'));
 
 function App() {
   return (
@@ -28,51 +29,54 @@ function App() {
         <li><Link to="/list">리스트</Link></li>
         <li><Link to="/customer-center">공지사항</Link></li>
         <li><Link to="/admin">어드민</Link></li>
-        <li><Link to="/subscript">구독페이지</Link></li>
+        <li><Link to="/subscript">구독페이지</Link></li>        
         <li><Link to="/profilemap">구독페이지</Link></li>
         <li><Link to="/profilemyplantimage">구독페이지</Link></li>
       </ul>
-      <Switch>
-        <Route exact path='/'>
-          <MainHome></MainHome>
-          <Footer></Footer>
-        </Route>
-        <Route path='/signup'>
-          <SignUp />
-        </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
-        <Route path='/myplant'>
-          <WatchMmyPlant />
-        </Route>
-        <Route path='/detailplant'>
-          <DetailPlant />
-        </Route>
-        <Route path='/list'>
-          <PlantList />
-          <Footer></Footer>
-        </Route>
-        <Route path='/customer-center'>
-          <CustomerCenter />
-          <Footer></Footer>
-        </Route>
-        <Route path='/admin'>
-          <Admin />    
-        </Route>
-        <Route path='/subscript'>
-          <Subscript />    
-        </Route>
-        <Route path='/profilemap'>
-          <ProfileMap />    
-        </Route>
-        <Route path='/profilemyplantimage'>
-          <ProfileMyPlantImage />    
-        </Route>
-      </Switch>
+      <Suspense fallback={<div>loading...</div>}>
+        <Switch>
+          <Route exact path='/'>
+            <MainHome></MainHome>
+            <Footer></Footer>
+          </Route>
+          <Route path='/signup'>
+            <SignUp />
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+          <Route path='/myplant'>
+            <WatchMmyPlant />
+          </Route>
+          <Route path='/detailplant'>
+            <DetailPlant />
+          </Route>
+          <Route path='/list'>
+            <PlantList />
+            <Footer></Footer>
+          </Route>
+          <Route path='/customer-center'>
+            <CustomerCenter />
+            <Footer></Footer>
+          </Route>
+          <Route path='/admin'>
+            <Admin />    
+          </Route>
+          <Route path='/subscript'>
+            <Subscript />    
+          </Route>
+          {/* <Route path='/profilemap'>
+            <ProfileMap />    
+          </Route>
+          <Route path='/profilemyplantimage'>
+            <ProfileMyPlantImage />    
+          </Route> */}
+          <Route path="/plant-category-view" component={PlantCategoryView} />
+        </Switch>
+      </Suspense>
     </div>
   );
 }

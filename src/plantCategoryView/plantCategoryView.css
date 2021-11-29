@@ -1,21 +1,20 @@
-
-.RecommendPlant{
+.PlantCategoryView{
   width: 100%;
-  max-width: 1920px;
+  max-width: 1440px;
   height: auto;
   margin: 0 auto;
   padding: 0;
 }
 .plant_banner{
   position: relative;
-  max-height: 1080px;
-  max-width: 1920px;
+  width: 100%;
 }
+.plant_banner .imageBox img{width: 100%;}
 .plant_banner .textBox{
   position: absolute;
   left: 0;
   top: 0;
-  max-width: 1920px;
+  max-width: 1440px;
   color: white;    
   display: flex;
   flex-direction: column;
@@ -26,19 +25,21 @@
 }
 .plant_banner .textBox h4{
   font-size: 64px;
+  color: white;
 }
 .plant_banner .textBox span{font-size: 25px;}
 
 .plant_listBox{
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  gap: 100px;
+  gap: 50px;
   margin: 200px 0;
 }
+.plant_listBox .imageBox img{width: 100%;}
 .plant_item{
   position: relative;
-  max-width: 813px;
-  max-height: 813px;
+  /* max-width: 813px;
+  max-height: 813px; */
 }
 .plant_item .titleBox{
   position: absolute;
@@ -55,7 +56,7 @@
 }
 .plant_item .titleBox h4{
   font-size: 40px;
-
+  color: white;
 }
 .buttonStyle_1{
   font-size: 20px;
