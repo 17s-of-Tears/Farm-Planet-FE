@@ -5,7 +5,7 @@ import Login from './pages/login';
 import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
-import PlantList from './plantList/plantList';
+import PlantList from './plantCategoryList/plantCategoryList';
 import RecommmentPlant from './recommend_plant/recommend_plant';     
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';

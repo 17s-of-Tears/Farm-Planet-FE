@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
+import * as ReactRouter from 'react-router-dom'
 import './signUp.css'
 import { Row, Col, Checkbox, Form } from 'antd';
 import useinput from '../hooks/useinput';
 import axios from "axios";
 
 const SignUp = () => {
+    const history = ReactRouter.useHistory();
     const [id, onChangeid] = useState('');
     const [nickname, onChangeNickname] = useState('');
     const [password, onChangePassword] = useState('');
@@ -17,12 +19,12 @@ const SignUp = () => {
     }, [password]);
 
     const [term, setTerm] = useState('');
-    const [termError, setTermError] = useState(false); 
+    const [termError, setTermError] = useState(false);
     const onChangeTerm = useCallback((e)=>{
          setTerm(e.target.checked);
          setTermError(false);
     },[]);
-    
+
     const idHandler = (e) => {
         e.preventDefault();
         onChangeid(e.target.value);
@@ -32,12 +34,12 @@ const SignUp = () => {
         e.preventDefault();
         onChangeNickname(e.target.value);
       };
-      
+
       const passwordHandler = (e) => {
         e.preventDefault();
         onChangePassword(e.target.value);
       };
-    
+
       const submitHandler = (e) => {
         console.log(id);
         console.log(password);
@@ -47,7 +49,7 @@ const SignUp = () => {
         };
         axios
           .post("http://txshi.iptime.org:49000/api/v1/sign/up", body)
-          .then((res) => console.log(res));
+          .then((res) => history.push('/profile'));
       };
 
     return (

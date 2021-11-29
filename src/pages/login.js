@@ -34,7 +34,7 @@ const Login = () => {
         };
         axios
           .post("http://txshi.iptime.org:49000/api/v1/sign", body)
-          .then((res) => console.log(res));
+          .then((res) => history.push('/profile'));
       };
 
     return (

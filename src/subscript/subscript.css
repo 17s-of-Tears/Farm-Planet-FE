@@ -8,6 +8,7 @@
 .membershipBox{
   width: 90%;
   margin: 0 auto;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 20px;
@@ -36,9 +37,9 @@
   width: 12px;
   height: 20px;  
 }
-.membershipBox .titleLine .coloredDot:nth-child(1){background-color: #FCEF98;}
-.membershipBox .titleLine .coloredDot:nth-child(2){background-color: #9CD47E;}
-.membershipBox .titleLine .coloredDot:nth-child(3){background-color: #6CA6E3;}
+.membershipBox .itemBox:nth-child(1) .titleLine .coloredDot{background-color: #FCEF98;}
+.membershipBox .itemBox:nth-child(2) .titleLine .coloredDot{background-color: #9CD47E;}
+.membershipBox .itemBox:nth-child(3) .titleLine .coloredDot{background-color: #6CA6E3;}
 
 .membershipBox .priceLine{
   font-family: "NotoSansKR_m";
