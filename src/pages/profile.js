@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from "antd";
 import './profile.css';
-import { Route, Switch, Link } from 'react-router-dom';
+import Slider from '@ant-design/react-slick';
 
 const { Meta } = Card;
 
@@ -54,9 +54,15 @@ const Profile = () => {
     }, []);
 
     const myPlant = ["고구마", "이진수"];
-    const date = ["12-06", "01-06", "02-06", "03-06", "04-06", "05-06"];
-    const josef = ["김", "요", "셉", "잘", "생", "김"];
-
+    const date = ["12-06", "01-06", "02-06", "03-06", "04-06", "05-06", "05-06"];
+    const josef = ["김", "요", "셉", "잘", "생", "김", 'rnt'];
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
     return (
         <div className="allWrapper">
             <Row>
@@ -64,7 +70,7 @@ const Profile = () => {
 
                 </Col>
                 <Col span={16}>
-                <div className="heightGroup">
+                    <div className="heightGroup">
                         <div className="setProfileImg">
                             <img className="setProfileImgContent" src={myProfileImg} /><button className="changeProfileImgButton" onClick={changeProfileImg}>벝</button>
                             <div id="name">
@@ -72,7 +78,7 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="setProfile">
-                            <input type="text" name="myNicknameChange" onChange={onChange} /><button onClick={changeMynickname}>별명 변경하기</button>
+                            <input type="text" name="myNicknameChange" onChange={onChange} class="nicknameInput" /><button class="nicknameChangeButton" onClick={changeMynickname}>별명 변경하기</button>
                             <p>{me.date}</p>
                             <p>{me.yard}</p>
                             <p><a href={me.plantPhoto}>사진보기</a></p>
@@ -93,15 +99,17 @@ const Profile = () => {
                         <div className="coolSexyGuy">
                             <div id="map" />
                         </div>
+                        <br />
                         <p className="farmName">{me.farmName}의 위치</p>
                     </Col>
                     <Col span={4}></Col>
                 </Row>
                 <Row>
                     <Col span={4}></Col>
+
                     <Col span={16}>
-                        <div>
-                            {myPlant.map((a, i) => (
+                        
+                            {myPlant.map((a, i) => (<Slider {...settings}>
                                 <div className="site-card-wrapper">
                                     <p>{a}</p>
                                     <Row gutter={16}>
@@ -119,16 +127,16 @@ const Profile = () => {
                                         ))}
                                     </Row>
                                 </div>
-                            ))}
-                        </div>
+                                </Slider>))}
+                        
                     </Col>
-                    <Col span={4}></Col>
+                    <Col span={4}>
+                    </Col>
                 </Row>
             </>
-            );
         </div>
-    )
-}
+    );
+};
 
 
 export default Profile;
