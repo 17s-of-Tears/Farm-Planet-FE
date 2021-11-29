@@ -7,12 +7,13 @@ import Profile from './pages/profile';
 import WatchMmyPlant from './watchMyPlant/watchMyPlant';
 import MainHome from './main_home/main_home';
 import PlantList from './plantCategoryList/plantCategoryList';
-//import PlantCategoryView from './plantCategoryView/plantCategoryView';     
+//import PlantCategoryView from './plantCategoryView/plantCategoryView';
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
 import CustomerCenter from './customer-center/customer-center';
 import Admin from './admin/admin';
 import Subscript from './subscript/subscript';
+import Codingjoa from '@/codingjoa'
 
 const PlantCategoryView = lazy(()=> import('./plantCategoryView/plantCategoryView'));
 
@@ -29,7 +30,7 @@ function App() {
         <li><Link to="/list">리스트</Link></li>
         <li><Link to="/customer-center">공지사항</Link></li>
         <li><Link to="/admin">어드민</Link></li>
-        <li><Link to="/subscript">구독페이지</Link></li>        
+        <li><Link to="/subscript">구독페이지</Link></li>
         <li><Link to="/profilemap">구독페이지</Link></li>
         <li><Link to="/profilemyplantimage">구독페이지</Link></li>
       </ul>
@@ -38,6 +39,9 @@ function App() {
           <Route exact path='/'>
             <MainHome></MainHome>
             <Footer></Footer>
+          </Route>
+          <Route path='/codingjoa'>
+            <Codingjoa />
           </Route>
           <Route path='/signup'>
             <SignUp />
@@ -63,16 +67,16 @@ function App() {
             <Footer></Footer>
           </Route>
           <Route path='/admin'>
-            <Admin />    
+            <Admin />
           </Route>
           <Route path='/subscript'>
-            <Subscript />    
+            <Subscript />
           </Route>
           {/* <Route path='/profilemap'>
-            <ProfileMap />    
+            <ProfileMap />
           </Route>
           <Route path='/profilemyplantimage'>
-            <ProfileMyPlantImage />    
+            <ProfileMyPlantImage />
           </Route> */}
           <Route path="/plant-category-view" component={PlantCategoryView} />
         </Switch>
