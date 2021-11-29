@@ -1,5 +1,6 @@
 .allWrapper{
     height:1200px;
+    padding: 5%;
 }
 .heightGroup{
     width:100%;
@@ -68,7 +69,6 @@
 
 .site-card-wrapper{
     text-align: left;
-    padding: 100px;
 }
 
 .site-card-wrapper p{
