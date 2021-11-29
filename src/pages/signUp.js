@@ -47,9 +47,12 @@ const SignUp = () => {
           id: id,
           password: password,
         };
-        axios
-          .post("http://txshi.iptime.org:49000/api/v1/sign/up", body)
-          .then((res) => history.push('/profile'));
+        axios({
+          method: 'GET',
+          url: 'http://txshi.iptime.org:49000/api/v1/sign/up',
+          data: body,
+          withCredentials: true,
+        }).then((res) => history.push('/profile'));
       };
 
     return (
