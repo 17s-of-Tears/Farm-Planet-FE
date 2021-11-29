@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Pagination } from 'antd';
-import Button from '@restart/ui/esm/Button';
 
 const CustomerCenter_FAQ = (props) => {
   const history = useHistory()
