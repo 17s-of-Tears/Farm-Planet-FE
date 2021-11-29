@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const SimpleCarousel = (props) => {
 
+  
+  
   return (
     <Carousel>
       <Carousel.Item>
