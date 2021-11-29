@@ -68,12 +68,12 @@ function App() {
           <Route path='/subscript'>
             <Subscript />    
           </Route>
-          <Route path='/profilemap'>
+          {/* <Route path='/profilemap'>
             <ProfileMap />    
           </Route>
           <Route path='/profilemyplantimage'>
             <ProfileMyPlantImage />    
-          </Route>
+          </Route> */}
           <Route path="/plant-category-view" component={PlantCategoryView} />
         </Switch>
       </Suspense>
