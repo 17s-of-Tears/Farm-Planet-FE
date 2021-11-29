@@ -13,8 +13,6 @@ import Footer from './footer/footer';
 import CustomerCenter from './customer-center/customer-center';
 import Admin from './admin/admin';
 import Subscript from './subscript/subscript';
-import ProfileMap from './pages/profileMap';
-import ProfileMyPlantImage from './pages/profilePlantImage';
 
 const PlantCategoryView = lazy(()=> import('./plantCategoryView/plantCategoryView'));
 

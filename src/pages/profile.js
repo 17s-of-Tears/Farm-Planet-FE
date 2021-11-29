@@ -60,9 +60,11 @@ const Profile = () => {
     return (
         <div className="allWrapper">
             <Row>
-                <Col span={8}></Col>
-                <Col span={8}>
-                    <div className="heightGroup">
+                <Col span={4}>
+
+                </Col>
+                <Col span={16}>
+                <div className="heightGroup">
                         <div className="setProfileImg">
                             <img className="setProfileImgContent" src={myProfileImg} /><button className="changeProfileImgButton" onClick={changeProfileImg}>벝</button>
                             <div id="name">
@@ -75,28 +77,25 @@ const Profile = () => {
                             <p>{me.yard}</p>
                             <p><a href={me.plantPhoto}>사진보기</a></p>
                             <p>{me.myAddress}</p>
+                            <p>{me.myPlant}</p>
+                            <p>{me.myWoud}</p>
                             <p>구독 해지</p>
                         </div>
                     </div>
+
                 </Col>
-                <Col span={8}></Col>
+                <Col span={4}></Col>
             </Row>
             <>
                 <Row>
-                    <Col span={8}><p className="farmName">{me.farmName}의 위치</p></Col>
-                    <Col span={8}>
+                    <Col span={4}></Col>
+                    <Col span={16}>
                         <div className="coolSexyGuy">
                             <div id="map" />
-
                         </div>
+                        <p className="farmName">{me.farmName}의 위치</p>
                     </Col>
-                    <Col span={8}>
-                        <div className="infomation">
-                            <div>{me.date}</div>
-                            <div>{me.myAddress}</div>
-                            <div>{me.myPlant}</div>
-                            <div>{me.myWoud}</div>
-                        </div></Col>
+                    <Col span={4}></Col>
                 </Row>
                 <Row>
                     <Col span={4}></Col>
