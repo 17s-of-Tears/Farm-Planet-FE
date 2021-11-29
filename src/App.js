@@ -12,6 +12,8 @@ import Footer from './footer/footer';
 import CustomerCenter from './customer-center/customer-center';
 import Admin from './admin/admin';
 import Subscript from './subscript/subscript';
+import ProfileMap from './pages/profileMap';
+import ProfileMyPlantImage from './pages/profilePlantImage';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <li><Link to="/customer-center">공지사항</Link></li>
         <li><Link to="/admin">어드민</Link></li>
         <li><Link to="/subscript">구독페이지</Link></li>
+        <li><Link to="/profilemap">구독페이지</Link></li>
+        <li><Link to="/profilemyplantimage">구독페이지</Link></li>
       </ul>
       <Switch>
         <Route exact path='/'>
@@ -61,6 +65,12 @@ function App() {
         </Route>
         <Route path='/subscript'>
           <Subscript />    
+        </Route>
+        <Route path='/profilemap'>
+          <ProfileMap />    
+        </Route>
+        <Route path='/profilemyplantimage'>
+          <ProfileMyPlantImage />    
         </Route>
       </Switch>
     </div>

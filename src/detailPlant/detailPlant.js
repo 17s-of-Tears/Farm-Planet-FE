@@ -11,6 +11,7 @@ const DetailPlant = () => {
         name: "고구마",
         content: "9~10월에 재배합니다. 순수 탄수화물이 가득하며 식탁위의 건강을 책임집니다. 100g당 125kcal"
     }
+    
     const sendPlant = () =>{
         let body = {
             id: plant.id,
@@ -20,7 +21,7 @@ const DetailPlant = () => {
             .post("http://192.168.0.63:49000/api/v1/category", body)
             .then((res) => console.log(res));
     };
-    
+
     return (
         <div className="wrapper">
             <Row>

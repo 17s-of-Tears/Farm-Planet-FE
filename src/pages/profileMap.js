@@ -6,7 +6,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 
 const { Meta } = Card;
 
-const Profile = () => {
+const ProfileMap = () => {
 
     const { kakao } = window;
     var me = {
@@ -98,33 +98,6 @@ const Profile = () => {
                             <div>{me.myWoud}</div>
                         </div></Col>
                 </Row>
-                <Row>
-                    <Col span={4}></Col>
-                    <Col span={16}>
-                        <div>
-                            {myPlant.map((a, i) => (
-                                <div className="site-card-wrapper">
-                                    <p>{a}</p>
-                                    <Row gutter={16}>
-                                        {date.map((a, i) => (
-                                            <Col span={4}>
-                                                <Card
-                                                    hoverable
-                                                    cover={<img alt="example"
-                                                        src='img/temp_plant_img3.png'
-                                                    />}
-                                                >
-                                                    <Meta title={a} description={josef[i]} />
-                                                </Card>
-                                            </Col>
-                                        ))}
-                                    </Row>
-                                </div>
-                            ))}
-                        </div>
-                    </Col>
-                    <Col span={4}></Col>
-                </Row>
             </>
             );
         </div>
@@ -132,6 +105,6 @@ const Profile = () => {
 }
 
 
-export default Profile;
+export default ProfileMap;
 
 
