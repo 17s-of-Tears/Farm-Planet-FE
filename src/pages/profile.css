@@ -13,8 +13,8 @@
 
 .setProfileImg{
     float: left;
-    width: 15%;
-    height:15%;
+    width: 13%;
+    height:13%;
     border-radius: 45%;  
     font-size: 20px;
 }
@@ -42,7 +42,18 @@
     top: -50px;
     left:   8%;
 }
-
+.nicknameInput{
+    border: none;
+    outline: none;
+    margin: 0px 5px 5px 0px;
+}
+.nicknameChangeButton{
+    border: none;
+    outline: none;
+    background-color:dimgray;
+    color: floralwhite;
+    box-shadow: gray;
+}
 .coolSexyGuy{
     display: flex;
     flex-direction: row;
