@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import * as ReactRouter from 'react-router-dom'
 import './signUp.css'
 import { Row, Col, Checkbox, Form } from 'antd';
-import useinput from '../hooks/useinput';
 import axios from "axios";
 
 const SignUp = () => {

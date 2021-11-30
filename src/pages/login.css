@@ -5,8 +5,8 @@
 .loginBox{
     width:  700px;
     height: 760px;
-    border-radius: 35px;
-    border: 0px solid;
+    padding: 5%;
+    border: none;
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
     position:absolute;
@@ -18,28 +18,26 @@
 }
 .inputStyle input {
     text-align:center;
-    width:270px;
-    height: 35px;
+    width:300px;
+    height: 40px;
     border: 0px;
     box-shadow: black 0px 0px 1px 0px;
-    border-radius: 35px;
 }
 
-.loginButton{
-    width:120px;
+.loginButton {
+    width:300px;
     height: 40px;
-    border:0px;
+    font-size: 20px;
+    border: none;
     background-color: #347125;
-    border-radius: 35px;
     color: white;
 }
 
-.loginButtonTwo{
-    width:120px;
-    height: 40px;
-    border:0px;
-    background-color: #ffffff;
-    border-radius: 35px;
-    border: aquamarine solid 1px;
-    margin: 0px 0px 20px 0px;
+.signUpMent{
+    font-size: 18px;
+    margin-top: 20px;
+}
+.loginLabel{
+    font-size: 25px;
+    font-weight: bold;
 }
