@@ -11,8 +11,10 @@ function reducer(state, action) {
   return state;
 }
 
-export function useAsyncView(handlar, payload) {
-  const [ data, dispatch ] = React.useReducer(reducer, { code: 0, payload });
+export function useAsyncView(handlar, payload, option) {
+  const { autostart } = option ?? { autostart: true };
+  console.log({ code: autostart ? 0 : -2, payload });
+  const [ data, dispatch ] = React.useReducer(reducer, { code: autostart ? 0 : -2, payload });
   const loader = React.useCallback((payload, option) => {
     if(data.code === 0 || option?.force === true) {
       handlar instanceof Function && handlar({ ...data.payload, ...payload }, dispatch);
@@ -23,7 +25,9 @@ export function useAsyncView(handlar, payload) {
     if(data.code === 0) {
       return () => <>...</>;
     } else if(data.code === -1) {
-      return () => <>오류 발생 [{data?.data?.code} {data?.data?.message}]</>
+      return () => <>오류 발생 [{data?.data?.code} {data?.data?.message}]</>;
+    } else if(data.code === -2) {
+      return () => <></>;
     }
     return ({
       children,

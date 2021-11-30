@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.baseURL = 'http://txshi.iptime.org:49000/'
+axios.defaults.baseURL = 'https://codingjoa.kro.kr:49000/'
 axios.defaults.withCredentials = true;
 
 export async function signAdmin({
@@ -16,6 +16,13 @@ export async function signAdmin({
   });
 }
 
+export async function signoutAdmin() {
+  await axios({
+    method: 'DELETE',
+    url: '/api/v1/admin/sign',
+  });
+}
+
 export async function getMyInfo() {
   const result = await axios({
     method: 'GET',
@@ -25,7 +32,7 @@ export async function getMyInfo() {
 }
 
 export async function getBoardNotices({
-  page = 0,
+  page = 1,
   pageSize = 15,
 }) {
   const result = await axios({

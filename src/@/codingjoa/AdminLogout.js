@@ -1,10 +1,10 @@
-import { signAdmin } from './ajax'
+import { signoutAdmin } from './ajax'
 import { useAsyncView } from './hook'
 import { Refresh } from './component'
 
-export default function AdminLogin() {
+export default function AdminLogout() {
   const [ View, state, force ] = useAsyncView((payload, callback) => {
-    signAdmin(payload).then(() => {
+    signoutAdmin(payload).then(() => {
       callback({
         code: 1,
       });
@@ -17,13 +17,10 @@ export default function AdminLogin() {
         },
       });
     });
-  }, {
-    id: 'admin',
-    password: '1234',
-  }, { autostart: false });
+  }, null, { autostart: false });
   return (
     <>
-      <button onClick={() => force()}>로그인</button>
+      <button onClick={() => force()}>로그아웃</button>
       <View>
         <Refresh />
       </View>
