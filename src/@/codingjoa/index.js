@@ -1,6 +1,8 @@
 import AdminLogin from './AdminLogin'
 import AdminLogout from './AdminLogout'
 import BoardNotice from './BoardNotice'
+import BoardNoticeWrite from './BoardNoticeWrite'
+import BoardNoticeDetail from './BoardNoticeDetail'
 import { getMyInfo } from './ajax'
 import { useAsyncView } from './hook'
 
@@ -27,6 +29,8 @@ export default function HW() {
   <View>
     {state.data?.status === 'NOT_LOGIN' && <AdminLogin />}
     {state.data?.status === 'LOGIN' && <AdminLogout />}
+    {state.data?.status === 'LOGIN' && <BoardNoticeWrite />}
     {state.data?.status === 'LOGIN' && <BoardNotice />}
+    {state.data?.status === 'LOGIN' && <BoardNoticeDetail />}
   </View>);
 }

@@ -41,3 +41,51 @@ export async function getBoardNotices({
   });
   return result.data;
 }
+
+export async function getBoardNotice({
+  id,
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/board/notice/${id}`,
+  });
+  return result.data;
+}
+
+export async function postBoardNotice({
+  title,
+  content,
+}) {
+  await axios({
+    method: 'POST',
+    url: '/api/v1/admin/board/notice',
+    data: {
+      title,
+      content,
+    },
+  });
+}
+
+export async function updateBoardNotice({
+  id,
+  title,
+  content,
+}) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/board/notice/${id}`,
+    data: {
+      title,
+      content,
+    },
+  });
+}
+
+export async function deleteBoardNotice({
+  id,
+}) {
+  await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/board/notice/${id}`,
+  });
+}

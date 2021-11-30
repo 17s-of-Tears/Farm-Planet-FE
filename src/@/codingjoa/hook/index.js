@@ -13,7 +13,6 @@ function reducer(state, action) {
 
 export function useAsyncView(handlar, payload, option) {
   const { autostart } = option ?? { autostart: true };
-  console.log({ code: autostart ? 0 : -2, payload });
   const [ data, dispatch ] = React.useReducer(reducer, { code: autostart ? 0 : -2, payload });
   const loader = React.useCallback((payload, option) => {
     if(data.code === 0 || option?.force === true) {
@@ -39,4 +38,26 @@ export function useAsyncView(handlar, payload, option) {
   return [
     View, data, force
   ];
+}
+
+export function useInputRef(initialValue) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    if(ref.current) {
+      ref.current.value = initialValue;
+    }
+  }, [ initialValue ]);
+  return ref;
+}
+
+export function useInputRefHandlar(onSubmit, refs) {
+  const handleSubmit = e => {
+    e?.preventDefault && e.preventDefault();
+    const payload = {};
+    for(const key in refs) {
+      payload[key] = refs[key].current.value;
+    }
+    onSubmit(payload);
+  }
+  return handleSubmit;
 }
