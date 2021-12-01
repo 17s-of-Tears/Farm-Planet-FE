@@ -123,6 +123,47 @@ export async function getCategories() {
   return result.data;
 }
 
+export async function getCategory({
+  id
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/category/${id}`,
+  });
+  return result.data;
+}
+
+export async function postCategory(formData) {
+  const result = await axios({
+    method: 'POST',
+    url: '/api/v1/admin/category',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function updateCategory(id, formData) {
+  const result = await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/category/${id}`,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function deleteCategory({
+  id
+}) {
+  const result = await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/category/${id}`,
+  });
+}
+
 export async function getPlants() {
   const result = await axios({
     method: 'GET',

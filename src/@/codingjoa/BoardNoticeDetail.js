@@ -1,6 +1,6 @@
 import * as ReactRouter from 'react-router-dom'
-import { useAsyncView, useInputRef, useInputRefHandlar } from './hook'
 import { getBoardNotice, updateBoardNotice, deleteBoardNotice } from './ajax'
+import { useAsyncView, useInputRef, useInputRefHandlar } from './hook'
 
 function Detail({
   id,
@@ -15,7 +15,6 @@ function Detail({
       ...payload,
       id,
     }).then(() => history.go(0), err => alert(`수정 실패. [${err?.response?.status}/${err?.response?.data?.message}]`));
-    console.log(payload);
   }, {
     title: titleref,
     content: contentref,

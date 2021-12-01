@@ -5,6 +5,8 @@ import BoardNotice from './BoardNotice'
 import BoardNoticeWrite from './BoardNoticeWrite'
 import BoardNoticeDetail from './BoardNoticeDetail'
 import Category from './Category'
+import CategoryWrite from './CategoryWrite'
+import CategoryDetail from './CategoryDetail'
 import Plant from './Plant'
 import PlantDetail from './PlantDetail'
 import { getMyInfo } from './ajax'
@@ -38,6 +40,8 @@ export default function HW() {
     {state.data?.status === 'LOGIN' && <BoardNotice />}
     {state.data?.status === 'LOGIN' && <BoardNoticeDetail />}
     {state.data?.status === 'LOGIN' && <Category />}
+    {state.data?.status === 'LOGIN' && <CategoryWrite />}
+    {state.data?.status === 'LOGIN' && <CategoryDetail />}
     {state.data?.status === 'LOGIN' && <Plant />}
     {state.data?.status === 'LOGIN' && <PlantDetail />}
   </View>);
