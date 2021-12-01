@@ -1,15 +1,20 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
 import './detailPlant.css';
 import { Row, Col } from 'antd';
 import axios from 'axios';
-import Slider from "react-slick";
+//import Slider from "react-slick";
 
 const DetailPlant = () => {
+    const location = useLocation()
+
+    const plantData = location.state.plantData;    
 
     const plant = {
-        id: 1,
-        name: "고구마",
-        content: "9~10월에 재배합니다. 순수 탄수화물이 가득하며 식탁위의 건강을 책임집니다. 100g당 125kcal"
+        id: plantData.id,
+        name: plantData.name,
+        content: plantData.description,
+        imgURL: "https://codingjoa.kro.kr:49000/" + plantData.imageUrl
     }
 
     const sendPlant = () => {
@@ -18,11 +23,9 @@ const DetailPlant = () => {
             name: plant.name,
         };
         axios
-            .post("http://192.168.0.63:49000/api/v1/category", body)
+            .post("https://codingjoa.kro.kr:49000/api/v1/category", body)
             .then((res) => console.log(res));
     };
-
-
 
     return (
         <div className="wrapper">
@@ -34,7 +37,7 @@ const DetailPlant = () => {
                             <div class="formBox">
                                 {/* <img src='public\temp\img\logo.png' alt='logo' /> */}
                                 <div>
-                                    <img className="imgStyle" src='img/temp_plant_img1.png' alt='sweetPotato' />
+                                    <img className="imgStyle" src={plant.imgURL} alt='sweetPotato' />
                                 </div>
                                 <label className="plantName">{plant.name}</label>
                                 <div>

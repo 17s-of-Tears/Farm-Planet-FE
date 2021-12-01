@@ -32,7 +32,7 @@ const CustomerCenter_FAQ = (props) => {
     setPageSize(_pageSize);
     let _currentPage = currentPage;
     
-    let data_URL = `http://txshi.iptime.org:49000/api/v1/board/faq?page=${_currentPage}&pageSize=${_pageSize}`;
+    let data_URL = `https://codingjoa.kro.kr:49000/api/v1/board/faq?page=${_currentPage}&pageSize=${_pageSize}`;
     
     await axios.get(`${data_URL}`).then(function (response) {           
       setEntireCotent(response.data._meta.page.total);

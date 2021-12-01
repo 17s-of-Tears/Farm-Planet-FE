@@ -16,7 +16,7 @@ const CustomerCenter_view = (props) => {
   console.log(location.state.id);  
   
   const getViewData = async () => {
-    let data_URL = `http://txshi.iptime.org:49000/api/v1/board/${viewType}/${viewID}`;
+    let data_URL = `https://codingjoa.kro.kr:49000/api/v1/board/${viewType}/${viewID}`;
       
     await axios.get(`${data_URL}`).then(function (response) {      
       setViewData(response.data);

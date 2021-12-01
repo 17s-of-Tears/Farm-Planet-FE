@@ -16,7 +16,7 @@ const Main_FAQ = (props) => {
   useEffect(() => { 
     const getNewsData = async () => {
       
-      let data_URL = "http://txshi.iptime.org:49000/api/v1/board/faq";
+      let data_URL = "https://codingjoa.kro.kr:49000/api/v1/board/faq";
     
       var response = await axios.get(`${data_URL}`).then(function (response) {
         let endSection = 3;

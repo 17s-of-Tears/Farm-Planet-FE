@@ -9,30 +9,32 @@ const PlantCategoryView = (props) => {
   const history = useHistory()
   const location = useLocation()
 
-  let [plantCategory_items,setPlantCategory_items] = useState('테스트');
-  // url로 받을듯?
-  let [plant_banner_img,setPlant_banner_img] = useState('/img/temp_recommend_plant.png');
-  // let [plant_banner_title,setPlant_banner_title] = useState('겨울을 좋아하는 작물');
+  let [plantCategory_items,setPlantCategory_items] = useState('');
   
+
   let category_id = location.state.ct_id;
 
-
-  console.log(category_id);
+  const onEnterDetailPlant = (plant) =>{    
+    history.push({
+      pathname: "/detailplant",
+      state:{plantData:plant}
+    });
+  }
 
   const getPlantCategoryData = async () => {         
     
-    let data_URL = `http://txshi.iptime.org:49000/api/v1/category/${category_id}`;
+    let data_URL = `https://codingjoa.kro.kr:49000/api/v1/category/${category_id}`;
     
     await axios.get(`${data_URL}`).then(function (response) {           
       console.log(response);  
       
        let test = () => {
 
-        var categoryBanner = response.data.plants.map(plants => 
-          <div className="plant_item">
-            <div className="imageBox"><div className="overlay"></div><img src={"http://txshi.iptime.org:49000/"+plants.imageUrl}></img></div>
+        var categoryBanner = response.data.plants.map(plant => 
+          <div className="plant_item" onClick={()=>{onEnterDetailPlant(plant)}}>
+            <div className="imageBox"><div className="overlay"></div><img src={"https://codingjoa.kro.kr:49000/"+plant.imageUrl}></img></div>
             <div className="titleBox">
-              <h4>{plants.name}</h4>
+              <h4>{plant.name}</h4>
               <input type="button" className="buttonStyle_1" value="자세히 보기"></input>
             </div>
           </div> 
@@ -44,7 +46,7 @@ const PlantCategoryView = (props) => {
           <div className="page_container">
             <div className="plant_banner">
             
-              <div className="imageBox"><div className="overlay"></div><img src={"http://txshi.iptime.org:49000/"+response.data.imageUrl}></img></div>
+              <div className="imageBox"><div className="overlay"></div><img src={"https://codingjoa.kro.kr:49000/"+response.data.imageUrl}></img></div>
               <div className="textBox">
                 <h4>{response.data.name}</h4>
                 <span>스크롤해서 만나기↓</span>
@@ -69,6 +71,8 @@ const PlantCategoryView = (props) => {
         // 항상 실행       
     });         
   };
+
+  
 
   useEffect(() => { 
     getPlantCategoryData();

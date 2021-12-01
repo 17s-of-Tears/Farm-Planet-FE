@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const PlantCategoryList_plantList = (props) => {
@@ -18,7 +17,7 @@ const PlantCategoryList_plantList = (props) => {
     console.log(props);
     var result = response.categories.map(row => {
     var plantList = row.plants.map(plants => 
-      <div className="imageBox"><img src={"http://txshi.iptime.org:49000/" + plants.imageUrl}></img></div>
+      <div className="imageBox"><img src={"https://codingjoa.kro.kr:49000/" + plants.imageUrl}></img></div>
     )
 
     return(

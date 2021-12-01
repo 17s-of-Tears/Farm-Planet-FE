@@ -13,7 +13,7 @@ const PlantCategoryList = (props) => {
   const [plantListData, setPlantListData] = useState(null);
 
   const getPlantListData = async () => {         
-    const data_URL = `http://txshi.iptime.org:49000/api/v1/category`;
+    const data_URL = `https://codingjoa.kro.kr:49000/api/v1/category`;
     try {
       const { data } = await axios.get(data_URL)
       setPlantListData(data)
