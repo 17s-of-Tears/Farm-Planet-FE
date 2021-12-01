@@ -1,0 +1,32 @@
+.Header{
+  width: 100%;
+}
+.headerBox {  
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;  
+}
+.headerBox .profileBox{
+  display: flex;
+  font-family: "NotoSansKR_m";
+  font-size: 16px;
+  align-items: center;
+}
+.headerBox .profileBox span{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.headerBox .profileBox .sginupBtn{
+  height: 40px;
+  color:white;
+  background-color: #1890ff;
+  outline: none;
+  border: none;  
+  border-radius: 5px;
+  display: flex;align-items: center;
+  margin-left: 30px;
+  padding: 0 16px;
+}

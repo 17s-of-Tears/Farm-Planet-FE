@@ -4,6 +4,7 @@ import axios from 'axios';
 import './plantCategoryList.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Header from 'header/header';
 import SimpleCarousel from './carousel_banner';
 import PlantCategoryList_plantList from './plantCategoryList-plantList';
 
@@ -27,9 +28,9 @@ const PlantCategoryList = (props) => {
   }, [])
 
   return (
-    <div>
-  
+    <div>        
   { plantListData !== null && <div className="PlantCategoryList">
+      <Header />
       <SimpleCarousel plantListData={plantListData}></SimpleCarousel>
       <PlantCategoryList_plantList plantListData={plantListData} />      
     </div>

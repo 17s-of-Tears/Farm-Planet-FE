@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './plantCategoryView.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from 'header/header';
 
 const PlantCategoryView = (props) => {
   const history = useHistory()
@@ -79,7 +80,8 @@ const PlantCategoryView = (props) => {
   },[])
 
   return (
-    <div className="PlantCategoryView">          
+    <div className="PlantCategoryView">
+      <Header />          
       {plantCategory_items}
     </div>
   );

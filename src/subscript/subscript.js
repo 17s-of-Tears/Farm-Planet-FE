@@ -1,3 +1,4 @@
+import Header from 'header/header';
 import React, {useState} from 'react';
 
 import './subscript.css';
@@ -8,6 +9,7 @@ const Subscript = (props) => {
 
   return (
     <div className="Subscript">
+      <Header />
       <div className="membershipBox">
         <div className="itemBox">
           <div className="titleLine">
