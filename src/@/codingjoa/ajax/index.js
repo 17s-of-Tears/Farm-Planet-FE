@@ -89,3 +89,85 @@ export async function deleteBoardNotice({
     url: `/api/v1/admin/board/notice/${id}`,
   });
 }
+
+export async function getBanners() {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/category/banner`,
+  });
+  return result.data;
+}
+
+export async function postBanner(formData) {
+  const result = await axios({
+    method: 'POST',
+    url: `/api/v1/admin/category/banner`,
+    data: formData,
+  });
+}
+
+export async function deleteBanner({
+  id
+}) {
+  const result = await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/category/banner/${id}`,
+  });
+}
+
+export async function getCategories() {
+  const result = await axios({
+    method: 'GET',
+    url: '/api/v1/admin/category',
+  });
+  return result.data;
+}
+
+export async function getPlants() {
+  const result = await axios({
+    method: 'GET',
+    url: '/api/v1/admin/category/plant',
+  });
+  return result.data;
+}
+
+export async function getPlant({
+  id,
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/category/plant/${id}`,
+  });
+  return result.data;
+}
+
+export async function postPlant(formData) {
+  const result = await axios({
+    method: 'POST',
+    url: '/api/v1/admin/category/plant',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function updatePlant(id, formData) {
+  const result = await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/category/plant/${id}`,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function deletePlant({
+  id
+}) {
+  const result = await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/category/plant/${id}`,
+  });
+}

@@ -54,10 +54,24 @@ export function useInputRefHandlar(onSubmit, refs) {
   const handleSubmit = e => {
     e?.preventDefault && e.preventDefault();
     const payload = {};
+    let multipart = false;
     for(const key in refs) {
-      payload[key] = refs[key].current.value;
+      if(!!refs[key].current?.files) {
+        payload[key] = refs[key].current.files[0];
+        multipart = true;
+      } else {
+        payload[key] = refs[key].current.value;
+      }
     }
-    onSubmit(payload);
+    if(multipart) {
+      const formData = new FormData();
+      for(const key in payload) {
+        formData.append(key, payload[key]);
+      }
+      onSubmit(formData);
+    } else {
+      onSubmit(payload);
+    }
   }
   return handleSubmit;
 }

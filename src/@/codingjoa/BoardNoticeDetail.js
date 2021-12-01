@@ -46,7 +46,7 @@ export default function BoardNoticeDetail() {
       alert(`조회 실패. [${err?.response?.status}/${err?.response?.data?.message}]`);
     });
   }, {
-    id: 35,
+    id: 1,
   });
-  return <View>{state.data && <Detail id={35} title={state.data.title} content={state.data.content} />}</View>;
+  return <View>{state.data && <Detail id={1} title={state.data.title} content={state.data.content} />}</View>;
 }
