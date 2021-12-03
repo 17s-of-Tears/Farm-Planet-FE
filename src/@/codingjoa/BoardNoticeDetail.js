@@ -1,3 +1,4 @@
+import React from 'react';
 import * as ReactRouter from 'react-router-dom'
 import { getBoardNotice, updateBoardNotice, deleteBoardNotice } from './ajax'
 import { useAsyncView, useInputRef, useInputRefHandlar } from './hook'
@@ -34,8 +35,15 @@ function Detail({
   );
 }
 
-export default function BoardNoticeDetail() {
-  const [ View, state ] = useAsyncView((payload, callback) => {
+export default function BoardNoticeDetail({
+  id,
+  setId,
+}) {
+  const handleClick = e => {
+    e.preventDefault();
+    setId(null);
+  };
+  const [ View, state, force ] = useAsyncView((payload, callback) => {
     getBoardNotice(payload).then(data => {
       callback({
         code: 1,
@@ -45,7 +53,17 @@ export default function BoardNoticeDetail() {
       alert(`조회 실패. [${err?.response?.status}/${err?.response?.data?.message}]`);
     });
   }, {
-    id: 1,
+    id,
+  }, {
+    autostart: false,
   });
-  return <View>{state.data && <Detail id={1} title={state.data.title} content={state.data.content} />}</View>;
+  React.useLayoutEffect(() => {
+    force({
+      id,
+    });
+  }, [id]);
+  return <View>
+    <a href="#" onClick={handleClick}>뒤로</a>
+    {state.data && <Detail id={id} title={state.data.title} content={state.data.content} />}
+  </View>;
 }

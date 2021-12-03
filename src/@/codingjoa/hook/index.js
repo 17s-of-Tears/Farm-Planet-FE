@@ -1,5 +1,62 @@
 import React from 'react'
+/*
+function asyncDispatch(state, action) {
+  if(action.error) {
+    return {
+      code: 1,
+      data: null,
+      error: action.error,
+    }
+  } else if(action.data) {
+    return {
+      code: 2,
+      data: action.data,
+      error: null,
+    }
+  }
+  return state;
+}
 
+export function useAsyncState(handlar, payload = 0) {
+  const [ state, dispatch ] = React.useReducer(asyncDispatch, {
+    code: 0,
+    data: null,
+    error: null,
+  });
+  const memoizedHandlar = React.useCallback(handlar, [ handlar ]);
+  const memoizedPayload = React.useMemo(() => payload, [ payload ]);
+  const force = React.useCallback(async () => {
+    try {
+      const data = await memoizedHandlar(memoizedPayload);
+      dispatch({
+        data,
+      });
+    } catch(err) {
+      dispatch({
+        error: {
+          status: err.response?.state,
+          message: err.response?.data?.message ?? err.message,
+        },
+      });
+    }
+  }, [ memoizedHandlar, memoizedPayload ]);
+  console.log(force);
+  React.useLayoutEffect(() => {
+    force();
+  }, [ force ]);
+  return [ state, force ];
+}
+
+export function useView(creator, state) {
+  const view = React.useMemo(() => {
+    if(!state.code) {
+      return <>...</>
+    }
+    return <>{creator instanceof Function && creator(state.data)}</>;
+  }, [ state, creator ]);
+  return view;
+}
+*/
 function reducer(state, action) {
   if(action.code) {
     return {

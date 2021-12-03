@@ -183,7 +183,7 @@ export async function getPlant({
 }
 
 export async function postPlant(formData) {
-  const result = await axios({
+  await axios({
     method: 'POST',
     url: '/api/v1/admin/category/plant',
     headers: {
@@ -194,7 +194,7 @@ export async function postPlant(formData) {
 }
 
 export async function updatePlant(id, formData) {
-  const result = await axios({
+  await axios({
     method: 'PUT',
     url: `/api/v1/admin/category/plant/${id}`,
     headers: {
@@ -207,8 +207,75 @@ export async function updatePlant(id, formData) {
 export async function deletePlant({
   id
 }) {
-  const result = await axios({
+  await axios({
     method: 'DELETE',
     url: `/api/v1/admin/category/plant/${id}`,
+  });
+}
+
+export async function getAccounts() {
+  const result = await axios({
+    method: 'GET',
+    url: '/api/v1/admin/account/',
+  });
+  return result.data;
+}
+
+export async function postAccount({
+  accountID,
+  name,
+}) {
+  const result = await axios({
+    method: 'POST',
+    url: '/api/v1/admin/account',
+    data: {
+      accountID,
+      name,
+    },
+  });
+  return result.data;
+}
+
+export async function updateAccount({
+  id,
+  name,
+}) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/account/${id}`,
+    data: {
+      name,
+    },
+  });
+}
+
+export async function resetPassword({
+  id,
+}) {
+  const result = await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/account/${id}/pw`,
+  });
+  return result.data?.password ?? null;
+}
+
+export async function getUsers() {
+  const result = await axios({
+    method: 'GET',
+    url: '/api/v1/admin/user',
+  });
+  return result.data;
+}
+
+export async function updateUser({
+  id,
+  name,
+}) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/user/${id}`,
+    data: {
+      name,
+    },
   });
 }

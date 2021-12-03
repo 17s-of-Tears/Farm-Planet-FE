@@ -13,7 +13,7 @@ function AddBanner() {
   })
   return (
     <div>
-      배너 추가
+      <h2>배너 추가</h2>
       <input ref={image} type="file" />
       <button onClick={handleSubmit}>제출</button>
     </div>
@@ -30,7 +30,7 @@ function Row(row, index) {
   };
   return (
     <div key={index}>
-      <img src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`banner_id${row.id}`} />
+      <img width="240px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`banner_id${row.id}`} />
       <button onClick={handleDelete}>삭제</button>
     </div>
   );
