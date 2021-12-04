@@ -1,14 +1,31 @@
-import React, { useState} from 'react';
+import React, { useEffect } from 'react';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
-
+import { useHistory } from "react-router-dom";
 import './main_home.css';
 import '../css/css_noamlfont.css';
 import News from './news'
+import axios from 'axios';
 
 
 const MainHome = (props) => {
+
+  const history = useHistory();
+
+  const me = () => {
+    axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    if(me){
+      history.push('/profile')
+    }else{
+      history.push('/')
+    }
+  });
     
   const { Search } = Input;
   return (

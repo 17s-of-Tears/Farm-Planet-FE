@@ -1,6 +1,9 @@
 .allWrapper{
     height:auto;
 }
+.profileLogo{
+    left:0%;
+}
 .heightGroup{
     width:100%;
     text-align: center;

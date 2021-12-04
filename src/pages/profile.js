@@ -4,10 +4,11 @@ import { Col, Row } from "antd";
 import './profile.css';
 import ProfilePhotoCard from './profilePhotoCard';
 import ProfileMyFarmMap from './profileMyFarmMap';
-
+import { useHistory } from 'react-router';
 
 const Profile = () => {
-
+    let history = useHistory();
+    
     var me = {
         name: "압구정의 자랑 이진수",
         date: "2017-01-05",
@@ -42,6 +43,7 @@ const Profile = () => {
 
     return (
         <div className="allWrapper">
+            <img alt="logo" src="/img/temp_logo3.png" className="profileLogo" onClick={() => history.push("/")} />
             <Row>
                 <Col span={4}></Col>
                 <Col span={16}>
@@ -74,9 +76,9 @@ const Profile = () => {
                 <Col span={4}></Col>
             </Row>
             <Row>
-            <Col span={4}></Col>
+                <Col span={4}></Col>
                 <Col span={16}>
-                <ProfilePhotoCard />
+                    <ProfilePhotoCard />
                 </Col>
                 <Col span={4}></Col>
             </Row>
