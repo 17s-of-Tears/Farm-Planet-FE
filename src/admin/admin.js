@@ -11,7 +11,7 @@ import {
   UserOutlined,
   
 } from '@ant-design/icons';
-const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice'));
+const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice/index'));
 const Accounts = lazy(()=> import('@/codingjoa/Accounts'));
 const User = lazy(()=> import('@/codingjoa/User'));
 

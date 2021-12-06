@@ -19,6 +19,7 @@
   border-bottom: #b2bec3 1px solid;  
 }
 
+
 /* BoardNoticeWrite */
 
 .adminBoardNotice-Write{
@@ -49,7 +50,7 @@
   text-align: right;
 }
 
-.adminBoardNotice-Write .btnBox .submitBtn,.adminBoardNotice-Write .btnBox .cancelBtn{
+.adminBoardNotice-Write .btnBox .submitBtn,.adminBoardNotice-Write .btnBox .cancelBtn,.adminBoardNotice-Write .btnBox .deleteBtn{
   padding: 8px 20px;
   outline: none;
   border-radius:5px;
@@ -57,6 +58,7 @@
 }
 .adminBoardNotice-Write .btnBox .submitBtn{background-color: #1890ff;color: white;border: none;}
 .adminBoardNotice-Write .btnBox .cancelBtn{border:1px solid #b2bec3;margin-right:10px;}
+.adminBoardNotice-Write .btnBox .deleteBtn{border:none;background-color: lightslategrey;color:white;margin-right:10px;}
 
 /* adminManager */
 
