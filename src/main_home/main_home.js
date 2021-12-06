@@ -22,7 +22,8 @@ const MainHome = (props) => {
   useEffect(() => {
     if(me){
       history.push('/profile')
-    }else{
+    }
+    if(!me){
       history.push('/')
     }
   });
