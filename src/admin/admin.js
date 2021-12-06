@@ -12,6 +12,8 @@ import {
   
 } from '@ant-design/icons';
 const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice'));
+const Accounts = lazy(()=> import('@/codingjoa/Accounts'));
+const User = lazy(()=> import('@/codingjoa/User'));
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -66,7 +68,13 @@ const Admin = (props) => {
                   </Route>
                   <Route path='/admin/faq'>
                     option2
-                  </Route>     
+                  </Route>
+                  <Route path='/admin/managerList'>
+                    <Accounts />
+                  </Route>
+                  <Route path='/admin/memberList'>
+                    <User />
+                  </Route>                      
                 </Switch>
               </Suspense>
             </div>

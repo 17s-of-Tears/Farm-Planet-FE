@@ -47,7 +47,7 @@ export default function Users() {
   });
   return (
     <View>
-      <table>
+      <table className="tableStyle_1">
         <thead>
           <tr>
             <th>번호</th>

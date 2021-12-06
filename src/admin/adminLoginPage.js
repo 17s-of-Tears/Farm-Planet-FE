@@ -1,16 +1,22 @@
 import { Form, Input, Button } from 'antd';
 import './adminLogin.css'
 import login from '@/codingjoa/AdminLogin'
+import { useHistory } from 'react-router-dom';
 
 // import AdminLogin from '@/codingjoa/AdminLogin';
 
 const AdminLoginPage = () => {
+  const history = useHistory();
   const onFinish = async (values) => {
     const success = await login(values.id, values.password);
     alert(`성공 여부: ${success}`);
-      // axios
-      //     .post("http://txshi.iptime.org:49000/api/v1/sign", body)
-      //     .then((res) => history.push('/profile'));
+
+    if(success){
+      history.push('/admin');
+    }else{
+      alert(`로그인 실패`);
+    }
+ 
   };
 
   const onFinishFailed = (errorInfo) => {

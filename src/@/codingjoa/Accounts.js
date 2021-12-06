@@ -15,7 +15,7 @@ function ResetPassword({
   }, [ id ]);
   const view = React.useMemo(() => {
     if(!password) {
-        return <button onClick={handleSubmit}>비밀번호 초기화</button>;
+        return <button className="initializeBtn" onClick={handleSubmit}>비밀번호 초기화</button>;
     }
     return <>{password}</>
   }, [ password, handleSubmit ]);
@@ -39,7 +39,7 @@ function Rename({
       history.go(0);
     }, err => alert(`수정 실패. [${err?.response?.status}/${err?.response?.data?.message}]`))
   };
-  return <button onClick={handleSubmit}>이름 변경</button>;
+  return <button className="renameBtn" onClick={handleSubmit}>이름 변경</button>;
 }
 
 function CreateAccount() {
@@ -95,34 +95,36 @@ export default function Accounts() {
   });
   return (
     <View>
-      <h2>계정 추가</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>이름</th>
-            <th>ID</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <CreateAccount />
-        </tbody>
-      </table>
-      <h2>계정 목록</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>이름</th>
-            <th>계정ID</th>
-            <th>생성일</th>
-            <th>임시 비밀번호</th>
-          </tr>
-        </thead>
-        <tbody>
-          {state.data?.admins?.map && state.data.admins.map(Row)}
-        </tbody>
-      </table>
+      <div className="adminManager">
+        <h3>계정 추가</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>이름</th>
+              <th>ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <CreateAccount />
+          </tbody>
+        </table>
+        <h3>계정 목록</h3>
+        <table  className="tableStyle_1">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>계정ID</th>
+              <th>생성일</th>
+              <th>임시 비밀번호</th>
+            </tr>
+          </thead>
+          <tbody>
+            {state.data?.admins?.map && state.data.admins.map(Row)}
+          </tbody>
+        </table>
+      </div>
     </View>
   );
 }

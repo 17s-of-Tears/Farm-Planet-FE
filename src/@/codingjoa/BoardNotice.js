@@ -17,7 +17,7 @@ function BoardNoticeList({
       <td>{row.title}</td>
       <td>{row.createdAt}</td>
       <td>{row.hit}</td>
-      <td><button onClick={() => setId(row.id)}>수정</button></td>
+      <td><button className="updateBtn" onClick={() => setId(row.id)}>수정</button></td>
     </tr>
   );
   const [ View, state ] = useAsyncView((payload, callback) => {
@@ -34,20 +34,23 @@ function BoardNoticeList({
   });
   return (
     <View>
-      <table>
-        <thead>
-          <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>작성일</td>
-            <td>조회수</td>
-          </tr>
-        </thead>
-        <tbody>
-          {state.data?.notices?.map && state.data?.notices?.map(Row)}
-        </tbody>
-      </table>
-      <a href="#" onClick={handleClick}>새 글 작성</a>
+      <div className="adminBoardNotice">
+        <table className="tableStyle_1">
+          <thead>
+            <tr>
+              <td>번호</td>
+              <td>제목</td>
+              <td>작성일</td>
+              <td>조회수</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            {state.data?.notices?.map && state.data?.notices?.map(Row)}
+          </tbody>
+        </table>
+        <button onClick={handleClick} className="writeBtn">새 글쓰기</button>        
+      </div>
     </View>
   );
 }

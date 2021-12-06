@@ -1,0 +1,86 @@
+.ant-layout-content{
+  min-width: 650px;
+}
+
+/* BoardNotice */
+
+.tableStyle_1{
+  width: 100%;
+  font-size: 16px;
+}
+.tableStyle_1 thead {
+  background-color: #dfe6e9;
+  
+}
+.tableStyle_1 td, th {
+  padding: 5px 0;
+}
+.tableStyle_1 tr {
+  border-bottom: #b2bec3 1px solid;  
+}
+
+/* BoardNoticeWrite */
+
+.adminBoardNotice-Write{
+  width: 100%;
+}
+
+.adminBoardNotice-Write .noticeForm{
+  width: 90%;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.adminBoardNotice-Write .noticeForm .noticeTitle,.adminBoardNotice-Write .noticeForm .noticeText{ 
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: #b2bec3 1px solid ;
+  padding: 5px;
+  margin-bottom: 10px;  
+}
+.adminBoardNotice-Write .noticeForm .noticeText{height: 200px;resize: none;}
+.adminBoardNotice-Write .noticeForm h5{
+  text-align: left;
+}
+.adminBoardNotice-Write .btnBox {
+  width: 100%;
+  margin-top:20px;
+  text-align: right;
+}
+
+.adminBoardNotice-Write .btnBox .submitBtn,.adminBoardNotice-Write .btnBox .cancelBtn{
+  padding: 8px 20px;
+  outline: none;
+  border-radius:5px;
+  
+}
+.adminBoardNotice-Write .btnBox .submitBtn{background-color: #1890ff;color: white;border: none;}
+.adminBoardNotice-Write .btnBox .cancelBtn{border:1px solid #b2bec3;margin-right:10px;}
+
+/* adminManager */
+
+.adminManager{
+  width: 100%;
+}
+.adminManager h3{text-align: left;margin-bottom: 20px;}
+
+/* 공통 */
+
+.adminBoardNotice .writeBtn {
+  margin-top: 40px;
+  font-size: 18px;
+  border:1px solid #b2bec3;
+  border-radius:5px ;
+  padding: 8px 160px;
+  outline: none;
+}
+
+.adminBoardNotice .updateBtn,.adminManager .initializeBtn,.adminManager .renameBtn{
+  border:none;
+  outline: none;
+  background-color: #1890ff;
+  border-radius:5px ;
+  padding: 4px 20px;
+  color:white;
+}

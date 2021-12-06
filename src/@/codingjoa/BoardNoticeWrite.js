@@ -26,12 +26,19 @@ export default function BoardNoticeWrite({
     content,
   });
   return (
-    <div>
-      <a href="#" onClick={handleClick}>뒤로</a>
-      <div>
-        <input ref={title}></input><br />
-        <input ref={content}></input><br />
-        <button onClick={handleSubmit}>글작성</button>
+    <div className="adminBoardNotice-Write">
+
+      
+      <div className="noticeForm">
+        <h5>* 제목</h5>
+          <input ref={title} type="text" className="noticeTitle"></input><br />
+        <h5>* 내용</h5>
+          <textarea ref={content} type="textarea" className="noticeText" rows="10"></textarea><br />
+        <div className="btnBox">
+          <button onClick={handleClick} className="cancelBtn">뒤로</button> 
+          <button onClick={handleSubmit} className="submitBtn">글작성</button>                   
+        </div>
+        
       </div>
     </div>
   );
