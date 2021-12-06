@@ -132,3 +132,29 @@ export function useInputRefHandlar(onSubmit, refs) {
   }
   return handleSubmit;
 }
+
+/*
+fnction pageCalculator(page, newPageSize) {
+  if(newPageSize < page) {
+    return newPageSize;
+  } else if(1 > page) {
+    return 1;
+  }
+  return page;
+}
+*/
+export function useViewDispatch({
+  effect,
+  view,
+  reducer,
+  initialValue,
+}) {
+  const [ state, dispatch ] = React.useReducer(reducer, initialValue);
+  React.useLayoutEffect(() => {
+    return effect(state, dispatch);
+  }, [ effect, state ]);
+  const page = React.useMemo(() => {
+    return view(state, dispatch);
+  }, [ view, state ]);
+  return page;
+}

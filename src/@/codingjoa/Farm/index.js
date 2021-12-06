@@ -1,110 +1,179 @@
 import React from 'react'
+import { getFarms, getFarm } from '@/codingjoa/ajax'
+import { useViewDispatch } from '@/codingjoa/hook'
+import Editor from './Editor'
 
+function FarmAddMain({
+  dispatch
+}) {
+  return <Editor id={null} payload={{}} dispatch={dispatch} />;
+}
 
-/*
-import { getFarms } from './ajax'
-import { MixInList } from './mixin'
-
-function Row(row, index) {
+function FarmDetailMain({
+  id,
+  dispatch,
+}) {
+  const [ data, setData ] = React.useState(null);
+  React.useLayoutEffect(() => {
+    getFarm({ id }).catch(alerter).then(data => setData(data));
+  }, [ id ]);
   return (
+    <>
+      {data && <Editor id={id} payload={data} dispatch={dispatch} />}
+    </>
+  );
+}
+
+function FarmListMain({
+  data,
+  dispatch,
+}) {
+  const Row = (row, index) => (
     <tr key={index}>
       <td>{row.id}</td>
       <td><img height="64px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`category_id${row.id}`} /></td>
       <td>{row.name}</td>
-      <td>{row.description}</td>
-      <td>{row.categoryId}</td>
-      <td>{row.categoryName}</td>
+      <td>[{row.locationX},{row.locationY}]</td>
+      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
-}
-
-export default MixInList(
-  getFarms,
-  data => (
+  return (
     <table>
       <thead>
         <tr>
           <th>번호</th>
           <th>이미지</th>
-          <th>작물명</th>
-          <th>설명</th>
-          <th>분류번호</th>
-          <th>분류명</th>
+          <th>밭이름</th>
+          <th>좌표</th>
+          <th>비고</th>
         </tr>
       </thead>
       <tbody>
-        {data?.farms?.map && data.farms.map(Row)}
+        {data.map && data.map(Row)}
+        <tr>
+          <td colspan="5"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
+        </tr>
       </tbody>
     </table>
-  )
-);
-*/
-
-function FarmAddMain() {
-  return (<></>);
-}
-
-function FarmDetailMain({
-  id,
-}) {
-  return (
-    <>{id}</>
   );
 }
 
-function FarmListMain({
-  detail
-}) {
-  return (
-    <button onClick={() => detail(2)}>1번 리스트</button>
-  );
+function reducer(state, action) {
+  if(action.type === 'fetched') {
+    return {
+      ...state,
+      type: 'list',
+      current: action.result._meta.page.current,
+      last: action.result._meta.page.last,
+      data: action.result.farms,
+    };
+  }
+  if(action.type === 'page') {
+    return {
+      ...state,
+      type: 'list',
+      current: action.page,
+    };
+  }
+  if(action.type === 'id') {
+    return {
+      ...state,
+      type: 'edit',
+      id: action.id,
+    };
+  }
+  if(action.type === 'refresh') {
+    return {
+      ...state,
+      type: 'pending',
+      data: null,
+    };
+  }
+  if(action.type === 'add') {
+    return {
+      ...state,
+      type: 'add',
+    }
+  }
+  return state;
 }
 
+function alerter(err) {
+  alert(err.message);
+}
 
 export default function Farm() {
-  const [ meta, setMeta ] = React.useState({
-    id: null,
-    type: 'list',
-    pageMax: 1,
-    data: null,
+  const view = useViewDispatch({
+    effect(state, dispatch) {
+      if(state.type === 'pending') {
+        const result = getFarms().catch(alerter);
+        result.then(result => {
+          dispatch({
+            type: 'fetched',
+            result,
+          });
+        });
+      }
+    },
+    view(state, dispatch) {
+      if(state.type === 'pending') {
+        return <>...</>;
+      }
+      if(state.type === 'list') {
+        return <FarmListMain data={state.data} dispatch={dispatch} />
+      }
+      if(state.type === 'edit') {
+        return <FarmDetailMain id={state.id} dispatch={dispatch} />
+      }
+      if(state.type === 'add') {
+        return <FarmAddMain id={null} dispatch={dispatch} />
+      }
+      return null;
+    },
+    reducer,
+    initialValue: {
+      type: 'pending',
+      current: 1,
+      last: 1,
+      data: null,
+      id: null,
+    },
   });
-  const [ currentPage, setCurrentPage ] = React.useState(1);
+  return view;
 
-  const detail = (id) => {
-    setMeta({
-      id,
-      type: 'edit',
-      pageMax: meta.pageMax,
-      data: meta.data,
-    });
-  };
-  const changePage = page => {
-    if(meta.pageMax < page) {
-      setCurrentPage(meta.pageMax);
-    } else if(1 > page) {
-      setCurrentPage(0);
+  /*
+  const [ state, dispatch ] = React.useReducer(reducer, {
+    type: 'pending',
+    current: 1,
+    last: 1,
+    data: null,
+    id: null,
+  });
+  React.useLayoutEffect(() => {
+    if(state.type === 'pending') {
+      const result = getFarms().catch(alerter);
+      result.then(result => {
+        dispatch({
+          type: 'fetched',
+          result,
+        });
+      });
     }
-  }
-  const fetched = data => {
-    setMeta({
-      id: meta.id,
-      type: meta.type,
-      pageMax: data._meta.pageSize,
-      data: data.farms,
-    });
-  }
+  }, [ state ]);
   const view = React.useMemo(() => {
-    if(meta.type === 'list') {
-      return <FarmListMain detail={detail} changePage={changePage} />
-    } else if(meta.type === 'edit') {
-      return <FarmDetailMain id={meta.id} />
+    if(state.type === 'pending') {
+      return <>...</>;
+    }
+    if(state.type === 'list') {
+      return <FarmListMain data={state.data} dispatch={dispatch} />
+    }
+    if(state.type === 'edit') {
+      return <FarmDetailMain id={state.id} dispatch={dispatch} />
+    }
+    if(state.type === 'add') {
+      return <FarmAddMain id={null} dispatch={dispatch} />
     }
     return null;
-  }, [ meta ]);
-
-  return (
-    <div>
-      {view}
-    </div>
-  );
+  }, [ state ]);
+  */
 }
