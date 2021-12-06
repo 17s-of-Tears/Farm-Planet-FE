@@ -3,10 +3,11 @@ import AdminLogin from './AdminLogin'
 import AdminLogout from './AdminLogout'
 import Banner from './Banner'
 import BoardNotice from './BoardNotice'
-
 import Category from './Category'
 import CategoryWrite from './CategoryWrite'
 import CategoryDetail from './CategoryDetail'
+import Farm from './Farm'
+import FarmEditor from './FarmEditor'
 import Plant from './Plant'
 import User from './User'
 import { getMyInfo } from './ajax'
@@ -36,6 +37,8 @@ export default function HW() {
     {state.data?.status === 'NOT_LOGIN' && <AdminLogin />}
     {state.data?.status === 'LOGIN' && <AdminLogout />}
     {state.data?.status === 'LOGIN' && <Accounts />}
+    {state.data?.status === 'LOGIN' && <Farm />}
+    {state.data?.status === 'LOGIN' && <FarmEditor id={4} />}
     {state.data?.status === 'LOGIN' && <Banner />}
     {state.data?.status === 'LOGIN' && <BoardNotice />}
     {state.data?.status === 'LOGIN' && <Category />}

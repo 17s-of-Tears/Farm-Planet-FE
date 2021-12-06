@@ -279,3 +279,52 @@ export async function updateUser({
     },
   });
 }
+
+export async function getFarms() {
+  const result = await axios({
+    method: 'GET',
+    url: '/api/v1/admin/farm',
+  });
+  return result.data;
+}
+
+export async function getFarm({
+  id
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/farm/${id}`,
+  });
+  return result.data;
+}
+
+export async function postFarm(formData) {
+  await axios({
+    method: 'POST',
+    url: '/api/v1/admin/farm',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function updateFarm(id, formData) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/farm/${id}`,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function deleteFarm({
+  id,
+}) {
+  await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/farm/${id}`,
+  });
+}

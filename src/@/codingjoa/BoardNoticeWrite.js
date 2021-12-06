@@ -2,7 +2,13 @@ import * as ReactRouter from 'react-router-dom'
 import { useInputRef, useInputRefHandlar } from './hook'
 import { postBoardNotice } from './ajax'
 
-export default function BoardNoticeWrite() {
+export default function BoardNoticeWrite({
+  setId,
+}) {
+  const handleClick = e => {
+    e.preventDefault();
+    setId(null);
+  };
   const history = ReactRouter.useHistory();
   const title = useInputRef('');
   const content = useInputRef('');
@@ -21,9 +27,12 @@ export default function BoardNoticeWrite() {
   });
   return (
     <div>
-      <button onClick={handleSubmit}>글작성</button><br />
-      <input ref={title}></input><br />
-      <input ref={content}></input>
+      <a href="#" onClick={handleClick}>뒤로</a>
+      <div>
+        <input ref={title}></input><br />
+        <input ref={content}></input><br />
+        <button onClick={handleSubmit}>글작성</button>
+      </div>
     </div>
   );
 }
