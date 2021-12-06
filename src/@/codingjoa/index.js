@@ -1,5 +1,4 @@
 import Accounts from './Accounts'
-import AdminLogin from './AdminLogin'
 import AdminLogout from './AdminLogout'
 import Banner from './Banner'
 import BoardNotice from './BoardNotice'
@@ -34,7 +33,6 @@ export default function HW() {
   });
   return (
   <View>
-    {state.data?.status === 'NOT_LOGIN' && <AdminLogin />}
     {state.data?.status === 'LOGIN' && <AdminLogout />}
     {state.data?.status === 'LOGIN' && <Accounts />}
     {state.data?.status === 'LOGIN' && <Farm />}

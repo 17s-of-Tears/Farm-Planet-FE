@@ -2,6 +2,17 @@ import { signAdmin } from './ajax'
 import { useAsyncView } from './hook'
 import { Refresh } from './component'
 
+export default async function login(id, password) {
+  try {
+    await signAdmin({
+      id, password
+    });
+  } catch(err) {
+    return false;
+  }
+  return true;
+}
+/*
 export default function AdminLogin(props) {
   const [ View, state, force ] = useAsyncView((payload, callback) => {
     signAdmin(payload).then(() => {
@@ -30,3 +41,4 @@ export default function AdminLogin(props) {
     </>
   );
 }
+*/

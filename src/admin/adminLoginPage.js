@@ -1,16 +1,13 @@
 import { Form, Input, Button } from 'antd';
 import './adminLogin.css'
-import '@/codingjoa/AdminLogin'
+import login from '@/codingjoa/AdminLogin'
 
 // import AdminLogin from '@/codingjoa/AdminLogin';
 
 const AdminLoginPage = () => {
-  const onFinish = (values) => {
-               
-      let body = {
-          id: values.id,
-          password: values.password,
-      };
+  const onFinish = async (values) => {
+    const success = await login(values.id, values.password);
+    alert(`성공 여부: ${success}`);
       // axios
       //     .post("http://txshi.iptime.org:49000/api/v1/sign", body)
       //     .then((res) => history.push('/profile'));
@@ -26,10 +23,10 @@ const AdminLoginPage = () => {
       <Form
         name="basic"
         labelCol={{
-          span: 4,          
+          span: 4,
         }}
         wrapperCol={{
-          span: 20,      
+          span: 20,
         }}
         initialValues={{
           remember: false,
