@@ -2,7 +2,7 @@ import { signAdmin } from './ajax'
 import { useAsyncView } from './hook'
 import { Refresh } from './component'
 
-export default function AdminLogin() {
+export default function AdminLogin(props) {
   const [ View, state, force ] = useAsyncView((payload, callback) => {
     signAdmin(payload).then(() => {
       callback({

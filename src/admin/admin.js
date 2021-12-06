@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState,Suspense, lazy} from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
-
 import './admin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
+  SnippetsOutlined,
+  FormOutlined,
+  DatabaseOutlined,  
   UserOutlined,
+  
 } from '@ant-design/icons';
+const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice'));
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -28,48 +28,47 @@ const Admin = (props) => {
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={test}>
-            <Menu.Item key="option1" icon={<PieChartOutlined />}>
-              option 1
-            </Menu.Item>
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={test}>      
 
-            <Menu.Item key="option2" icon={<DesktopOutlined />} title="option2">
-              option 2
-            </Menu.Item>
+            <SubMenu key="sub1" icon={<FormOutlined />} title="공지사항">
+              <Menu.Item key="notice">공지사항</Menu.Item>
+              <Menu.Item key="faq">FAQ</Menu.Item>              
+            </SubMenu>           
 
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="option3">Tom</Menu.Item>
-              <Menu.Item key="option4">Bill</Menu.Item>
-              <Menu.Item key="option5">Alex</Menu.Item>
+            <SubMenu key="sub2" icon={<UserOutlined />} title="사용자 관리">
+              <Menu.Item key="managerList">관리자 목록</Menu.Item>              
+              <Menu.Item key="memberList">회원목록</Menu.Item>              
             </SubMenu>
 
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="option6">Team 1</Menu.Item>
-              <Menu.Item key="option7">Team 2</Menu.Item>
+            <SubMenu key="sub3" icon={<DatabaseOutlined />} title="식물관련">
+              <Menu.Item key="plantList">식물 목록</Menu.Item>              
+              <Menu.Item key="plantCategoryList">식물 카테고리 목록</Menu.Item>
             </SubMenu>
 
-            <Menu.Item key="option8" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
+            <SubMenu key="sub4" icon={<SnippetsOutlined />} title="기타콘텐츠 관련">
+              <Menu.Item key="banner">배너 관리</Menu.Item>
+              <Menu.Item key="field">밭 관리</Menu.Item>              
+              <Menu.Item key="subscribe">구독 관리</Menu.Item>
+            </SubMenu>
+
+            
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+          <Content style={{ margin: '0 16px' }}>            
             
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              <Switch>
-                <Route path='/admin/option1'> 
-                  option1
-                </Route>
-                <Route path='/admin/option2'>
-                  option2
-                </Route>     
-              </Switch>
+              <Suspense fallback={<div>loading...</div>}>
+                <Switch>
+                  <Route path='/admin/notice'> 
+                    <BoardNotice />
+                  </Route>
+                  <Route path='/admin/faq'>
+                    option2
+                  </Route>     
+                </Switch>
+              </Suspense>
             </div>
             
           </Content>
