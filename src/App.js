@@ -11,7 +11,8 @@ import PlantList from './plantCategoryList/plantCategoryList';
 import DetailPlant from './detailPlant/detailPlant'
 import Footer from './footer/footer';
 import CustomerCenter from './customer-center/customer-center';
-import Admin from './admin/admin';
+import AdminLoginPage from './admin/adminLoginPage';
+import Admin from 'admin/admin';
 import Subscript from './subscript/subscript';
 import Codingjoa from '@/codingjoa'
 
@@ -68,6 +69,9 @@ function App() {
           </Route>
           <Route path='/admin'>
             <Admin />
+          </Route>
+          <Route path='/adminLoginPage'>
+            <AdminLoginPage />
           </Route>
           <Route path='/subscript'>
             <Subscript />

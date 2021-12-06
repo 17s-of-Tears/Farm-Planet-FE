@@ -1,0 +1,14 @@
+.AdminLoginPage{
+  width: 100%;
+  padding: 100px 0;
+}
+.AdminLoginPage .imageBox{
+  margin-bottom: 50px;
+}
+.ant-form{
+  width: 60%;
+  margin: 0 auto;
+}
+.ant-form-item-control-input-content{
+  text-align: right;
+}
