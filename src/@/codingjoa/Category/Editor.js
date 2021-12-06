@@ -1,5 +1,4 @@
 import React from 'react'
-import * as ReactRouter from 'react-router-dom'
 import { postCategory, updateCategory, deleteCategory } from '@/codingjoa/ajax'
 import { useInputRef, useInputRefHandlar } from '@/codingjoa/hook'
 
@@ -39,8 +38,8 @@ export default function Editor({
     <div>
       <input ref={name} /><br />
       <input ref={image} type="file" /><br />
-      <button onClick={complete}>수정</button>
-      <button onClick={complete}>삭제</button>
+      <button onClick={handleSubmit}>적용</button>
+      <button onClick={handleDelete}>삭제</button>
       <button onClick={complete}>취소</button>
     </div>
   );
