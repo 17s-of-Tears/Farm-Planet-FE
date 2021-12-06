@@ -1,5 +1,5 @@
 import './App.css';
-import {Suspense, lazy} from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { Route, Switch, Link } from 'react-router-dom';
 import SignUp from './pages/signUp';
 import Login from './pages/login';
@@ -15,10 +15,25 @@ import AdminLoginPage from './admin/adminLoginPage';
 import Admin from 'admin/admin';
 import Subscript from './subscript/subscript';
 import Codingjoa from '@/codingjoa'
+import axios from 'axios';
 
-const PlantCategoryView = lazy(()=> import('./plantCategoryView/plantCategoryView'));
+
+const PlantCategoryView = lazy(() => import('./plantCategoryView/plantCategoryView'));
+
 
 function App() {
+
+  let [me, setMe] = useState();
+
+  useEffect(() => {
+    axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
+      .then(res => {setMe(res.data)
+      console.log(res)})
+      .catch(err => console.log(err))
+  }, [setMe]);
+
+  console.log(me);
+
   return (
     <div className="App">
       <ul>
@@ -38,7 +53,7 @@ function App() {
       <Suspense fallback={<div>loading...</div>}>
         <Switch>
           <Route exact path='/'>
-            <MainHome></MainHome>
+            <MainHome me={me} />
             <Footer></Footer>
           </Route>
           <Route path='/codingjoa'>
@@ -51,7 +66,7 @@ function App() {
             <Login />
           </Route>
           <Route path='/profile'>
-            <Profile />
+            <Profile me={me} />
           </Route>
           <Route path='/myplant'>
             <WatchMmyPlant />
