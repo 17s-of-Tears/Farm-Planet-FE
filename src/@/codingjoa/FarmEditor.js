@@ -1,11 +1,13 @@
 import React from 'react'
 import * as ReactRouter from 'react-router-dom'
-import { getFarm, postFarm, updateFarm } from './ajax'
-import { useAsyncView, useInputRef, useInputRefHandlar } from './hook'
+import { getFarm, postFarm, updateFarm, deleteFarm } from './ajax'
+import { useInputRef, useInputRefHandlar } from './hook'
+import { MixInEditor } from './mixin'
 
-function FarmEditor({
+function FarmEditorModel({
   id,
   payload,
+  onSubmit,
 }) {
   const history = ReactRouter.useHistory();
   const name = useInputRef(payload?.name ?? '');
@@ -16,40 +18,89 @@ function FarmEditor({
   const image = React.useRef(null);
   const imageView = (payload?.imageUrl) ? <img height="64px" src={`https://codingjoa.kro.kr:49000/${payload.imageUrl}`} alt={`farm_id${id}`} /> : null;
   const handleSubmit = useInputRefHandlar(formData => {
+    onSubmit(formData, () => history.go('/codingjoa'));
+    /*
     if(id===null) {
       postFarm(formData).then(() => history.go('/codingjoa'), err => 0);
     } else {
       updateFarm(id, formData).then(() => history.go('/codingjoa'), err => 0);
     }
+    */
   }, {
     name, yard, address, locationX, locationY, image,
   });
+  const handleDelete = id>0 && (e => {
+    e.preventDefault();
+    deleteFarm({ id }).then(() => history.go('/codingjoa'), err => 0);
+  });
   return (
-    <div>
-      <div>
-        이름 <input ref={name} />
-      </div>
-      <div>
-        이미지 {imageView}
-        <input ref={image} type="file" />
-      </div>
-      <div>
-        평수 <input ref={yard} type="number" />
-      </div>
-      <div>
-        주소 <input ref={address} />
-      </div>
-      <div>
-        카카오 지도 좌표 X<input ref={locationX} />
-      </div>
-      <div>
-        카카오 지도 좌표 Y<input ref={locationY} />
-      </div>
-      <button onClick={handleSubmit}>등록</button>
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <th>번호</th>
+          <td>{id}</td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td><input ref={name} /></td>
+        </tr>
+        <tr>
+          <th rowspan="2">이미지</th>
+          <td>{imageView}</td>
+        </tr>
+        <tr>
+          <input ref={image} type="file" />
+        </tr>
+        <tr>
+          <th>평수</th>
+          <td><input ref={yard} type="number" /></td>
+        </tr>
+        <tr>
+          <th>주소 </th>
+          <td><input ref={address} /></td>
+        </tr>
+        <tr>
+          <th>카카오 지도 좌표 X</th>
+          <td><input ref={locationX} /></td>
+        </tr>
+        <tr>
+          <th>카카오 지도 좌표 Y</th>
+          <td><input ref={locationY} /></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button onClick={handleSubmit}>등록</button>
+            <button onClick={handleDelete} disabled={!handleDelete}>삭제</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }
 
+
+const FarmEditor = MixInEditor(
+  getFarm,
+  (id, formData, callback) => {
+    updateFarm(id, formData).then(() => callback(), err => 0);
+  },
+  FarmEditorModel,
+);
+export default function FarmEditorMain() {
+  //const params = ReactRouter.useParams();
+  const params = { id: 4 };
+  return <>{params.id>0 && <FarmEditor id={params.id} />}</>
+}
+
+const FarmEditor2 = MixInEditor(
+  null,
+  (id, formData, callback) => {
+    postFarm(formData).then(() => callback(), err => 0);
+  },
+  FarmEditorModel,
+);
+
+/*
 export default function FarmEditorMain({
   id
 }) {
@@ -77,3 +128,4 @@ export default function FarmEditorMain({
     </>
   );
 }
+*/
