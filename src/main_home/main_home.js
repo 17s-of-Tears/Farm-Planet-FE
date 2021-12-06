@@ -6,23 +6,17 @@ import { useHistory } from "react-router-dom";
 import './main_home.css';
 import '../css/css_noamlfont.css';
 import News from './news'
-import axios from 'axios';
 
 
 const MainHome = (props) => {
 
   const history = useHistory();
 
-  const me = () => {
-    axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
-  }
-
   useEffect(() => {
-    if(me){
+    if(props.me){
       history.push('/profile')
-    }else{
+    }
+    if(!props.me){
       history.push('/')
     }
   });
