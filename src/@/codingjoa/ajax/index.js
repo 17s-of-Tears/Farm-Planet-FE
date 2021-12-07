@@ -99,7 +99,7 @@ export async function getBanners() {
 }
 
 export async function postBanner(formData) {
-  const result = await axios({
+  await axios({
     method: 'POST',
     url: `/api/v1/admin/category/banner`,
     data: formData,
@@ -109,7 +109,7 @@ export async function postBanner(formData) {
 export async function deleteBanner({
   id
 }) {
-  const result = await axios({
+  await axios({
     method: 'DELETE',
     url: `/api/v1/admin/category/banner/${id}`,
   });
@@ -134,7 +134,7 @@ export async function getCategory({
 }
 
 export async function postCategory(formData) {
-  const result = await axios({
+  await axios({
     method: 'POST',
     url: '/api/v1/admin/category',
     headers: {
@@ -145,7 +145,7 @@ export async function postCategory(formData) {
 }
 
 export async function updateCategory(id, formData) {
-  const result = await axios({
+  await axios({
     method: 'PUT',
     url: `/api/v1/admin/category/${id}`,
     headers: {
@@ -158,7 +158,7 @@ export async function updateCategory(id, formData) {
 export async function deleteCategory({
   id
 }) {
-  const result = await axios({
+  await axios({
     method: 'DELETE',
     url: `/api/v1/admin/category/${id}`,
   });
