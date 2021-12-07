@@ -37,12 +37,20 @@ export default function Editor({
     );
   } : null;
   return (
-    <div>
-      <input ref={title}></input><br />
-      <input ref={content}></input><br />
-      <button onClick={handleSubmit}>적용</button>
-      <button onClick={handleDelete} disabled={!handleDelete}>삭제</button>
-      <button onClick={() => dispatch({ type: 'refresh' })}>취소</button>
+    <div className="adminBoardNotice-Write">      
+      <div className="noticeForm">
+        <h5>* 제목</h5>
+          <input ref={title} type="text" className="noticeTitle"></input><br />
+        <h5>* 내용</h5>
+          <textarea ref={content} type="textarea" className="noticeText" rows="10"></textarea><br />
+        <div className="btnBox">
+          <button onClick={() => dispatch({ type: 'refresh' })} className="cancelBtn">뒤로</button>
+          {handleDelete && <button onClick={handleDelete} className="deleteBtn">삭제</button> }            
+          <button onClick={handleSubmit} className="submitBtn">글작성</button>
+                           
+        </div>      
+      </div>
     </div>
+   
   );
 }

@@ -37,26 +37,29 @@ function BoardNoticeList({
       <td>{row.title}</td>
       <td>{row.createdAt}</td>
       <td>{row.hit}</td>
-      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
+      <td><button className="updateBtn" onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
 
-  return <table>
-    <thead>
-      <tr>
-        <td>번호</td>
-        <td>제목</td>
-        <td>작성일</td>
-        <td>조회수</td>
-      </tr>
-    </thead>
-    <tbody>
-      {data.map && data.map(Row)}
-      <tr>
-        <td><button onClick={() => dispatch({ type: 'add' })}>작성</button></td>
-      </tr>
-    </tbody>
-  </table>;
+  return <div className="adminBoardNotice">
+    <table className="tableStyle_1">
+      
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>제목</td>
+          <td>작성일</td>
+          <td>조회수</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map && data.map(Row)}        
+      </tbody>
+    </table>
+
+    <button className="writeBtn" onClick={() => dispatch({ type: 'add' })}>작성</button>
+  </div>;
 }
 
 function reducer(state, action) {
