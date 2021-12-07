@@ -1,12 +1,64 @@
 import React from 'react'
-import { postPlant, updatePlant, deletePlant } from '@/codingjoa/ajax'
-import { useInputRef, useInputRefHandlar } from '@/codingjoa/hook'
+import { getCategories, postPlant, updatePlant, deletePlant } from '@/codingjoa/ajax'
+import { useViewDispatch, useInputRef, useInputRefHandlar } from '@/codingjoa/hook'
+
+function Option({
+  data,
+}) {
+  const Row = row => {
+    return <option key={row.id} value={`${row.id}`}>{row.name}</option>
+  };
+  return data.map ? data.map(Row) : null;
+}
+
 
 export default function Editor({
   id,
   payload,
   dispatch,
 }) {
+  const options = useViewDispatch({
+    effect(state, dispatch) {
+      if(state.type === 'pending') {
+        getCategories({}).then(
+          data => dispatch({
+            type: 'fetched',
+            result: data,
+          }),
+        );
+      }
+    },
+    view(state, dispatch) {
+      if(state.type === 'pending') {
+        return <option>...</option>
+      }
+      if(state.type === 'fetched') {
+        return <Option data={state.data} />
+      }
+      return null
+    },
+    reducer(state, action) {
+      if(action.type === 'pending') {
+        return {
+          ...state,
+          type: 'pending',
+          data: null,
+        };
+      }
+      if(action.type === 'fetched') {
+        return {
+          ...state,
+          type: 'fetched',
+          data: action.result.categories,
+        };
+      }
+      return state;
+    },
+    initialValue: {
+      type: 'pending',
+      data: null,
+    },
+  });
   const name = useInputRef(payload.name ?? '');
   const description = useInputRef(payload.description ?? '');
   const categoryId = useInputRef(`${payload.categoryId}` ?? '0');
@@ -38,16 +90,24 @@ export default function Editor({
     );
   } : null;
   return (
-    <tr>
-      <td>{id}</td>
-      <td><input type="file" ref={image} /></td>
-      <td><input ref={name} /></td>
-      <td><input ref={description} /></td>
-      <td><input ref={categoryId} type="number" /></td>
-      <td>
+    <div>
+      <div>
+        <h3>작물명</h3>
+        <input ref={name} />
+        <h3>설명</h3>
+        <textarea ref={description} rows="10"></textarea>
+        <h3>분류</h3>
+        <select ref={categoryId}>
+          {options}
+        </select>
+        <h3>이미지</h3>
+        <input type="file" ref={image} />
+      </div>
+      <div>
         <button onClick={handleSubmit}>등록</button>
         {handleDelete && <button onClick={handleDelete}>삭제</button>}
-      </td>
-    </tr>
+        <button onClick={() => dispatch({ type: 'refresh' })}>취소</button>
+      </div>
+    </div>
   );
 }

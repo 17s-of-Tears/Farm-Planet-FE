@@ -136,21 +136,3 @@ export default function Plant() {
   });
   return view;
 }
-
-/*
-<table>
-  <thead>
-    <tr>
-      <th>번호</th>
-      <th>이미지</th>
-      <th>작물명</th>
-      <th>설명</th>
-      <th>분류</th>
-    </tr>
-  </thead>
-  <tbody>
-    {edit}
-  </tbody>
-</table>
-
-*/
