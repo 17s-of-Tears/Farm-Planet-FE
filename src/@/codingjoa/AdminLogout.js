@@ -1,29 +1,48 @@
 import { signoutAdmin } from './ajax'
-import { useAsyncView } from './hook'
+import { useViewDispatch } from './hook'
 import { Refresh } from './component'
 
+function reducer(state, action) {
+  if(action.type === 'pending') {
+    return {
+      ...state,
+      type: 'pending',
+    }
+  }
+  if(action.type === 'redirect') {
+    return {
+      ...state,
+      type: 'redirect',
+    }
+  }
+  return state;
+}
+
 export default function AdminLogout() {
-  const [ View, state, force ] = useAsyncView((payload, callback) => {
-    signoutAdmin(payload).then(() => {
-      callback({
-        code: 1,
-      });
-    }, err => {
-      callback({
-        code: -1,
-        data: {
-          code: err?.response?.status,
-          message: err?.response?.data?.message,
-        },
-      });
-    });
-  }, null, { autostart: false });
-  return (
-    <>
-      <button onClick={() => force()}>로그아웃</button>
-      <View>
-        <Refresh />
-      </View>
-    </>
-  );
+  const view = useViewDispatch({
+    effect(state, dispatch) {
+      if(state.type === 'pending') {
+        signoutAdmin().then(
+          () => dispatch({ type: 'redirect' }),
+          () => dispatch({ type: 'redirect' }),
+        );
+      }
+    },
+    view(state, dispatch) {
+      if(state.type === 'idle') {
+        return <button onClick={() => dispatch({ type: 'pending' })}>로그아웃</button>;
+      } else if(state.type === 'pending') {
+        return <button disabled>로그아웃</button>;
+      } else if(state.type === 'redirect') {
+        return <Refresh />;
+      }
+      return null;
+    },
+    reducer,
+    initialValue: {
+      type: 'idle',
+    },
+  })
+
+  return view;
 }
