@@ -1,5 +1,6 @@
 import { getUsers, updateUser } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
+import { Pagination } from 'antd';
 
 function reducer(state, action) {
   if(action.type === 'fetched') {
@@ -11,18 +12,12 @@ function reducer(state, action) {
       data: action.result.users,
     };
   }
-  if(action.type === 'page') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.page,
-    };
-  }
   if(action.type === 'refresh') {
     return {
       ...state,
       type: 'pending',
       data: null,
+      current: action.page ?? state.current,
     };
   }
   return state;
@@ -51,6 +46,8 @@ function Rename({
 function UserListMain({
   data,
   dispatch,
+  current,
+  total,
 }) {
   const Row = (row, index) => (
     <tr key={index}>
@@ -61,26 +58,29 @@ function UserListMain({
     </tr>
   );
 
-  return <table className="tableStyle_1">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>이름</th>
-        <th>계정ID</th>
-        <th>생성일</th>
-      </tr>
-    </thead>
-    <tbody>
-      {data.map && data.map(Row)}
-    </tbody>
-  </table>;
+  return <div>
+    <table className="tableStyle_1">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>계정ID</th>
+          <th>생성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map && data.map(Row)}
+      </tbody>
+    </table>
+    <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
+  </div>;
 }
 
 export default function User() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getUsers({}).catch(err => 0).then(data => dispatch({
+        getUsers({ page: state.current }).catch(err => 0).then(data => dispatch({
           type: 'fetched',
           result: data,
         }));
@@ -91,7 +91,7 @@ export default function User() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <UserListMain data={state.data} dispatch={dispatch} />
+        return <UserListMain current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       return null;
     },

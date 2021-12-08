@@ -115,10 +115,13 @@ export async function deleteBanner({
   });
 }
 
-export async function getCategories() {
+export async function getCategories({
+  page = 1,
+  pageSize = 15,
+}) {
   const result = await axios({
     method: 'GET',
-    url: '/api/v1/admin/category',
+    url: `/api/v1/admin/category?page=${page}&pageSize=${pageSize}`,
   });
   return result.data;
 }
@@ -164,10 +167,13 @@ export async function deleteCategory({
   });
 }
 
-export async function getPlants() {
+export async function getPlants({
+  page = 1,
+  pageSize = 15,
+}) {
   const result = await axios({
     method: 'GET',
-    url: '/api/v1/admin/category/plant',
+    url: `/api/v1/admin/category/plant?page=${page}&pageSize=${pageSize}`,
   });
   return result.data;
 }
@@ -213,10 +219,13 @@ export async function deletePlant({
   });
 }
 
-export async function getAccounts() {
+export async function getAccounts({
+  page = 1,
+  pageSize = 15,
+}) {
   const result = await axios({
     method: 'GET',
-    url: '/api/v1/admin/account/',
+    url: `/api/v1/admin/account?page=${page}&pageSize=${pageSize}`,
   });
   return result.data;
 }
@@ -259,10 +268,13 @@ export async function resetPassword({
   return result.data?.password ?? null;
 }
 
-export async function getUsers() {
+export async function getUsers({
+  page = 1,
+  pageSize = 15,
+}) {
   const result = await axios({
     method: 'GET',
-    url: '/api/v1/admin/user',
+    url: `/api/v1/admin/user?page=${page}&pageSize=${pageSize}`,
   });
   return result.data;
 }
@@ -280,10 +292,13 @@ export async function updateUser({
   });
 }
 
-export async function getFarms() {
+export async function getFarms({
+  page = 1,
+  pageSize = 15,
+}) {
   const result = await axios({
     method: 'GET',
-    url: '/api/v1/admin/farm',
+    url: `/api/v1/admin/farm?page=${page}&pageSize=${pageSize}`,
   });
   return result.data;
 }

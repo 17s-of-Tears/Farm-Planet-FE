@@ -1,8 +1,8 @@
 import React from 'react'
 import { getPlants, getPlant } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
-
 import Editor from './Editor'
+import { Pagination } from 'antd';
 
 function PlantAddMain({
   dispatch,
@@ -31,6 +31,8 @@ function PlantDetailMain({
 function PlantListMain({
   data,
   dispatch,
+  current,
+  total,
 }) {
   const Row = (row, index) => (
     <tr key={index}>
@@ -43,21 +45,24 @@ function PlantListMain({
     </tr>
   );
 
-  return <table>
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>이미지</th>
-        <th>작물명</th>
-        <th>설명</th>
-        <th>분류명</th>
-        <th>비고</th>
-      </tr>
-    </thead>
-    <tbody>
-      {data.map && data.map(Row)}
-    </tbody>
-  </table>;
+  return <div>
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>이미지</th>
+          <th>작물명</th>
+          <th>설명</th>
+          <th>분류명</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map && data.map(Row)}
+      </tbody>
+    </table>
+    <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
+  </div>;
 }
 
 function reducer(state, action) {
@@ -68,13 +73,6 @@ function reducer(state, action) {
       current: action.result._meta.page.current,
       last: action.result._meta.page.last,
       data: action.result.plants,
-    };
-  }
-  if(action.type === 'page') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.page,
     };
   }
   if(action.type === 'id') {
@@ -89,6 +87,7 @@ function reducer(state, action) {
       ...state,
       type: 'pending',
       data: null,
+      current: action.page ?? state.current,
     };
   }
   if(action.type === 'add') {
@@ -104,7 +103,7 @@ export default function Plant() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getPlants({}).catch(err => 0).then(data => dispatch({
+        getPlants({ page: state.current }).catch(err => 0).then(data => dispatch({
           type: 'fetched',
           result: data,
         }));
@@ -115,7 +114,7 @@ export default function Plant() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <PlantListMain data={state.data} dispatch={dispatch} />
+        return <PlantListMain current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       if(state.type === 'edit') {
         return <PlantDetailMain id={state.id} dispatch={dispatch} />

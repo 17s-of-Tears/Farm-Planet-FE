@@ -2,6 +2,7 @@ import React from 'react'
 import { getCategories, getCategory } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
+import { Pagination } from 'antd';
 
 function reducer(state, action) {
   if(action.type === 'fetched') {
@@ -11,13 +12,6 @@ function reducer(state, action) {
       current: action.result._meta.page.current,
       last: action.result._meta.page.last,
       data: action.result.categories,
-    };
-  }
-  if(action.type === 'page') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.page,
     };
   }
   if(action.type === 'id') {
@@ -32,6 +26,7 @@ function reducer(state, action) {
       ...state,
       type: 'pending',
       data: null,
+      current: action.page ?? state.current,
     };
   }
   if(action.type === 'add') {
@@ -69,7 +64,9 @@ function CategoryDetailMain({
 
 function CategoryListMain({
   data,
-  dispatch
+  dispatch,
+  current,
+  total,
 }) {
   const Row = (row, index) => (
     <tr key={index}>
@@ -79,34 +76,37 @@ function CategoryListMain({
       <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
-  return <table>
-    <tr>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>이미지</th>
-          <th>분류명</th>
-          <th>비고</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map && data.map(Row)}
-        <tr>
-          <td colspan="4"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
-        </tr>
-      </tbody>
-    </tr>
-  </table>
+  return <div>
+    <table>
+      <tr>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>이미지</th>
+            <th>분류명</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map && data.map(Row)}
+          <tr>
+            <td colspan="4"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
+          </tr>
+        </tbody>
+      </tr>
+    </table>
+    <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
+  </div>;
 }
 
 export default function Category() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getCategories().catch(err => 0).then(data => dispatch({
+        getCategories({ page: state.current }).then(data => dispatch({
           type: 'fetched',
           result: data,
-        }));
+        }),err => 0);
       }
     },
     view(state, dispatch) {
@@ -114,7 +114,7 @@ export default function Category() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <CategoryListMain data={state.data} dispatch={dispatch} />
+        return <CategoryListMain current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       if(state.type === 'edit') {
         return <CategoryDetailMain id={state.id} dispatch={dispatch} />

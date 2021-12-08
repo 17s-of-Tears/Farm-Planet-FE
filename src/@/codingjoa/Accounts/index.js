@@ -1,7 +1,7 @@
 import React from 'react'
 import { getAccounts, postAccount, updateAccount, resetPassword } from '@/codingjoa/ajax'
 import { useViewDispatch, useInputRef, useInputRefHandlar } from '@/codingjoa/hook'
-
+import { Pagination } from 'antd';
 
 function reducer(state, action) {
   if(action.type === 'fetched') {
@@ -13,18 +13,12 @@ function reducer(state, action) {
       data: action.result.admins,
     };
   }
-  if(action.type === 'page') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.page,
-    };
-  }
   if(action.type === 'refresh') {
     return {
       ...state,
       type: 'pending',
       data: null,
+      current: action.page ?? state.current,
     };
   }
   return state;
@@ -100,6 +94,8 @@ function CreateAccount({
 function AccountListMain({
   data,
   dispatch,
+  current,
+  total,
 }) {
   const Row = (row, index) => {
     return (
@@ -142,6 +138,7 @@ function AccountListMain({
         {data.map && data.map(Row)}
       </tbody>
     </table>
+    <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
   </div>;
 }
 
@@ -150,10 +147,10 @@ export default function Accounts() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getAccounts().catch(err => 0).then(data => dispatch({
+        getAccounts({ page: state.current }).then(data => dispatch({
           type: 'fetched',
           result: data,
-        }));
+        }),err => 0);
       }
     },
     view(state, dispatch) {
@@ -161,7 +158,7 @@ export default function Accounts() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <AccountListMain data={state.data} dispatch={dispatch} />
+        return <AccountListMain current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       return null;
     },

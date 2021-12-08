@@ -2,6 +2,7 @@ import React from 'react'
 import { getFarms, getFarm } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
+import { Pagination } from 'antd';
 
 function FarmAddMain({
   dispatch
@@ -27,6 +28,8 @@ function FarmDetailMain({
 function FarmListMain({
   data,
   dispatch,
+  current,
+  total,
 }) {
   const Row = (row, index) => (
     <tr key={index}>
@@ -37,7 +40,7 @@ function FarmListMain({
       <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
-  return (
+  return <div>
     <table>
       <thead>
         <tr>
@@ -55,7 +58,8 @@ function FarmListMain({
         </tr>
       </tbody>
     </table>
-  );
+    <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
+  </div>;
 }
 
 function reducer(state, action) {
@@ -66,13 +70,6 @@ function reducer(state, action) {
       current: action.result._meta.page.current,
       last: action.result._meta.page.last,
       data: action.result.farms,
-    };
-  }
-  if(action.type === 'page') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.page,
     };
   }
   if(action.type === 'id') {
@@ -87,6 +84,7 @@ function reducer(state, action) {
       ...state,
       type: 'pending',
       data: null,
+      current: action.page ?? state.current,
     };
   }
   if(action.type === 'add') {
@@ -106,13 +104,12 @@ export default function Farm() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        const result = getFarms().catch(alerter);
-        result.then(result => {
+        getFarms({ page: state.current }).then(result => {
           dispatch({
             type: 'fetched',
             result,
           });
-        });
+        }, err => 0);
       }
     },
     view(state, dispatch) {
@@ -120,7 +117,7 @@ export default function Farm() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <FarmListMain data={state.data} dispatch={dispatch} />
+        return <FarmListMain current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       if(state.type === 'edit') {
         return <FarmDetailMain id={state.id} dispatch={dispatch} />
@@ -140,40 +137,4 @@ export default function Farm() {
     },
   });
   return view;
-
-  /*
-  const [ state, dispatch ] = React.useReducer(reducer, {
-    type: 'pending',
-    current: 1,
-    last: 1,
-    data: null,
-    id: null,
-  });
-  React.useLayoutEffect(() => {
-    if(state.type === 'pending') {
-      const result = getFarms().catch(alerter);
-      result.then(result => {
-        dispatch({
-          type: 'fetched',
-          result,
-        });
-      });
-    }
-  }, [ state ]);
-  const view = React.useMemo(() => {
-    if(state.type === 'pending') {
-      return <>...</>;
-    }
-    if(state.type === 'list') {
-      return <FarmListMain data={state.data} dispatch={dispatch} />
-    }
-    if(state.type === 'edit') {
-      return <FarmDetailMain id={state.id} dispatch={dispatch} />
-    }
-    if(state.type === 'add') {
-      return <FarmAddMain id={null} dispatch={dispatch} />
-    }
-    return null;
-  }, [ state ]);
-  */
 }
