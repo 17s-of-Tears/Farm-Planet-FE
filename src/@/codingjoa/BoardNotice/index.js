@@ -35,7 +35,7 @@ function BoardNoticeList({
   total,
 }) {
   const Row = (row, index) => (
-    <tr>
+    <tr key={row.id}>
       <td>{row.id}</td>
       <td>{row.title}</td>
       <td>{row.createdAt}</td>

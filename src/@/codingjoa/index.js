@@ -6,6 +6,7 @@ import Category from './Category'
 import Farm from './Farm'
 import Plant from './Plant'
 import User from './User'
+import Subscribe from './Subscribe'
 import { getMyInfo } from './ajax'
 import { useAsyncView } from './hook'
 
@@ -38,5 +39,6 @@ export default function HW() {
     {state.data?.status === 'LOGIN' && <Category />}
     {state.data?.status === 'LOGIN' && <Plant />}
     {state.data?.status === 'LOGIN' && <User />}
+    {state.data?.status === 'LOGIN' && <Subscribe />}
   </View>);
 }

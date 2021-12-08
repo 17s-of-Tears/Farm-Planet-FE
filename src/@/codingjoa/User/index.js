@@ -80,10 +80,10 @@ export default function User() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getUsers({ page: state.current }).catch(err => 0).then(data => dispatch({
+        getUsers({ page: state.current }).then(data => dispatch({
           type: 'fetched',
           result: data,
-        }));
+        }), err => 0);
       }
     },
     view(state, dispatch) {

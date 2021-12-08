@@ -68,8 +68,8 @@ function CategoryListMain({
   current,
   total,
 }) {
-  const Row = (row, index) => (
-    <tr key={index}>
+  const Row = row => (
+    <tr key={row.id}>
       <td>{row.id}</td>
       <td><img width="128px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`category_id${row.id}`} /></td>
       <td>{row.name}</td>
@@ -78,22 +78,20 @@ function CategoryListMain({
   );
   return <div>
     <table>
-      <tr>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>이미지</th>
-            <th>분류명</th>
-            <th>비고</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map && data.map(Row)}
-          <tr>
-            <td colspan="4"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
-          </tr>
-        </tbody>
-      </tr>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>이미지</th>
+          <th>분류명</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map && data.map(Row)}
+        <tr>
+          <td colSpan="4"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
+        </tr>
+      </tbody>
     </table>
     <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
   </div>;

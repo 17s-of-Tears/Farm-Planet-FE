@@ -343,3 +343,57 @@ export async function deleteFarm({
     url: `/api/v1/admin/farm/${id}`,
   });
 }
+
+export async function getSubscribes({
+  page = 1,
+  pageSize = 15,
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/subscribe?page=${page}&pageSize=${pageSize}`,
+  });
+  return result.data;
+}
+
+export async function getSubscribe({
+  id
+}) {
+  const subscribe = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/subscribe/${id}`,
+  });
+  const plants = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/subscribe/${id}/plant`,
+  });
+  return {
+    subscribe: subscribe.data,
+    plants: plants.data,
+  };
+}
+
+export async function getSubscribePlant({
+  subscribeId,
+  subscribePlantId,
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/subscribe/${subscribeId}/plant/${subscribePlantId}`,
+  });
+  return result.data;
+}
+
+export async function postSubscribePlant(
+  subscribeId,
+  subscribePlantId,
+  formData
+) {
+  await axios({
+    method: 'POST',
+    url: `/api/v1/admin/subscribe/${subscribeId}/plant/${subscribePlantId}`,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}

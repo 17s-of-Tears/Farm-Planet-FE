@@ -54,7 +54,7 @@ function FarmListMain({
       <tbody>
         {data.map && data.map(Row)}
         <tr>
-          <td colspan="5"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
+          <td colSpan="5"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
         </tr>
       </tbody>
     </table>
