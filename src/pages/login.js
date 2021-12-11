@@ -22,15 +22,21 @@ const Login = () => {
     };
 
     const submitHandler = () => {
-        console.log(id);
-        console.log(password);
-        let body = {
-            id: id,
-            password: password,
-        };
-        axios
-            .post("http://txshi.iptime.org:49000/api/v1/sign", body)
-            .then((res) => history.push('/profile'));
+        try {
+            console.log(id);
+            console.log(password);
+            let body = {
+                id: id,
+                password: password,
+            };
+            axios
+                .post("https://codingjoa.kro.kr:49000/api/v1/sign", body)
+                .then((res) => {
+                    console.log(res);
+                    history.push(`/profile`)});
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (

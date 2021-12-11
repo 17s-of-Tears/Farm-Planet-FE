@@ -9,7 +9,7 @@ const SignUp = () => {
     const [id, onChangeid] = useState('');
     const [nickname, onChangeNickname] = useState('');
     const [password, onChangePassword] = useState('');
-
+    const [name, onChangeName] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordError, setPasswordError] = useState(false);
     const onChangePasswordCheck = useCallback((e) => {
@@ -19,40 +19,44 @@ const SignUp = () => {
 
     const [term, setTerm] = useState('');
     const [termError, setTermError] = useState(false);
-    const onChangeTerm = useCallback((e)=>{
-         setTerm(e.target.checked);
-         setTermError(false);
-    },[]);
+    const onChangeTerm = useCallback((e) => {
+        setTerm(e.target.checked);
+        setTermError(false);
+    }, []);
 
     const idHandler = (e) => {
         e.preventDefault();
         onChangeid(e.target.value);
-      };
-
-      const nicknameHandler = (e) => {
+    };
+    const nameHandler = (e)=>{
+        e.preventDefault();
+        onChangeName(e.target.value);
+    }
+    const nicknameHandler = (e) => {
         e.preventDefault();
         onChangeNickname(e.target.value);
-      };
+    };
 
-      const passwordHandler = (e) => {
+    const passwordHandler = (e) => {
         e.preventDefault();
         onChangePassword(e.target.value);
-      };
+    };
 
-      const submitHandler = (e) => {
+    const submitHandler = (e) => {
         console.log(id);
         console.log(password);
         let body = {
-          id: id,
-          password: password,
+            id: id,
+            password: password,
+            name: name,
         };
         axios({
-          method: 'GET',
-          url: 'http://txshi.iptime.org:49000/api/v1/sign/up',
-          data: body,
-          withCredentials: true,
-        }).then((res) => history.push('/profile'));
-      };
+            method: 'POST',
+            url: 'https://codingjoa.kro.kr:49000/api/v1/sign/up',
+            data: body,
+            withCredentials: true,
+        }).then((res) => history.push('/login'));
+    };
 
     return (
         <>
@@ -65,10 +69,13 @@ const SignUp = () => {
                             <div>
                                 <input type="text" placeholder="id" name="user-id" value={id} onChange={idHandler} />
                             </div>
-
                             <label htmlFor='user-nick'>닉네임</label>
                             <div>
                                 <input name="user-nick" placeholder="nickname" value={nickname} required onChange={nicknameHandler} />
+                            </div>
+                            <label htmlFor='user-name'>이름</label>
+                            <div>
+                                <input name="user-name" placeholder="name" value={name} required onChange={nameHandler} />
                             </div>
                             <div>
                                 <input type="password" placeholder="password" id="user-password" value={password} onChange={passwordHandler} />
