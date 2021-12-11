@@ -3,6 +3,7 @@ import { getCategories, getCategory } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
 import { Pagination } from 'antd';
+import { FolderAddOutlined } from '@ant-design/icons';
 
 function reducer(state, action) {
   if(action.type === 'fetched') {
@@ -73,11 +74,11 @@ function CategoryListMain({
       <td>{row.id}</td>
       <td><img width="128px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`category_id${row.id}`} /></td>
       <td>{row.name}</td>
-      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
+      <td><button className="updateBtn" onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
-  return <div>
-    <table>
+  return <div className="adminCategoryList">
+    <table className="tableStyle_1">
       <thead>
         <tr>
           <th>번호</th>
@@ -88,11 +89,11 @@ function CategoryListMain({
       </thead>
       <tbody>
         {data.map && data.map(Row)}
-        <tr>
-          <td colSpan="4"><button onClick={() => dispatch({ type: 'add' })}>추가</button></td>
-        </tr>
       </tbody>
     </table>
+    <div className="btnLine">
+    <button onClick={() => dispatch({ type: 'add' })} className="addCategoryBtn"><FolderAddOutlined />추가</button>
+    </div>    
     <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
   </div>;
 }

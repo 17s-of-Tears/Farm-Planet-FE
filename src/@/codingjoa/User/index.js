@@ -40,7 +40,7 @@ function Rename({
       err => alert(`수정 실패. [${err?.response?.status}/${err?.response?.data?.message}]`)
     );
   };
-  return <button onClick={handleSubmit}>부적절한 닉네임 변경</button>;
+  return <button className="changeNicknameBtn" onClick={handleSubmit}>닉네임 변경</button>;
 }
 
 function UserListMain({
@@ -58,7 +58,7 @@ function UserListMain({
     </tr>
   );
 
-  return <div>
+  return <div className="adminUserList">
     <table className="tableStyle_1">
       <thead>
         <tr>

@@ -16,8 +16,8 @@ function AddBanner({
   })
   return (
     <>
-      <td><input ref={image} type="file" /></td>
-      <td><button onClick={handleSubmit}>제출</button></td>
+      <input ref={image} type="file" />
+      <button onClick={handleSubmit} className="submitBtn">등록</button>
     </>
   );
 }
@@ -64,28 +64,32 @@ function BannerListMain({
     return (
       <tr key={index}>
         <td><img width="240px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`banner_id${row.id}`} /></td>
-        <td><button onClick={handleDelete}>삭제</button></td>
+        <td><button onClick={handleDelete} className="deleteBtn">삭제</button></td>
       </tr>
     );
   };
 
-  return <table>
-    <thead>
-      <tr>
-        <th>이미지</th>
-        <th>비고</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <AddBanner dispatch={dispatch} />
-      </tr>
-      {data.map && data.map(Row)}
-    </tbody>
+  return <div className="adminBanner">
+    <h3>배너 추가</h3>
+    <div className="inputBox">
+      <AddBanner dispatch={dispatch} />
+    </div>            
 
+    <h3>배너 목록</h3>
+    <table className="tableStyle_1">
+      <thead>
+        <tr>
+          <th>이미지</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>        
+        {data.map && data.map(Row)}
+      </tbody>
+    </table>
 
-  </table>;
-}
+  </div>
+};
 
 export default function Banner() {
   const view = useViewDispatch({

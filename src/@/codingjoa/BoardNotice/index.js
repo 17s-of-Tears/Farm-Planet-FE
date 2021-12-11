@@ -3,6 +3,7 @@ import { getBoardNotices, getBoardNotice } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
 import { Pagination } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
 function BoardNoticeWrite({
   dispatch,
@@ -60,7 +61,11 @@ function BoardNoticeList({
         {data.map && data.map(Row)}
       </tbody>
     </table>
-    <button className="writeBtn" onClick={() => dispatch({ type: 'add' })}>작성</button>
+    
+    <div className="btnLine">
+      <button className="writeBtn" onClick={() => dispatch({ type: 'add' })}><EditOutlined />작성</button>
+    </div>
+    
     <Pagination onChange={page => dispatch({ type: 'refresh', page })} current={current} pageSize={1} total={total} />
   </div>;
 }

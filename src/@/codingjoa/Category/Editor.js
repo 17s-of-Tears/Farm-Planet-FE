@@ -35,12 +35,17 @@ export default function Editor({
     );
   };
   return (
-    <div>
-      <input ref={name} /><br />
-      <input ref={image} type="file" /><br />
-      <button onClick={handleSubmit}>적용</button>
-      <button onClick={handleDelete}>삭제</button>
-      <button onClick={complete}>취소</button>
+  <div className="amdinCategoryList-wirte">
+    <div className="inputBox">
+      <input ref={name} className="filePath" /><input ref={image} type="file" /><br />
     </div>
+
+    <div className="btnBox">      
+      <button onClick={complete} className="cancleBtn">취소</button>
+      <button onClick={handleDelete} className="deleteBtn">삭제</button>
+      <button onClick={handleSubmit} className="submitBtn">적용</button>            
+    </div>
+  </div>
+    
   );
 }

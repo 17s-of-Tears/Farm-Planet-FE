@@ -7,6 +7,7 @@
 .tableStyle_1{
   width: 100%;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 .tableStyle_1 thead {
   background-color: #dfe6e9;
@@ -56,9 +57,6 @@
   border-radius:5px;
   
 }
-.adminBoardNotice-Write .btnBox .submitBtn{background-color: #1890ff;color: white;border: none;}
-.adminBoardNotice-Write .btnBox .cancelBtn{border:1px solid #b2bec3;margin-right:10px;}
-.adminBoardNotice-Write .btnBox .deleteBtn{border:none;background-color: lightslategrey;color:white;margin-right:10px;}
 
 /* adminManager */
 
@@ -67,22 +65,176 @@
 }
 .adminManager h3{text-align: left;margin-bottom: 20px;}
 
-/* 공통 */
+.adminManager .addAccountBox {
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 20px;
+  padding:0 15px ;
+}
+.adminManager .addAccountBox .submitBtn{
+  width: 60px;
+  padding: 4px 0;
+  outline: none;
+  border: 1.5px solid #b2bec3;
+  border-radius: 5px;  
+  
+}
+.adminManager .addAccountBox input{
+  margin-right: 20px;
+  margin-left: 5px;
+  
+}
 
-.adminBoardNotice .writeBtn {
-  margin-top: 40px;
+/* CategoryWrite */
+.amdinCategoryList-wirte .inputBox{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.amdinCategoryList-wirte .inputBox .filePath{ 
+  font-size: 14px;
+  margin-right: 5px;
+  width: 300px;
+}
+
+/* Banner */
+
+.adminBanner .inputBox{
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+  padding-left: 10px;
+}
+.adminBanner .inputBox input{
+  margin-right: 5px;
+}
+.adminBanner h3{text-align: left;margin-bottom: 20px;}
+
+/* adminFarm-write */
+.adminFarm-write .btnBox{
+  text-align: right;
+}
+
+/* adminSubscribe */
+.adminSubscribe-detail .infoBox{
+  border: 1px solid #b2bec3;
+  padding: 10px 20px 30px;
+  border-radius: 5px;
+  border-bottom: 20px;
+}
+.adminSubscribe-detail .infoBox h5{
+  font-size: 18px;
+  text-align: left;
+  padding: 5px;
+}
+.adminSubscribe-detail .plantItem{
+  background-color: white;
+  width: 100%;
+  max-width: 128px;
+  display: flex;
+  flex-direction: column;
+  /*  */
+  border-radius: 5px ;
+}
+.adminSubscribe-detail .plantGridBox,.adminSubscribe-detail .farmGridBox{
+  border: 1px solid #b2bec3;
+  padding: 10px;
+  display: grid;
+}
+.adminSubscribe-detail .plantItem h6{  
+  margin: 0!important;
+  padding: 5px 0;
+  border-radius: 5px;
+  font-family: 'NotoSansKR_m';
+}
+.adminSubscribe-detail .plantItem .updateBtn{
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: 'NotoSansKR_m';
+  font-size: 14px;
+  border: solid 1px #b2bec3;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.adminSubscribe-detail .cancleBtn{
+  width: 120px;
+  padding: 4px 0;
+  outline: none;
+  border: #b2bec3 1px solid;
+  font-size: 16px;
+  border-radius:5px ;
+}
+
+/* 공통 */
+.tableStyle_2{
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border:#b2bec3 1px solid;
+}
+.tableStyle_2 th {
+  background-color: #dfe6e9;
+  border:#b2bec3 1px solid;
+}
+.tableStyle_2 td, th {
+  padding: 5px 0;
+}
+.tableStyle_2 tr {
+  border-bottom: #b2bec3 1px solid;    
+}
+
+.adminBoardNotice .btnLine,.adminCategoryList .btnLine{ 
+  display: flex;
+  justify-content: flex-end;
+}
+
+.adminBoardNotice .btnLine .writeBtn,.adminCategoryList .btnLine .addCategoryBtn {
   font-size: 18px;
   border:1px solid #b2bec3;
   border-radius:5px ;
-  padding: 8px 160px;
+  padding: 6px 20px;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.adminBoardNotice .btnLine span,.adminCategoryList .btnLine span {
+  margin-right: 5px;
 }
 
-.adminBoardNotice .updateBtn,.adminManager .initializeBtn,.adminManager .renameBtn{
+.adminBoardNotice .updateBtn,.adminManager .initializeBtn,.adminManager .renameBtn
+,.adminUserList .changeNicknameBtn,.adminPlantList .updateBtn,.adminCategoryList .updateBtn
+,.adminBoardNotice-Write .btnBox .submitBtn,.amdinCategoryList-wirte .btnBox .submitBtn,
+.adminBanner .inputBox .submitBtn,.adminFarm .updateBtn,.adminFarm-write .btnBox .submitBtn
+,.amdinSubscribe .updateBtn{
+  font-size: 14px;
   border:none;
   outline: none;
   background-color: #1890ff;
   border-radius:5px ;
-  padding: 4px 20px;
+  padding: 6px 20px;
   color:white;
+}
+
+.adminBoardNotice-Write .btnBox .cancelBtn,.amdinCategoryList-wirte .btnBox .cancleBtn
+,.adminFarm-write .btnBox .cancleBtn{  
+  font-size: 14px;
+  outline: none;
+  border:1px solid #b2bec3;
+  margin-right:10px;
+  border-radius:5px ;
+  padding: 6px 20px;
+}
+.adminBoardNotice-Write .btnBox .deleteBtn,.amdinCategoryList-wirte .btnBox .deleteBtn
+,.adminBanner .deleteBtn,.adminFarm-write .btnBox .deleteBtn{
+  outline: none;
+  font-size: 14px;
+  border:none;background-color: lightslategrey;
+  color:white;
+  margin-right:10px;
+  border-radius:5px ;
+  padding: 6px 20px;
 }

@@ -78,17 +78,11 @@ function CreateAccount({
     name,
     accountID
   });
-  return <tr>
-    <td>
-      <input ref={name} />
-    </td>
-    <td>
-      <input ref={accountID} />
-    </td>
-    <td>
-      <button onClick={handleSubmit}>제출</button>
-    </td>
-  </tr>;
+  return <>
+    이름: <input ref={name} />
+    Id: <input ref={accountID} /> 
+    <button onClick={handleSubmit} className="submitBtn">제출</button>
+  </>;
 }
 
 function AccountListMain({
@@ -111,18 +105,10 @@ function AccountListMain({
 
   return <div className="adminManager">
     <h3>계정 추가</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>이름</th>
-          <th>ID</th>
-          <th>비고</th>
-        </tr>
-      </thead>
-      <tbody>
+      <div className="addAccountBox">
         <CreateAccount dispatch={dispatch} />
-      </tbody>
-    </table>
+      </div>             
+    
     <h3>계정 목록</h3>
     <table  className="tableStyle_1">
       <thead>

@@ -106,24 +106,25 @@ function Detail({
   dispatch,
 }) {
   const Row = row => (
-    <div key={row.id}>
-      <h4>{row.name}</h4>
-      <img width="128px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} />
-      <button onClick={() => dispatch({ type: 'edit', id: row.id })}>관리</button>
+    <div key={row.id} className="plantItem"> 
+    <h6>{row.name}</h6>           
+      <div className="imageCardBox">
+        <img width="128px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} />        
+        <button onClick={() => dispatch({ type: 'edit', id: row.id })} className="updateBtn">관리</button>
+      </div>      
     </div>
   );
 
-  return <div>
-    <div>
-      <h3>{payload.subscribe.farmName}</h3>
-      <h5>{payload.subscribe.userName}</h5>
-      <div>구독일: {payload.subscribe.createdAt}</div>
-      <div>작물 수: {payload.subscribe.plants}</div>
-      <div>
-        <img width="128px" src={`https://codingjoa.kro.kr:49000/${payload.subscribe.imageUrl}`} />
-      </div>
+  return <div className="infoBox">   
+    <h5>이름 : {payload.subscribe.userName}</h5> 
+    <h5>구독일 : {payload.subscribe.createdAt}</h5>
+    <h5>밭 : {payload.subscribe.farmName}</h5>      
+    <div className="farmGridBox">
+      <img width="256px" src={`https://codingjoa.kro.kr:49000/${payload.subscribe.imageUrl}`} />
     </div>
-    <div>
+    
+    <h5>작물 수: {payload.subscribe.plants}</h5>
+    <div className="plantGridBox">
       {payload.plants.map && payload.plants.map(Row)}
     </div>
   </div>
@@ -147,12 +148,12 @@ function SubscribeDetailMain({
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <>
+        return <div className="adminSubscribe-detail">
           <Detail id={id} payload={state.data} dispatch={subDispatch} />
           <div>
-            <button onClick={() => dispatch({ type: 'refresh' })}>뒤로</button>
+            <button onClick={() => dispatch({ type: 'refresh' })} className="cancleBtn">뒤로</button>
           </div>
-        </>;
+        </div>;
       }
       if(state.type === 'edit') {
         return <PlantDetail subscribeId={id} subscribePlantId={state.subscribePlantId} dispatch={subDispatch} />
@@ -206,12 +207,12 @@ function SubscribeListMain({
       <td>{row.userName}</td>
       <td>{row.createdAt}</td>
       <td>{row.plants}</td>
-      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>관리</button></td>
+      <td><button onClick={() => dispatch({ type: 'id', id: row.id })} className="updateBtn">관리</button></td>
     </tr>
   );
 
-  return <div>
-    <table>
+  return <div className="amdinSubscribe">
+    <table className="tableStyle_1">
       <thead>
         <tr>
           <th>번호</th>

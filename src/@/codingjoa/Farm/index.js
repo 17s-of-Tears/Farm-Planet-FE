@@ -37,11 +37,11 @@ function FarmListMain({
       <td><img height="64px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} alt={`category_id${row.id}`} /></td>
       <td>{row.name}</td>
       <td>[{row.locationX},{row.locationY}]</td>
-      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
+      <td><button onClick={() => dispatch({ type: 'id', id: row.id })} className="updateBtn">수정</button></td>
     </tr>
   );
-  return <div>
-    <table>
+  return <div className="adminFarm">
+    <table className="tableStyle_1">
       <thead>
         <tr>
           <th>번호</th>

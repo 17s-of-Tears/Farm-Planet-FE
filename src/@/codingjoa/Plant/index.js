@@ -41,12 +41,12 @@ function PlantListMain({
       <td>{row.name}</td>
       <td>{row.description}</td>
       <td>{row.categoryName}</td>
-      <td><button onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
+      <td><button className="updateBtn" onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>
   );
 
-  return <div>
-    <table>
+  return <div className="adminPlantList">
+    <table className="tableStyle_1">
       <thead>
         <tr>
           <th>번호</th>

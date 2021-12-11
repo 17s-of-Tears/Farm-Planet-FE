@@ -28,22 +28,20 @@ export default function Editor({
     e.preventDefault();
     deleteFarm({ id }).then(() => complete(), err => 0);
   });
-  return (
-    <table>
+  return (<div className="adminFarm-write">
+    <table className="tableStyle_2">
       <tbody>
-        <tr>
-          <th>번호</th>
-          <td>{id}</td>
-        </tr>
+
+        {id &&<tr><th>번호</th><td>{id}</td></tr>}
         <tr>
           <th>이름</th>
           <td><input ref={name} /></td>
-        </tr>
+        </tr>        
         <tr>
           <th rowspan="2">이미지</th>
           <td>{imageView}</td>
         </tr>
-        <tr>
+        <tr>                    
           <input ref={image} type="file" />
         </tr>
         <tr>
@@ -61,15 +59,15 @@ export default function Editor({
         <tr>
           <th>카카오 지도 좌표 Y</th>
           <td><input ref={locationY} /></td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <button onClick={handleSubmit}>등록</button>
-            <button onClick={handleDelete} disabled={!handleDelete}>삭제</button>
-            <button onClick={() => complete()}>취소</button>
-          </td>
-        </tr>
+        </tr>       
       </tbody>
     </table>
+    <div className="btnBox">
+      <button onClick={() => complete()} className="cancleBtn">취소</button>    
+      {handleDelete &&<button onClick={handleDelete} className="deleteBtn" disabled={!handleDelete}>삭제</button>}
+      <button onClick={handleSubmit} className="submitBtn">등록</button>
+    </div>
+  </div>
+    
   );
 }

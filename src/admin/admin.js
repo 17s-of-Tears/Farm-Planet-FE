@@ -9,11 +9,16 @@ import {
   FormOutlined,
   DatabaseOutlined,  
   UserOutlined,
-  
 } from '@ant-design/icons';
-const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice/index'));
+
+const BoardNotice = lazy(()=> import('@/codingjoa/BoardNotice'));
 const Accounts = lazy(()=> import('@/codingjoa/Accounts'));
 const User = lazy(()=> import('@/codingjoa/User'));
+const Plant = lazy(()=> import('@/codingjoa/Plant'))
+const Category = lazy(()=> import('@/codingjoa/Category'))
+const Farm = lazy(()=> import('@/codingjoa/Farm'))
+const Banner = lazy(()=> import('@/codingjoa/Banner'))
+const Subscribe = lazy(()=> import('@/codingjoa/Subscribe'))
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -49,10 +54,9 @@ const Admin = (props) => {
 
             <SubMenu key="sub4" icon={<SnippetsOutlined />} title="기타콘텐츠 관련">
               <Menu.Item key="banner">배너 관리</Menu.Item>
-              <Menu.Item key="field">밭 관리</Menu.Item>              
+              <Menu.Item key="farm">밭 관리</Menu.Item>              
               <Menu.Item key="subscribe">구독 관리</Menu.Item>
             </SubMenu>
-
             
           </Menu>
         </Sider>
@@ -74,7 +78,22 @@ const Admin = (props) => {
                   </Route>
                   <Route path='/admin/memberList'>
                     <User />
-                  </Route>                      
+                  </Route>
+                  <Route path='/admin/plantList'>
+                    <Plant  />
+                  </Route>                  
+                  <Route path='/admin/plantCategoryList'>
+                    <Category  />
+                  </Route>
+                  <Route path='/admin/banner'>
+                    <Banner  />
+                  </Route>
+                  <Route path='/admin/farm'>
+                    <Farm  />
+                  </Route>               
+                  <Route path='/admin/subscribe'>
+                    <Subscribe  />
+                  </Route>                        
                 </Switch>
               </Suspense>
             </div>
