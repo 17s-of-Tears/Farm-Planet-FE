@@ -23,16 +23,6 @@ const PlantCategoryView = lazy(() => import('./plantCategoryView/plantCategoryVi
 
 function App() {
 
-  let [me, setMe] = useState();
-
-  useEffect(() => {
-    axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
-      .then(res => {setMe(res.data)
-      console.log(res)})
-      .catch(err => console.log(err))
-  }, [setMe]);
-
-  console.log(me);
 
   return (
     <div className="App">
@@ -53,7 +43,7 @@ function App() {
       <Suspense fallback={<div>loading...</div>}>
         <Switch>
           <Route exact path='/'>
-            <MainHome me={me} />
+            <MainHome />
             <Footer></Footer>
           </Route>
           <Route path='/codingjoa'>
@@ -66,7 +56,7 @@ function App() {
             <Login />
           </Route>
           <Route path='/profile'>
-            <Profile me={me} />
+            <Profile />
           </Route>
           <Route path='/myplant'>
             <WatchMmyPlant />
@@ -91,12 +81,6 @@ function App() {
           <Route path='/subscript'>
             <Subscript />
           </Route>
-          {/* <Route path='/profilemap'>
-            <ProfileMap />
-          </Route>
-          <Route path='/profilemyplantimage'>
-            <ProfileMyPlantImage />
-          </Route> */}
           <Route path="/plant-category-view" component={PlantCategoryView} />
         </Switch>
       </Suspense>
