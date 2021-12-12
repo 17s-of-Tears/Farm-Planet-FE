@@ -19,7 +19,7 @@
   align-items: center;
   cursor: pointer;
 }
-.headerBox .profileBox .sginupBtn{
+.headerBox .profileBox .sginupBtn,.headerBox .profileBox .logOutBtn{
   height: 40px;
   color:white;
   background-color: #1890ff;
@@ -29,4 +29,11 @@
   display: flex;align-items: center;
   margin-left: 30px;
   padding: 0 16px;
+}
+.headerBox .profileBox h5{
+  font-size: 18px;
+  margin: 0;
+}
+.ant-avatar{
+  margin-right: 10px;
 }
