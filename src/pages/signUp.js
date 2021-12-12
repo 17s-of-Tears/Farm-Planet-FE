@@ -29,11 +29,11 @@ const SignUp = () => {
         e.preventDefault();
         onChangeid(e.target.value);
     };
-    const nameHandler = (e)=>{
+    const nameHandler = (e) => {
         e.preventDefault();
         onChangeName(e.target.value);
     }
-    const numberHandler = (e)=>{
+    const numberHandler = (e) => {
         e.preventDefault();
         onChangeNumber(e.target.value);
     }
@@ -65,54 +65,49 @@ const SignUp = () => {
     };
 
     return (
-        <>
-            <Row>
-                <Col span={9}></Col>
-                <Col span={6}>
-                    <div className="signUpBox">
-                        <Form id="signUp" method="post" onFinish={submitHandler}>
-                            <label>회원가입</label>
-                            <div>
-                                <input type="text" placeholder="id" name="user-id" value={id} onChange={idHandler} />
-                            </div>
-                            <label htmlFor='user-nick'>닉네임</label>
-                            <div>
-                                <input name="user-nick" placeholder="nickname" value={nickname} required onChange={nicknameHandler} />
-                            </div>
-                            <label htmlFor='user-name'>이름</label>
-                            <div>
-                                <input name="user-name" placeholder="name" value={name} required onChange={nameHandler} />
-                            </div>
-                            <label htmlFor='user-name'>전화번호</label>
-                            <div>
-                                <input name="user-number" placeholder="number" value={number} required onChange={numberHandler} />
-                            </div>
-                            <div>
-                                <input type="password" placeholder="password" id="user-password" value={password} onChange={passwordHandler} />
-                            </div>
-                            <div>
-                                <input
-                                    placeholder="password-check"
-                                    name="user-password-check"
-                                    type="password"
-                                    value={passwordCheck}
-                                    required
-                                    onChange={onChangePasswordCheck} />
-                                {passwordError && <div>비밀번호가 일치하지 않습니다.</div>}
-                            </div>
-                            <div>
-                                <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>동의합니다</Checkbox>
-                                {termError && <div>약관에 동의하셔야 합니다</div>}
-                            </div>
-                            <div>
-                                <button className="signUpButton">회원가입 하기</button>
-                            </div>
-                        </Form>
-                    </div>
-                </Col>
-                <Col span={9}></Col>
-            </Row>
-        </>
+        <div className="signUpBox">
+            <label className="signupLabel">Sign Up</label>
+            <Form id="signUp" method="post" onFinish={submitHandler}>
+                <label>아이디</label>
+                <div>
+                    <input type="text" placeholder="id" name="user-id" value={id} onChange={idHandler} />
+                </div>
+                <label htmlFor='user-nick'>닉네임</label>
+                <div>
+                    <input name="user-nick" placeholder="nickname" value={nickname} required onChange={nicknameHandler} />
+                </div>
+                <label htmlFor='user-name'>이름</label>
+                <div>
+                    <input name="user-name" placeholder="name" value={name} required onChange={nameHandler} />
+                </div>
+                <label htmlFor='user-name'>전화번호</label>
+                <div>
+                    <input name="user-number" placeholder="number" value={number} required onChange={numberHandler} />
+                </div>
+                <label htmlFor='user-name'>비밀번호</label>
+                <div>
+                    <input type="password" placeholder="password" id="user-password" value={password} onChange={passwordHandler} />
+                </div>
+                <label htmlFor='user-name'>비밀번호 확인</label>
+                <div>
+                    <input
+                        placeholder="password-check"
+                        name="user-password-check"
+                        type="password"
+                        value={passwordCheck}
+                        required
+                        onChange={onChangePasswordCheck} />
+                    {passwordError && <div>비밀번호가 일치하지 않습니다.</div>}
+                </div>
+                <div>
+                    <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>동의합니다</Checkbox>
+                    {termError && <div>약관에 동의하셔야 합니다</div>}
+                </div>
+                <div>
+                    <button className="signUpButton">회원가입 하기</button>
+                </div>
+            </Form>
+        </div>
 
     )
 }

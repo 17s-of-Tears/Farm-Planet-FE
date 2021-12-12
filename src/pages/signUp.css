@@ -1,9 +1,18 @@
+.signupLabel{
+    font-size: 25px;
+    font-weight: bold;
+    margin:10px 10px 10px 10px;
+}
 .signUpBox{
-    border-radius: 35px;
-    border: 0px solid;
+    width:  700px;
+    height: 800px;
+    padding: 5%;
+    border: none;
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
-    background-color: #FCFCFC;
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%, -50%);
 }
 
 .signUpBox input {

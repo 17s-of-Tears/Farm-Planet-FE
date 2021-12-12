@@ -33,7 +33,8 @@ const Login = () => {
                 .post("https://codingjoa.kro.kr:49000/api/v1/sign", body)
                 .then((res) => {
                     console.log(res);
-                    history.push(`/profile`)});
+                    history.push(`/profile`)
+                });
         } catch (err) {
             console.error(err);
         }
@@ -44,10 +45,10 @@ const Login = () => {
             <label className="loginLabel">Login</label>
             <Form id="loginForm" method="post" onFinish={submitHandler}>
                 <div className="inputStyle">
-                    <input id="Id" type="text" value={id} onChange={idHandler} />
+                    <input id="Id" placeholder='id' type="text" value={id} onChange={idHandler} />
                 </div>
                 <div className="inputStyle">
-                    <input id="password" type="password" value={password} onChange={passwordHandler} />
+                    <input id="password" placeholder='password' type="password" value={password} onChange={passwordHandler} />
                 </div>
                 <div>
                     <button htmlType="submit" className="loginButton">로그인</button>
