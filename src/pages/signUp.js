@@ -10,6 +10,7 @@ const SignUp = () => {
     const [nickname, onChangeNickname] = useState('');
     const [password, onChangePassword] = useState('');
     const [name, onChangeName] = useState('');
+    const [number, onChangeNumber] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordError, setPasswordError] = useState(false);
     const onChangePasswordCheck = useCallback((e) => {
@@ -32,6 +33,10 @@ const SignUp = () => {
         e.preventDefault();
         onChangeName(e.target.value);
     }
+    const numberHandler = (e)=>{
+        e.preventDefault();
+        onChangeNumber(e.target.value);
+    }
     const nicknameHandler = (e) => {
         e.preventDefault();
         onChangeNickname(e.target.value);
@@ -49,6 +54,7 @@ const SignUp = () => {
             id: id,
             password: password,
             name: name,
+            number: number,
         };
         axios({
             method: 'POST',
@@ -76,6 +82,10 @@ const SignUp = () => {
                             <label htmlFor='user-name'>이름</label>
                             <div>
                                 <input name="user-name" placeholder="name" value={name} required onChange={nameHandler} />
+                            </div>
+                            <label htmlFor='user-name'>전화번호</label>
+                            <div>
+                                <input name="user-number" placeholder="number" value={number} required onChange={numberHandler} />
                             </div>
                             <div>
                                 <input type="password" placeholder="password" id="user-password" value={password} onChange={passwordHandler} />

@@ -9,19 +9,27 @@ import axios from 'axios';
 
 const Profile = () => {
 
-    let history = useHistory();
-
-    let [me, setMe] = useState();
+    let [me, setMe] = useState(null);
 
     useEffect(() => {
         axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
             .then(res => {
                 setMe(res.data);
                 console.log(me);
+               
             })
             .catch(err => console.log(err))
     }, []);
 
+    return (
+    <>{me && <MyProfile me={me} />}</>
+    );
+};
+
+function MyProfile(me){
+
+    let history = useHistory();
+    
     const onChange = (e) => {
 
     }
@@ -44,7 +52,7 @@ const Profile = () => {
                 <Col span={16}>
                     <div className="heightGroup">
                         <div className="setProfileImg">
-                            <img className="setProfileImgContent" src={me.profileImg? me.profileImg : null} />
+                            <img className="setProfileImgContent" src={me.profileImg? me.profileImg : `userDefaultImg.png` } />
                             <button className="changeProfileImgButton" onClick={changeProfileImg}>벝</button>
                             <div id="name">
                                 <p>{me.name? me.name : null}</p>
@@ -53,10 +61,10 @@ const Profile = () => {
                         <div className="setProfile">
                             <input type="text" name="myNicknameChange" onChange={onChange} class="nicknameInput" /><button class="nicknameChangeButton" onClick={changeMynickname}>별명 변경하기</button>
                             <p>{me.date ? me.date : null}</p>
-                            <p>{me.farm.yard ? me.farm.yard : null}</p>
+                            <p>{me.farm ? me.farm.yard : null}</p>
                             <p><a href={me.imageUrl ? me.imageUrl : null}>사진보기</a></p>
-                            <p>{me.farm.address ? me.farm.address : null}</p>
-                            <p>{me.farm.plants ? me.farm.plants : null}</p>
+                            <p>{me.farm ? me.farm.address : null}</p>
+                            <p>{me.farm ? me.farm.plants : null}</p>
                             <p>구독 해지</p>
                         </div>
                     </div>
@@ -79,6 +87,5 @@ const Profile = () => {
             </Row>
         </div>
     );
-};
-
+}
 export default Profile;
