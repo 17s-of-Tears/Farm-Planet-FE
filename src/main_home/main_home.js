@@ -22,6 +22,10 @@ const MainHome = (props) => {
   });
     
   const { Search } = Input;
+
+  function onSearch(value,e){
+    history.push('/signup',{number:value})
+  }
   return (
     <div className="MainHome">
       <div className="main_bannerBox">
@@ -31,7 +35,7 @@ const MainHome = (props) => {
           <p>다양한 작물을 키워보세요. 언제든 해지하실 수 있습니다.
           <br></br>농부가 될 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 전화번호를 입력하세요.</p>           
           <div className="searchBox">
-            <Search placeholder="전화번호를 입력하세요" enterButton="시작하기" size="large" />
+            <Search placeholder="전화번호를 입력하세요" enterButton="시작하기" size="large" onSearch={onSearch}/>
           </div>
         </div>
       </div>
