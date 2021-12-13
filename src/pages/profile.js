@@ -14,22 +14,26 @@ const Profile = () => {
     let [me, setMe] = useState(null);
 
     useEffect(() => {
-        axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
+        if(me === null) {
+          axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
             .then(res => {
-                setMe(res.data);
-                console.log(me);
+              setMe(res.data);
+              console.log(me);
             })
-            .catch(err => console.log(err))
-    }, []);
+            .catch(err => {
+              setMe(false);
+              console.log(err)
+            });
+        } else if(me === false) {
+          alert("로그인 없이는 접근 할 수 없어요!");
+          history.push("/login");
+        }
+      }, [ me ]);
 
-    if(!me){
-        alert("로그인 없이는 접근 할 수 없어요!")
-        history.push("/")
-    }
-    
     return (
         <>{me && <MyProfile me={me} />}</>
     );
+
 };
 
 

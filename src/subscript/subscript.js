@@ -1,10 +1,29 @@
 import Header from 'header/header';
-import React, {useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './subscript.css';
+import { useHistory } from 'react-router-dom';
 
 const Subscript = (props) => {
 
+  let history = useHistory();
+  let [me, setMe] = useState(null);
+  useEffect(() => {
+    if(me === null) {
+      axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
+        .then(res => {
+          setMe(res.data);
+          console.log(me);
+        })
+        .catch(err => {
+          setMe(false);
+          console.log(err)
+        });
+    } else if(me === false) {
+      alert("로그인 없이는 접근 할 수 없어요!");
+      history.push("/login");
+    }
+  }, [ me ]);
 
 
   return (
