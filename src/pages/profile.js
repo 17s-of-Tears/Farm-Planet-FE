@@ -8,7 +8,11 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 
 const Profile = () => {
+
+    let history = useHistory();
+
     let [me, setMe] = useState(null);
+
     useEffect(() => {
         axios.get("https://codingjoa.kro.kr:49000/api/v1/user/me")
             .then(res => {
@@ -17,10 +21,17 @@ const Profile = () => {
             })
             .catch(err => console.log(err))
     }, []);
+
+    if(!me){
+        alert("로그인 없이는 접근 할 수 없어요!")
+        history.push("/")
+    }
+    
     return (
         <>{me && <MyProfile me={me} />}</>
     );
 };
+
 
 function MyProfile(props) {
 
