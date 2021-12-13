@@ -43,7 +43,7 @@ function App() {
       <Suspense fallback={<div>loading...</div>}>
         <Switch>
           <Route exact path='/'>
-            <MainHome />
+            <MainHome  />
             <Footer></Footer>
           </Route>
           <Route path='/codingjoa'>
@@ -55,7 +55,7 @@ function App() {
           <Route path='/login'>
             <Login />
           </Route>
-          <Route path='/profile'>
+          <Route path='/profile' >
             <Profile />
           </Route>
           <Route path='/myplant'>

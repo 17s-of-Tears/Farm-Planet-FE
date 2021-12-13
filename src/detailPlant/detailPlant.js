@@ -8,7 +8,7 @@ import axios from 'axios';
 const DetailPlant = () => {
     const location = useLocation()
 
-    const plantData = location.state.plantData;    
+    const plantData = location.state.plantData;
 
     const plant = {
         id: plantData.id,
@@ -29,31 +29,25 @@ const DetailPlant = () => {
 
     return (
         <div className="wrapper">
-            <Row>
-                <Col span={8}></Col>
-                <Col span={8}>
-                    <div className="formWrapper">
-                        <form method="post">
-                            <div class="formBox">
-                                {/* <img src='public\temp\img\logo.png' alt='logo' /> */}
-                                <div>
-                                    <img className="imgStyle" src={plant.imgURL} alt='sweetPotato' />
-                                </div>
-                                <label className="plantName">{plant.name}</label>
-                                <div>
-                                    <p className='textRoom'>
-                                        {plant.content}
-                                    </p>
-                                </div>
-                                <div>
-                                    <button class="loginButton" onClick={sendPlant}>재배하기</button>
-                                </div>
-                            </div>
-                        </form>
+            <div className="formWrapper">
+                <form method="post">
+                    <div class="formBox">
+                         <img src="/img/temp_logo3.png" alt='logo' /> 
+                        <div>
+                            <img className="imgStyle" src={plant.imgURL} alt='sweetPotato' />
+                        </div>
+                        <label className="plantName">{plant.name}</label>
+                        <div>
+                            <p className='textRoom'>
+                                {plant.content}
+                            </p>
+                        </div>
+                        <div>
+                            <button class="loginButton" onClick={sendPlant}>재배하기</button>
+                        </div>
                     </div>
-                </Col>
-                <Col span={8}></Col>
-            </Row>
+                </form>
+            </div>
         </div>
     )
 }
