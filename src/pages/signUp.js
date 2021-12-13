@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import * as ReactRouter from 'react-router-dom'
 import './signUp.css'
 import { Row, Col, Checkbox, Form } from 'antd';
@@ -6,6 +6,7 @@ import axios from "axios";
 
 const SignUp = () => {
     const history = ReactRouter.useHistory();
+    const location = ReactRouter.useLocation();
     const [id, onChangeid] = useState('');
     const [nickname, onChangeNickname] = useState('');
     const [password, onChangePassword] = useState('');
@@ -63,6 +64,11 @@ const SignUp = () => {
             withCredentials: true,
         }).then((res) => history.push('/login'));
     };
+
+    useEffect(()=>{
+        if(location.state)     
+            onChangeNumber(location.state.number);
+    } ,[location.state])
 
     return (
         <div className="signUpBox">
