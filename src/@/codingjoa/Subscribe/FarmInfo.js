@@ -1,26 +1,6 @@
 import { closeSubscribe } from '@/codingjoa/ajax'
-
-function state(subscribed, pending) {
-  if(pending === 1) {
-    return '작물 선택 대기중';
-  }
-  if(subscribed === 1) {
-    return '구독중';
-  }
-  return '구독 만료됨';
-}
-
-function plan(level) {
-  switch(level) {
-    case 1:
-    return '베이직';
-    case 2:
-    return '스탠다드';
-    case 3:
-    return '프리미어';
-  }
-  return '';
-}
+import { Time } from '@/codingjoa/component/timestamp'
+import { state, plan } from './label'
 
 export default function FarmInfo({
   id,
@@ -52,12 +32,13 @@ export default function FarmInfo({
 
   return <div className="infoBox">
     <h5>이름 : {payload.subscribe.userName}</h5>
-    <h5>구독일 : {payload.subscribe.createdAt}</h5>
+    <h5>구독일 : <Time>{payload.subscribe.createdAt}</Time></h5>
     <h5>밭 : {payload.subscribe.farmName}</h5>
     <h5>주소 : {payload.subscribe.address}</h5>
     <h5>좌표 : [{payload.subscribe.locationX},{payload.subscribe.locationY}]</h5>
     <h5>구독 플랜 : {plan(payload.subscribe.level)}</h5>
     <h5>구독 상태 : {state(payload.subscribe.subscribed, payload.subscribe.pending)}</h5>
+    <h5>구독 만료일 : {payload.subscribe.expiredAt && <Time>{payload.subscribe.expiredAt}</Time>}</h5>
     <div className="farmGridBox">
       <img width="256px" src={`https://codingjoa.kro.kr:49000/${payload.subscribe.imageUrl}`} />
     </div>

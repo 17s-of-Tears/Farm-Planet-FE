@@ -1,10 +1,12 @@
 import React from 'react'
 import { getSubscribes, getSubscribe, getSubscribePlant, postSubscribePlant } from '@/codingjoa/ajax'
+import { Time } from '@/codingjoa/component/timestamp'
 import { useViewDispatch, useInputRefHandlar } from '@/codingjoa/hook'
 import { Pagination } from 'antd';
 
 import FarmEditor from './FarmEditor'
 import FarmInfo from './FarmInfo'
+import { state, plan } from './label'
 
 function AddSubscribePlant({
   subscribeId,
@@ -185,7 +187,10 @@ function SubscribeListMain({
       <td>{row.id}</td>
       <td>{row.farmName}</td>
       <td>{row.userName}</td>
-      <td>{row.createdAt}</td>
+      <td><Time>{row.createdAt}</Time></td>
+      <td>{row.expiredAt && <Time>{row.expiredAt}</Time>}</td>
+      <td>{plan(row.level)}</td>
+      <td>{state(row.subscribed, row.pending)}</td>
       <td>{row.plants}</td>
       <td><button onClick={() => dispatch({ type: 'id', id: row.id })} className="updateBtn">관리</button></td>
     </tr>
@@ -199,6 +204,9 @@ function SubscribeListMain({
           <th>밭 이름</th>
           <th>사용자 이름</th>
           <th>구독일</th>
+          <th>만료일</th>
+          <th>구독 플랜</th>
+          <th>구독 상태</th>
           <th>작물 수</th>
           <th>비고</th>
         </tr>
