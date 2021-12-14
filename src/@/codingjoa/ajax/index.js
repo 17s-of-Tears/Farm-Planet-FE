@@ -435,6 +435,26 @@ export async function getSubscribe({
   };
 }
 
+export async function updateSubscribe(id, formData) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/subscribe/${id}`,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  });
+}
+
+export async function closeSubscribe({
+  id
+}) {
+  await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/subscribe/${id}`,
+  });
+}
+
 export async function getSubscribePlant({
   subscribeId,
   subscribePlantId,

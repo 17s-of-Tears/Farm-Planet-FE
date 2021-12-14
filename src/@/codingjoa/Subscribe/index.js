@@ -3,6 +3,9 @@ import { getSubscribes, getSubscribe, getSubscribePlant, postSubscribePlant } fr
 import { useViewDispatch, useInputRefHandlar } from '@/codingjoa/hook'
 import { Pagination } from 'antd';
 
+import FarmEditor from './FarmEditor'
+import FarmInfo from './FarmInfo'
+
 function AddSubscribePlant({
   subscribeId,
   subscribePlantId,
@@ -98,38 +101,6 @@ function PlantDetail({
   </div>;
 }
 
-
-
-function Detail({
-  id,
-  payload,
-  dispatch,
-}) {
-  const Row = row => (
-    <div key={row.id} className="plantItem"> 
-    <h6>{row.name}</h6>           
-      <div className="imageCardBox">
-        <img width="128px" src={`https://codingjoa.kro.kr:49000/${row.imageUrl}`} />        
-        <button onClick={() => dispatch({ type: 'edit', id: row.id })} className="updateBtn">관리</button>
-      </div>      
-    </div>
-  );
-
-  return <div className="infoBox">   
-    <h5>이름 : {payload.subscribe.userName}</h5> 
-    <h5>구독일 : {payload.subscribe.createdAt}</h5>
-    <h5>밭 : {payload.subscribe.farmName}</h5>      
-    <div className="farmGridBox">
-      <img width="256px" src={`https://codingjoa.kro.kr:49000/${payload.subscribe.imageUrl}`} />
-    </div>
-    
-    <h5>작물 수: {payload.subscribe.plants}</h5>
-    <div className="plantGridBox">
-      {payload.plants.map && payload.plants.map(Row)}
-    </div>
-  </div>
-}
-
 function SubscribeDetailMain({
   id,
   dispatch
@@ -149,7 +120,7 @@ function SubscribeDetailMain({
       }
       if(state.type === 'list') {
         return <div className="adminSubscribe-detail">
-          <Detail id={id} payload={state.data} dispatch={subDispatch} />
+          <FarmInfo id={id} payload={state.data} dispatch={subDispatch} />
           <div>
             <button onClick={() => dispatch({ type: 'refresh' })} className="cancleBtn">뒤로</button>
           </div>
@@ -157,6 +128,9 @@ function SubscribeDetailMain({
       }
       if(state.type === 'edit') {
         return <PlantDetail subscribeId={id} subscribePlantId={state.subscribePlantId} dispatch={subDispatch} />
+      }
+      if(state.type === 'editFarm') {
+        return <FarmEditor id={id} payload={state.data.subscribe} dispatch={subDispatch} />
       }
       return null;
     },
@@ -173,6 +147,12 @@ function SubscribeDetailMain({
           ...state,
           type: 'list',
           data: action.result,
+        };
+      }
+      if(action.type === 'editFarm') {
+        return {
+          ...state,
+          type: 'editFarm',
         };
       }
       if(action.type === 'edit') {

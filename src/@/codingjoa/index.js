@@ -33,6 +33,7 @@ export default function HW() {
       if(state.status === 'LOGIN') {
         return <>
           <BoardFAQ />
+          <Subscribe />
         </>
       }
       return <>...</>;
