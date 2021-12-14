@@ -9,13 +9,9 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
     
     const location = useLocation()
 
-<<<<<<< HEAD
     const plantData = location.state.plantData; 
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-=======
-    const plantData = location.state.plantData;
->>>>>>> 044a269bf28d637d8c7a25cc149b4426c8bf31be
 
     const plant = {
         id: plantData.id,
@@ -80,7 +76,6 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
     
     return (
         <div className="wrapper">
-<<<<<<< HEAD
             <div className="SubscribeRequestModal">
                 <Button type="primary" onClick={showModal}>
                     Open Modal
@@ -114,27 +109,10 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
                                 </div>
                             </div>
                         </form>
-=======
-            <div className="formWrapper">
-                <form method="post">
-                    <div class="formBox">
-                         <img src="/img/temp_logo3.png" alt='logo' /> 
-                        <div>
-                            <img className="imgStyle" src={plant.imgURL} alt='sweetPotato' />
-                        </div>
-                        <label className="plantName">{plant.name}</label>
-                        <div>
-                            <p className='textRoom'>
-                                {plant.content}
-                            </p>
-                        </div>
-                        <div>
-                            <button class="loginButton" onClick={sendPlant}>재배하기</button>
-                        </div>
->>>>>>> 044a269bf28d637d8c7a25cc149b4426c8bf31be
                     </div>
-                </form>
-            </div>
+                </Col>
+                <Col span={8}></Col>
+            </Row>
         </div>
     )
 }
