@@ -1,4 +1,5 @@
 import { getUsers, updateUser } from '@/codingjoa/ajax'
+import { Time } from '@/codingjoa/component/timestamp'
 import { useViewDispatch } from '@/codingjoa/hook'
 import { Pagination } from 'antd';
 
@@ -54,7 +55,7 @@ function UserListMain({
       <td>{row.id}</td>
       <td>{row.name} <Rename id={row.id} dispatch={dispatch} /></td>
       <td>{row.accountID}</td>
-      <td>{row.createdAt}</td>
+      <td><Time>{row.createdAt}</Time></td>
     </tr>
   );
 

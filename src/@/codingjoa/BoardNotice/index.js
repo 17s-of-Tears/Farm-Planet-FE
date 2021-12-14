@@ -1,5 +1,6 @@
 import React from 'react'
 import { getBoardNotices, getBoardNotice } from '@/codingjoa/ajax'
+import { Time } from '@/codingjoa/component/timestamp'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
 import { Pagination } from 'antd';
@@ -39,7 +40,7 @@ function BoardNoticeList({
     <tr key={row.id}>
       <td>{row.id}</td>
       <td>{row.title}</td>
-      <td>{row.createdAt}</td>
+      <td><Time>{row.createdAt}</Time></td>
       <td>{row.hit}</td>
       <td><button className="updateBtn" onClick={() => dispatch({ type: 'id', id: row.id })}>수정</button></td>
     </tr>

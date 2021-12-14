@@ -1,5 +1,6 @@
 import React from 'react'
 import { getAccounts, postAccount, updateAccount, resetPassword } from '@/codingjoa/ajax'
+import { Time } from '@/codingjoa/component/timestamp'
 import { useViewDispatch, useInputRef, useInputRefHandlar } from '@/codingjoa/hook'
 import { Pagination } from 'antd';
 
@@ -80,7 +81,7 @@ function CreateAccount({
   });
   return <>
     이름: <input ref={name} />
-    Id: <input ref={accountID} /> 
+    Id: <input ref={accountID} />
     <button onClick={handleSubmit} className="submitBtn">제출</button>
   </>;
 }
@@ -97,7 +98,7 @@ function AccountListMain({
         <td>{row.id}</td>
         <td>{row.name} <Rename id={row.id} dispatch={dispatch} /></td>
         <td>{row.accountID}</td>
-        <td>{row.createdAt}</td>
+        <td><Time>{row.createdAt}</Time></td>
         <td><ResetPassword id={row.id} /></td>
       </tr>
     );
@@ -107,8 +108,8 @@ function AccountListMain({
     <h3>계정 추가</h3>
       <div className="addAccountBox">
         <CreateAccount dispatch={dispatch} />
-      </div>             
-    
+      </div>
+
     <h3>계정 목록</h3>
     <table  className="tableStyle_1">
       <thead>
