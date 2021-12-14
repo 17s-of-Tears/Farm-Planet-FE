@@ -90,6 +90,69 @@ export async function deleteBoardNotice({
   });
 }
 
+export async function getBoardFAQs({
+  page = 1,
+  pageSize = 15,
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/board/faq?page=${page}&pageSize=${pageSize}`,
+  });
+  return result.data;
+}
+
+export async function getBoardFAQ({
+  id
+}) {
+  const result = await axios({
+    method: 'GET',
+    url: `/api/v1/admin/board/faq/${id}`,
+  });
+  return result.data;
+}
+
+export async function postBoardFAQ({
+  title,
+  question,
+  ask,
+}) {
+  await axios({
+    method: 'POST',
+    url: '/api/v1/admin/board/faq',
+    data: {
+      title,
+      question,
+      ask,
+    },
+  });
+}
+
+export async function updateBoardFAQ({
+  id,
+  title,
+  question,
+  ask,
+}) {
+  await axios({
+    method: 'PUT',
+    url: `/api/v1/admin/board/faq/${id}`,
+    data: {
+      title,
+      question,
+      ask,
+    },
+  });
+}
+
+export async function deleteBoardFAQ({
+  id,
+}) {
+  await axios({
+    method: 'DELETE',
+    url: `/api/v1/admin/board/faq/${id}`,
+  });
+}
+
 export async function getBanners() {
   const result = await axios({
     method: 'GET',

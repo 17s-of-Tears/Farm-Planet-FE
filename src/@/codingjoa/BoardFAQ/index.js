@@ -1,23 +1,23 @@
 import React from 'react'
-import { getBoardNotices, getBoardNotice } from '@/codingjoa/ajax'
+import { getBoardFAQs, getBoardFAQ } from '@/codingjoa/ajax'
 import { useViewDispatch } from '@/codingjoa/hook'
 import Editor from './Editor'
 import { Pagination } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-function BoardNoticeWrite({
+function BoardFAQWrite({
   dispatch,
 }) {
   return <Editor id={null} payload={{}} dispatch={dispatch} />;
 }
 
-function BoardNoticeDetail({
+function BoardFAQDetail({
   id,
   dispatch,
 }) {
   const [ data, setData ] = React.useState(null);
   React.useLayoutEffect(() => {
-    getBoardNotice({ id }).then(
+    getBoardFAQ({ id }).then(
       data => setData(data),
       err => alert(`조회 실패. [${err?.response?.status}/${err?.response?.data?.message}]`)
     );
@@ -29,7 +29,7 @@ function BoardNoticeDetail({
   );
 }
 
-function BoardNoticeList({
+function BoardFAQList({
   data,
   dispatch,
   current,
@@ -70,45 +70,11 @@ function BoardNoticeList({
   </div>;
 }
 
-function reducer(state, action) {
-  if(action.type === 'fetched') {
-    return {
-      ...state,
-      type: 'list',
-      current: action.result._meta.page.current,
-      last: action.result._meta.page.last,
-      data: action.result.notices,
-    };
-  }
-  if(action.type === 'id') {
-    return {
-      ...state,
-      type: 'edit',
-      id: action.id,
-    };
-  }
-  if(action.type === 'refresh') {
-    return {
-      ...state,
-      type: 'pending',
-      data: null,
-      current: action.page ?? state.current,
-    };
-  }
-  if(action.type === 'add') {
-    return {
-      ...state,
-      type: 'add',
-    }
-  }
-  return state;
-}
-
-export default function BoardNotice() {
+export default function BoardFAQ() {
   const view = useViewDispatch({
     effect(state, dispatch) {
       if(state.type === 'pending') {
-        getBoardNotices({ page: state.current }).then(
+        getBoardFAQs({ page: state.current }).then(
           data => dispatch({
             type: 'fetched',
             result: data,
@@ -122,18 +88,49 @@ export default function BoardNotice() {
         return <>...</>;
       }
       if(state.type === 'list') {
-        return <BoardNoticeList current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
+        return <BoardFAQList current={state.current} total={state.last} data={state.data} dispatch={dispatch} />
       }
       if(state.type === 'edit') {
-        return <BoardNoticeDetail id={state.id} dispatch={dispatch} />
+        return <BoardFAQDetail id={state.id} dispatch={dispatch} />
       }
       if(state.type === 'add') {
-        return <BoardNoticeWrite dispatch={dispatch} />
+        return <BoardFAQWrite dispatch={dispatch} />
       }
-
       return null;
     },
-    reducer,
+    reducer(state, action) {
+      if(action.type === 'fetched') {
+        return {
+          ...state,
+          type: 'list',
+          current: action.result._meta.page.current,
+          last: action.result._meta.page.last,
+          data: action.result.faqs,
+        }
+      }
+      if(action.type === 'refresh') {
+        return {
+          ...state,
+          type: 'pending',
+          data: null,
+          current: action.page ?? state.current,
+        }
+      }
+      if(action.type === 'id') {
+        return {
+          ...state,
+          type: 'edit',
+          id: action.id,
+        };
+      }
+      if(action.type === 'add') {
+        return {
+          ...state,
+          type: 'add',
+        }
+      }
+      return state;
+    },
     initialValue: {
       type: 'pending',
       current: 1,
