@@ -22,7 +22,7 @@ const PlantCategoryView = lazy(() => import('./plantCategoryView/plantCategoryVi
 
 
 function App() {
-
+  const [selectedPlantList, setSelectedPlantList] = useState({list:{}});  
 
   return (
     <div className="App">
@@ -61,7 +61,7 @@ function App() {
           <Route path='/myplant'>
             <WatchMmyPlant />
           </Route>
-          <Route path='/detailplant'>
+          <Route path='/detailplant' selectedPlantList={selectedPlantList} setSelectedPlantList={setSelectedPlantList}>
             <DetailPlant />
           </Route>
           <Route path='/list'>
