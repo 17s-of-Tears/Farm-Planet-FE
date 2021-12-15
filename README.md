@@ -37,9 +37,8 @@ Farm - Planet은 단순하게 주말 농장을 대여해 주는 것 뿐 아니�
 
 # Page   
 
-![index](./screenshot/localhost_3000_.png)   
-<img src="./screenshot/localhost_3000_.png" />
-![login](./screenshot/localhost_3000_login.png)   
+![index](./localhost_3000_.png)   
+![login](screenshot/localhost_3000_login.png)   
 ![signup](./screenshot/localhost_3000_signup.png)   
 ![subscript](./screenshot/localhost_3000_subscript.png)   
 ![list1](./screenshot/localhost_3000_list.png)   
