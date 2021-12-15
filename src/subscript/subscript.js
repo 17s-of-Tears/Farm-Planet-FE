@@ -57,7 +57,7 @@ const Subscript = (props) => {
         
         <div className="itemBox">
           <div className="titleLine">
-            <div className="coloredDot"></div><h2>Basic</h2>            
+            <div className="coloredDot"></div><h2>Standard</h2>            
           </div>
 
           <div className="priceLine">
@@ -82,7 +82,7 @@ const Subscript = (props) => {
 
         <div className="itemBox">
           <div className="titleLine">
-            <div className="coloredDot"></div><h2>Basic</h2>            
+            <div className="coloredDot"></div><h2>Premier</h2>            
           </div>
 
           <div className="priceLine">
