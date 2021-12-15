@@ -14,8 +14,6 @@
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
     position:absolute;
-    top:50%; left:50%;
-    transform: translate(-50%, -50%);
 }
 .inputStyle{
     margin:30px;
