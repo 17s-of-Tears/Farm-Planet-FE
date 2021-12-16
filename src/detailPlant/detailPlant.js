@@ -81,7 +81,7 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
                   msg = "현재까진 선택하신 작물 수는" + _selectedPlantList.list.length + "/" + _limitPlantCount; 
               }
               // 리스트가 가득 찼을때
-              if(Object.keys(_selectedPlantList.list) == _limitPlantCount){
+              if(_selectedPlantList.list.length == _limitPlantCount){
                   showModal();
                   msg = ""; 
               }
@@ -95,7 +95,6 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
             
         })
              
-       
     };
 
     const showModal = () => {
@@ -106,9 +105,9 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
       setIsModalVisible(false);
       //plant 정보 전달
       var result= [];
-      result = _selectedPlantList.map(res => res.id);
+      result = _selectedPlantList.list.map(res => res.id);
       console.log(result);
-      axios.post("",{result}).then(res=>{
+      axios.post("https://codingjoa.kro.kr:49000/api/v1/subscribe/plant",{plants:result}).then(res=>{
         console.log("plant 정보 전달 완료");
       }).catch(err => {
         console.log("plant 정보 전달 에러" + err.name);
@@ -122,10 +121,7 @@ const DetailPlant = ({selectedPlantList,setSelectedPlantList}) => {
     var test = _selectedPlantList.list.map(res=>res.name +", ");
     return (
         <div className="wrapper">
-            <div className="SubscribeRequestModal">
-                <Button type="primary" onClick={showModal}>
-                    Open Modal
-                </Button>
+            <div className="SubscribeRequestModal">                
                 <Modal title="재배 신청하기" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                     <p>작물을 모두 고르셨습니다.  {limitPlantCount != null ? "총" + limitPlantCount + "개" : "알수없음" }</p>
                     <p>목록 : {test}</p>                    
