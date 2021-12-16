@@ -13,7 +13,7 @@
     border: 0px solid;
     box-shadow: black 0px 0px 1px 0px;
     padding: 30px;
-    text-align: center;
+    position:absolute;
 }
 .inputStyle{
     margin:30px;
