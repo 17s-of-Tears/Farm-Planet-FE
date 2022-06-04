@@ -10,7 +10,9 @@ const ProfileMyFarmMap = (props) => {
     };
 
     useEffect(() => {
-
+if(!kakao) {
+  return;
+}
         let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
         let options = { //지도를 생성할 때 필요한 기본 옵션
             center: new window.kakao.maps.LatLng(props.myLocation[0], props.myLocation[1]), //지도의 중심좌표.

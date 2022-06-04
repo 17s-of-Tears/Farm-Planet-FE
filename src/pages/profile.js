@@ -37,12 +37,12 @@ const Profile = () => {
 };
 
 
-function MyProfile(props) {
+function MyProfile(me) {
 
     let history = useHistory();
-    let [name, setName] = useState(props.me.name);
+    let [name, setName] = useState(me.name);
     let [afterName, setAfterName] = useState('');
-    let date = props.me.date;
+    let date = me.date;
     let defaultImg = "./img/userDefaultImg.png"
     const onChange = (e) => {
         setAfterName(e.target.value);
@@ -86,8 +86,8 @@ function MyProfile(props) {
         history.push("/")
     }
 
-    console.log(props);
-    console.log(props.me.name);
+    console.log(me);
+    console.log(me.name);
 
 
     return (
@@ -98,19 +98,19 @@ function MyProfile(props) {
                 <Col span={16}>
                     <div className="heightGroup">
                         <div className="setProfileImg">
-                            <img className="setProfileImgContent" src={props.me.profileImg ? props.me.profileImg : defaultImg} />
+                            <img className="setProfileImgContent" src={me.profileImg ? me.profileImg : defaultImg} />
                             <button className="changeProfileImgButton" onClick={changeProfileImg}>벝</button>
                             <div id="name">
-                                <p>{props.me.name ? name : null}</p>
+                                <p>{me.name ? name : null}</p>
                             </div>
                         </div>
                         <div className="setProfile">
                             <input type="text" name="myNicknameChange" onChange={onChange} class="nicknameInput" />
                             <button class="nicknameChangeButton" onClick={changeMynickname}>별명 변경하기</button>
-                            <p>{props.me.date ? date.substr(0, 10) + '부터 구독중이예요!' : null}</p>
-                            <p>{props.me.farm ? props.me.farm.yard : '아직 정보가 없어요 :('}</p>
-                            <p>{props.me.farm ? props.me.farm.address : '아직 정보가 없어요 :('}</p>
-                            <p>{props.me.farm ? props.me.farm.plants : '아직 정보가 없어요 :('}</p>
+                            <p>{me.date ? date.substr(0, 10) + '부터 구독중이예요!' : null}</p>
+                            <p>{me.farm ? me.farm.yard : '아직 정보가 없어요 :('}</p>
+                            <p>{me.farm ? me.farm.address : '아직 정보가 없어요 :('}</p>
+                            <p>{me.farm ? me.farm.plants : '아직 정보가 없어요 :('}</p>
                             <p>구독 변경</p>
                             <p>구독 해지</p>
                         </div>
@@ -121,7 +121,7 @@ function MyProfile(props) {
             <Row>
                 <Col span={4}></Col>
                 <Col span={16}>
-                    <ProfileMyFarmMap myLocation={props.me.farm ? props.me.farm.address : [37.3595316, 127.1052133]} />
+                    <ProfileMyFarmMap myLocation={me.farm ? me.farm.address : [37.3595316, 127.1052133]} />
                 </Col>
                 <Col span={4}></Col>
             </Row>
